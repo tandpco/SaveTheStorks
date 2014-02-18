@@ -11,6 +11,7 @@
     "grunt-webfont": "~0.2.1",
     "grunt-contrib-coffee": "~0.7.0",
     "grunt-awspublish": "~0.1.2",
-    "grunt-contrib-watch": "~0.5.3"
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-rainmaker": "~0.1.0"
   }
 }
