@@ -1,0 +1,13 @@
+{
+  "aws": {
+    "key": "[aws api key]",
+    "secret":"[aws api secret]",
+    "bucket":"rainmakerapp",
+    "client":"[clientID]"
+  },
+  "momentum": {
+    "key": "[momentum api key]",
+    "secret":"[momentum api secret]",
+    "client":"[clientID]"
+  }
+}

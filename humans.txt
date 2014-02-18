@@ -1,0 +1,12 @@
+/* TEAM */
+  Chef: [dev name]
+  Contact: [dev email]
+  Twitter: [dev twitter]
+  From: [dev location]
+    
+
+/* SITE */
+  Last update:2012/02/04
+  Language: English
+  Doctype: HTML5
+  IDE: Sublime Text, Photoshop
