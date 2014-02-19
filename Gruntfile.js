@@ -13,20 +13,18 @@ module.exports = function(grunt) {
         dest: 'public/js/build.js'
       }
     },
-    awspublish: {
+    s3: {
       staging : {
         options: {
-          key: '<%= config.aws.key %>',
-          secret: '<%= config.aws.secret %>',
-          bucket: '<%= config.aws.bucket %>',
-          sync: true
+          accessKeyId: "<%= config.aws.key %>",
+          secretAccessKey: "<%= config.aws.secret %>",
+          bucket: "<%= config.aws.bucket %>"
         },
         files: [
           {
-            expand: true,
-            cwd:'public',
-            src: './**/*.*',
-            dest: '<%= config.aws.client %>'
+            cwd: "public/",
+            src: "**",
+            dest: "<%= config.aws.client %>"+"/"
           }
         ]
       }
@@ -101,9 +99,9 @@ module.exports = function(grunt) {
         files: ['lib/style/*.styl'],
         tasks:['stylus']
       },
-      awspublish: {
-        files:['public/**/*.*'],
-        tasks:['awspublish']
+      s3: {
+        files:['public/**'],
+        tasks:['s3']
       },
       rainmaker: {
         files:['theme/**/*.{jade,lhtml}'],
@@ -118,13 +116,13 @@ module.exports = function(grunt) {
   // grunt.loadNpmTasks('grunt-webfont');
   grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-awspublish');
+  grunt.loadNpmTasks('grunt-aws');
   grunt.loadNpmTasks('grunt-rainmaker');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
 
   // Default task(s).
-  grunt.registerTask('default', ['coffee','jshint','uglify','stylus','awspublish']);
-  grunt.registerTask('deploy', ['awspublish']);
+  grunt.registerTask('default', ['coffee','jshint','uglify','stylus','s3']);
+  grunt.registerTask('deploy', ['s3']);
 
 };
