@@ -39,7 +39,7 @@ module.exports = function(grunt) {
       files: {
         expand: true,
         cwd:'theme',
-        src: ['**/*.{jade,html,lhtml,htm,xhtml}']
+        src: ['**/*.{jade,html,lhtml,htm,xhtml,yaml}']
       }
 
     },
@@ -104,7 +104,7 @@ module.exports = function(grunt) {
         tasks:['s3']
       },
       rainmaker: {
-        files:['theme/**/*.{jade,lhtml}'],
+        files:['theme/**/*.{jade,lhtml,html,yaml}'],
         tasks:['rainmaker']
       }
     }
@@ -122,7 +122,7 @@ module.exports = function(grunt) {
 
 
   // Default task(s).
-  grunt.registerTask('default', ['coffee','jshint','uglify','stylus','s3']);
+  grunt.registerTask('default', ['rainmaker','coffee','jshint','uglify','stylus','s3']);
   grunt.registerTask('deploy', ['s3']);
 
 };
