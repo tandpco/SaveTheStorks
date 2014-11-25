@@ -1,0 +1,147 @@
+include ../includes/sidebar
+
+theme:template(title="Our Approach", name="_project")
+  content
+    #approach(:load=":api(3.0).content(site/our-approach) as project")
+      div.banner: div.container: .row
+        h1 Every Movement Begins With Mobility
+          p.small 3 in 5 Women Who Board a Stork Bus Choose Life.
+        .col.width-40.push-1
+          a(href='#', class='button green') GET A STORK BUS FOR YOUR PRC
+        .col.width-45
+          a(href='#', class='button outline')
+            .col.width-15
+              i.playIcon
+            .col.width-85.text
+              span.top SEE WHY THE STORK BUS 
+              br
+              span.bottom IS THE BEST MOBILE MEDICAL UNIT
+      .section.one: .container: .row
+        h1 {project.content.articlesec1}
+        .col.width-25(:load="project.relationships(mobile) as article", :iterate="self")
+          .thumb(style='background-image: url({article.relationships(image,attachments).first.version()})')
+          h2 {article.content.title}
+          {article.content.content}
+      .section.two: .row  
+        .col.width-35.content: .body
+          {project.content.gallerytextone}
+        .col.width-65.gallery
+          .image-one(style='background-image: url({project.relationships(galleryimages1one,attachments).first.version()})')
+          .col.width-50
+            .image-two(style='background-image: url({project.relationships(galleryimages1two,attachments).first.version()})')
+          .col.width-50
+            .image-three(style='background-image: url({project.relationships(galleryimages1three,attachments).first.version()})')
+      .section.three: .container: .row
+        h1 {project.content.articlesec2}
+        .col.width-25(:load="project.relationships(matters) as article", :iterate="self")
+          .thumb(style='background-image: url({article.relationships(image,attachments).first.version()})')
+          h2 {article.content.title}
+          {article.content.content}
+      .section.two: .row  
+        .col.width-35.content: .body
+          {project.content.gallerytextone}
+        .col.width-65.gallery
+          .image-one(style='background-image: url({project.relationships(galleryimages2one,attachments).first.version()})')
+          .col.width-50
+            .image-two(style='background-image: url({project.relationships(galleryimages2two,attachments).first.version()})')
+          .col.width-50
+            .image-three(style='background-image: url({project.relationships(galleryimages2three,attachments).first.version()})')
+      .section.slider-area: .container: .row
+        h1 {project.content.slider1headline}
+        .col.width-10
+          | &nbsp;
+          span.left-scroll.unslider-arrow.prev
+        .col.width-80: .slider
+          ul.mobile-strategies
+            li.slide(:load="project.relationships(slider1slides) as slide", :iterate="self"): .row
+              .col.width-30
+                .thumb(style='background-image: url({slide.relationships(image,attachments).first.version()})')
+              .col.width-70
+                h2 {slide.content.name}
+                {slide.content.content}
+        .col.width-10
+          | &nbsp;
+          span.right-scroll.unslider-arrow.next
+
+      .section.van-info.three: .container: .row
+        h1 Specifications At A Glance
+        .col.width-20.mpg
+          .col.width-60
+            p <span class="big">over</span>
+              strong 20
+              | highway MPG
+          .col.width-40
+            div.icon-fuel
+        .col.width-20.engine
+          .col.width-50
+            div.icon-engine
+          .col.width-50
+            strong 3.0L
+          p CDI Turbo Diesel Engine
+        .col.width-20.battery
+          .col.width-50
+            .icon-battery
+          .col.width-50
+            p.main
+              strong 7
+              | hours
+          p.sub of on-board battery power
+        .col.width-20.parking
+          .col.width-60
+            p fits inside
+              strong 1
+              | parking space
+          .col.width-40
+            .icon-parking
+        .col.width-20.service
+          .col.width-50
+            .icon-service
+          .col.width-50
+            p.main
+              strong 3
+              | years
+          p.sub warrantied and servicable at any Mercedes dealer
+        .block
+          .col.width-50
+            img(src='assets://images/van-svg.svg', class='full-width')
+            small 273.2"
+            p Stork Bus standard length
+          .col.width-50
+            img(src='assets://images/van-svg.svg', class='full-width')
+            small 289.2"
+            p Stork Bus extended length
+      .section.slider-area: .container: .row
+        h1 {project.content.slider2headline}
+        .col.width-10
+          | &nbsp;
+          span.left-scroll.unslider-arrow.prev
+        .col.width-80: .slider
+          ul.mobile-strategies
+            li.slide(:load="project.relationships(slider2slides) as slide", :iterate="self"): .row
+              .col.width-30
+                .thumb(style='background-image: url({slide.relationships(image,attachments).first.version()})')
+              .col.width-70
+                h2 {slide.content.name}
+                {slide.content.content}
+        .col.width-10
+          | &nbsp;
+          span.right-scroll.unslider-arrow.next
+      .section.city: .container
+        h1 {project.content.city}
+        p {project.content.citybody}
+      .section.footer: .container: .row
+        .col.width-33(:load="project.relationships(footer) as column", :iterate="self")
+          .image(style='background-image: url({column.relationships(image,attachments).first.version()})')
+            p {column.content.title}
+          p {column.content.content}
+        .col.width-33
+          .image
+            p Guide To Going <br> Mobile
+          p Read our full booklet to learn more.
+        .col.width-33
+          .image
+            p Learn About <br> Our Mission
+          p 3 out of 5 women who board a Stork Bus choose to keep their baby.
+
+
+    +sidebar

@@ -1,0 +1,128 @@
+include ../includes/sidebar
+
+theme:template(title="{fundraiser.name}", name="_default", :load=":api(3.0).groups({:url.2}) as fundraiser")
+  require-init(:eval=":url.2|cleanslug")
+  not-found Oops. The url for this page wasn"t structured properly.
+  require(:eval="fundraiser.id")
+  not-found
+    .container
+      h3
+        | The project you are accessing could not be found. Please verify the url you used is valid.
+      p
+        code {req.link}
+  content
+    .funding-bar: .container: .row.columns
+        .col.width-45
+          .pull-left
+            |{fundraiser.progress.money|money}&nbsp;
+            small Raised Already
+          .pull-right.small
+            |{fundraiser.target|money}
+          div.progress: .progress-bar(style='width:{fundraiser.progress.percent}; min-width: 1%;')
+        .col.push-1.width-20
+          a.button(href='#/my/donate?group={fundraiser.id}') Donate Now
+        .col.push-1.width-25: .pull-right: .counter(:load=":api(3.0).projects(249) as project") 
+          span.letterBox Ends:
+          span.one
+            span.numberBox {project.timestamp.until.countdown.week|lpad(2,0)|substr(0,1)}
+            span.numberBox.split {project.timestamp.until.countdown.week|lpad(2,0)|substr(1,1)}
+            div.weeks Weeks
+          span.two
+            span.numberBox {project.timestamp.until.countdown.day|lpad(2,0)|substr(0,1)}
+            span.numberBox {project.timestamp.until.countdown.day|lpad(2,0)|substr(1,1)}
+            div.days Days
+    .jumbotron(style='background-image: url({:e.url.link([fundraiser.photo_url])});')
+    .container(:load="fundraiser.owner as owner")
+      .headline
+        //@IF owner.photos.count == 0 && owner.facebook
+        .portrait: img(src='//graph.facebook.com/{owner.facebook.userID}/picture?type=large&width=300&height=300')
+        //@ELSE
+        .portrait: img(src='{:e.url.link([owner.photo_url])}')
+        //@ENDIF
+        h1 {fundraiser.name}
+          .small {fundraiser.owner.name}
+      .content.row.columns
+        .col.width-35#sidebar
+          .panel
+            h4
+              i.icon-currency
+              |&nbsp;Support This Campaign
+            hr
+            .row.columns
+              .col.width-25
+                span.numberBox(data-value='25') $25
+              .col.width-25
+                span.numberBox(data-value='50', class='active') $50
+              .col.width-25
+                span.numberBox(data-value='100') $100
+              .col.width-25
+                span.numberBox(data-value='250') $250
+            .row.columns
+              .col.width-50
+                span.cash
+                  input(type='text', placeholder='Enter Amount', name='donationAmount')
+                  i $
+              .col.width-50
+                form(action='donate', class='rain')
+                  input(type='hidden', name='amount', value='50')
+                  input(type='hidden', name='group', value='{fundraiser.id}')
+                  button(type='submit', class='button') Donate
+          .didYouKnow(:load=":api(3.0).content(site.did-you-know).relationships(questions).first as question")
+            h4
+              i.icon-magnifying-glass: br 
+              | Did You Know?
+            p.fact {question.content.fact}
+            .row.columns
+              .col.width-50
+                a(class='button twitter', rel='twitter-share', data-message='{question.content.fact|strip_tags|limitstring(110, ...)}')
+                  i.icon-twitter
+                  | Tweet
+              .col.width-50
+                a(class='button facebook', rel='facebook-share', data-message='Did You Know: {question.content.fact|strip_tags}', data-photo='{:e.url.link([fundraiser.project().photo_url])}')
+                  i.icon-facebook
+                  | Share
+          .panel
+            h4
+              i.icon-trophy
+              |&nbsp;Campaign Donors ({fundraiser.members.length})
+            hr
+            ul(class='donors row columns')
+              //- @TODO: Iterate Member in Members
+              li(:load='fundraiser.members.page(1,5) as member', :iterate='self')
+                span.col.width-100 {member.name}
+                //- span {:index}
+          .panel#share
+            h4
+              i.icon-chat-bubble
+              |&nbsp;Share This Campaign
+            hr
+            a(class='button share facebook', rel='facebook-share', data-photo='{:e.url.link([fundraiser.project().photo_url])}') 
+              i.icon-facebook
+              |Share On Facebook
+            a(class='button share twitter', rel='twitter-share')
+              i.icon-twitter
+              |Share On Twitter
+        .col.width-65#main
+          div.tabs
+            .tab(data-target='story').col.width-30.active: a(href='#') Campaign Overview
+            .tab(data-target='projectDetails').col.width-30: a(href='#') Project Details
+            .tab(data-target='updates').col.width-30: a(href='#') Updates
+              span.updates {fundraiser.posts.length}
+            .tab.col.width-10
+              &nbsp;
+          div.content
+            div.tab-content#story
+              p.lead {fundraiser.prop.headline}
+              p {fundraiser.description}
+            div.tab-content#projectDetails
+              {fundraiser.project().description}
+            div.tab-content#updates
+              //@IF fundraiser.posts.length == 0
+              | No project updates yet.
+              //@ELSE
+              ul
+                li(class="update", :load="fundraiser.posts.status(published) as update", :iterate="self")
+                  h6 {update.title}
+                  p {update.content}
+              //@ENDIF
+    +sidebar

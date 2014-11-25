@@ -1,0 +1,37 @@
+pattern:
+  - 
+    key: name
+    format: text
+    name: Project Name   
+    placeholder: 'Winston, Salem'
+  -
+    key: mainimage
+    format: image
+    name: Main Image
+  -
+    key: mapimage
+    format: image
+    name: Map Image
+  -
+    key: description
+    format: html
+    name: Project Description
+  -
+    key: overview
+    format: html
+    name: Project Overview
+  -
+    key: partner
+    format: text
+    name: Partner
+  -
+    key: unittype
+    format: text
+    name: Unit Type
+  -
+    key: sections
+    format: blocks
+    name: Sections
+    singular: Section
+    pattern: completed-project-section
+    preview: header

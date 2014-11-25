@@ -1,0 +1,13 @@
+{
+  "aws": {
+    "key": "AKIAIMDCBONBZP2LNNPQ",
+    "secret": "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",
+    "bucket": "rainmakerapp",
+    "client": "storks"
+  },
+  "momentum": {
+    "key": "daniel.price",
+    "secret": "Ib5QysMSCVewmBjBEuuQVEsaPYKLmLxD6KGWJ8sR9fCcucTuLbL8wDje",
+    "client": "storks"
+  }
+}

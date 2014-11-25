@@ -1,0 +1,18 @@
+pattern:
+  -
+    key: title
+    format: text
+    name: Title
+  -
+    key: content
+    format: html
+    name: Description
+  -
+    key: image
+    format: image
+    name: Image
+  -
+    key: destination
+    format: text
+    name: Links To
+    placeholder: http://www.savethestorks.com/my-storks/

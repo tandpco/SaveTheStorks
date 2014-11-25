@@ -1,0 +1,290 @@
+body.signUp
+	background url('../images/createBackground.png') no-repeat center center fixed
+	background-size cover
+	color #383838
+	padding-bottom 100px
+		cursor pointer
+		background darken(#59C77F, 15%)
+	div.spacer
+		height 200px
+		width 100%
+		clearfix()
+	div.list
+		display block
+		max-width 600px
+		margin 0 auto
+		clearfix()
+		ol.pull-left
+			li
+				font-size 20px
+				font-weight 100
+				float left
+				margin-left 5px
+				&:first-of-type
+					margin-left 0					
+				&:last-child > span
+					margin-right 10px
+			li > span
+				background $color_ghost
+				border 0
+				color #FFF
+				font-weight 600
+				&.complete
+					background #59C77F
+		ol
+			list-style-type none
+			padding 0
+			li
+				display inline
+			li > span
+				border 1px solid #383838
+				border-radius 50%
+				color #383838
+				cursor pointer
+				display inline-block
+				font-size 18px
+				font-weight 100
+				padding-top 8px
+				text-align center
+				height 40px
+				width 40px
+				i
+					position relative
+					top 2px
+	section.four, section.five
+		div.textarea
+			position relative
+			textarea
+				border-radius 3px
+				padding 20px
+		div.box
+			border 1px solid lighten(#383838, 65%)
+			color lighten(#383838, 65%)
+			border-radius 3px
+			cursor pointer
+			font-weight bold
+			font-size 14px
+			padding 20px 10px
+			letter-spacing 1px
+			margin-top 25px
+			text-align center
+			text-transform uppercase
+			&.active
+				border 1px solid #00B5D7
+				color #00B5D7
+	section.one
+		div.panel
+			padding 40px 80px 60px
+	section.three
+		div.panel
+			overflow hidden
+			padding 40px 80px 20px
+			position relative
+			form[name="customPhoto"]
+				a.button.success
+					background #59C77F
+					border-radius 3px
+					color #FFFFFF
+					font-size 28px
+					height auto
+					letter-spacing 0.2em
+					margin 15px 0 25px
+					padding 10px 15px
+					text-transform uppercase
+		div.coverPhoto
+			background url('../images/photoPlaceholder.png') 50% 50% no-repeat
+			background-color #E1E1E1
+			border-radius 3px
+			height 170px
+			margin-bottom 25px
+			overflow hidden
+			&#preview
+				background-size cover
+		div.browse
+			display none
+			padding 25px 80px 25px
+			position absolute
+			background white
+			top 0
+			bottom 0
+			left 0
+			right 0
+			z-index 9999
+			a.button, button.button
+				border 2px solid #59C77F
+				height auto
+				padding 5px !important
+				font-size 16px !important
+				letter-spacing 1px
+				line-height 42px
+				margin 40px 0 0 !important
+				text-align center
+				text-transform uppercase
+			a.button.outline
+				background none
+				border 2px solid #59C77F
+				border-radius 3px
+				color #59C77F
+				&:hover
+					background #59C77F
+					color #FFF
+			a.button.success
+				background #59C77F
+				border 2px solid #59C77F
+				color #FFF
+			div.images
+				border lighten(#383838, 75%)
+				height 260px
+				overflow-y scroll
+				padding 10px
+			span.image
+				border-radius 4px
+				height 120px
+				overflow hidden
+				float left
+				margin-bottom 20px
+				&.active
+					border 4px solid #59C77F
+				img
+					height auto
+					width 100%
+		div.box
+			border 1px solid lighten(#383838, 65%)
+			border-radius 3px
+			cursor pointer
+			height 70px
+			padding 15px 10px
+			text-align center
+			h5
+				color #00B5D7
+				margin 0
+				text-transform uppercase
+			p
+				color lighten(#383838, 65%)
+				font-weight 300
+				margin 0
+		div.box.file-select-lite
+			height 70px
+			position relative
+			& > input
+				bottom 0
+				cursor pointer
+				left 0
+				opacity 0
+				position absolute
+				right 0
+				top 0
+	h1.intro
+		color $color_ghost
+		font-size 56px
+		text-align center
+		text-transform uppercase
+		& > p.small
+			font-size 30px
+			font-weight 300
+			margin-top 0
+			text-transform initial
+	div.panel
+		background #FFF
+		border-radius 3px
+		margin 0 auto
+		max-width 600px
+		padding 40px 80px 40px 80px
+		a#rareButton
+			background #59C77F
+			border 2px solid #59C77F
+			height auto
+			padding 5px !important
+			font-size 16px !important
+			letter-spacing 1px
+			line-height 42px
+			margin 40px 0 30px !important
+			text-align center
+			text-transform uppercase
+		h2
+			font-size 28px
+			font-weight 300
+			text-align center
+			margin 10px 0 40px
+		a.button.facebook
+			border-radius 3px
+			font-size 16px
+			height auto
+			letter-spacing 1px
+			padding 10px 15px
+			text-transform uppercase
+		p.lined
+			font-weight 300
+			font-size 24px
+			margin 20px 0
+			position relative
+			text-align center
+			&:before, &:after
+				background #383838
+				content ''
+				height 1px
+				position absolute
+				top 16px
+				width 35%
+			&:before
+				left 0
+			&:after
+				right 0
+		form
+			div.input-group
+				border 1px solid lighten(#383838, 70%)
+				border-radius 3px
+				margin-bottom 20px
+				padding 10px
+				.row
+					margin 0
+				label
+					font-weight bold
+					font-size 12px
+					text-transform uppercase
+				input[type="text"]
+					border 0
+					padding 0
+					line-height 15px
+					margin 10px 0 5px
+					max-height 20px
+					&[name='lastName']
+						border-left 1px solid lighten(#383838, 70%)
+						padding-left 15px
+				&#group
+					input[name='lastName']
+						border-left 0 !important
+						padding-left 0
+			::-webkit-input-placeholder
+				font-size 18px
+				font-weight 100
+			:-moz-placeholder
+				font-size 18px
+				font-weight 100
+			::-moz-placeholder
+				font-size 18px
+				font-weight 100
+			:-ms-input-placeholder
+				font-size 18px
+				font-weight 100
+			button.button.success
+				background #59C77F
+				border-radius 3px
+				color #FFFFFF
+				font-size 27px
+				height auto
+				letter-spacing 0.2em
+				margin 15px 0 25px
+				padding 15px
+				text-transform uppercase
+				&:hover
+					cursor pointer
+					background darken(#59C77F, 15%)
+			.pull-left, .pull-right
+				& > a
+					border-bottom 1px solid lighten(#383838, 35%)
+					color #383838
+					font-size 12px
+					font-weight bold
+					padding-bottom 0
+					text-decoration none

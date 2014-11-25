@@ -1,0 +1,92 @@
+page:
+  path: /site
+  slug: our-approach
+  name: Our Approach
+pattern:
+  -
+    key: mobile
+    format: blocks
+    name: Article Section One
+    singular: Article
+    pattern: mobile-article
+    preview: name
+  -
+    key: articlesec1
+    format: text
+    name: Article Section One Title
+  -
+    key: gallerytextone
+    format: html
+    name: Gallery Block One - Text
+  -
+    key: galleryimages1one
+    format: upload
+    name: Gallery Block One - Image One
+  -
+    key: galleryimages1two
+    format: upload
+    name: Gallery Block One - Image Two
+  -
+    key: galleryimages1three
+    format: upload
+    name: Gallery Block One - Image Three
+  -
+    key: slider1headline
+    format: text
+    name: Slider Area One Headline
+  -
+    key: slider1slides
+    format: blocks
+    name: Slider Area One Slides
+    singular: Slide
+    pattern: slider-one-slides
+    preview: name
+  -
+    format: blocks
+    name: Article Section Two
+    singular: Article
+    pattern: matters
+    preview: name
+    key: matters
+  -
+    key: articlesec2
+    format: text
+    name: Article Section Two Title
+  -
+    key: galleryimages2one
+    format: upload
+    name: Gallery Block Two - Image One
+  -
+    key: galleryimages2two
+    format: upload
+    name: Gallery Block Two - Image Two
+  -
+    key: galleryimages2three
+    format: upload
+    name: Gallery Block Two - Image Three
+  - 
+    key: slider2headline
+    format: text
+    name: Slider Area Two Headline
+  -
+    key: slider2slides
+    format: blocks
+    name: Slider Area Two Slides
+    singular: Slide
+    pattern: slider-one-slides
+    preview: name
+  -
+    key: city
+    format: text
+    name: City Section Header
+  -
+    key: citybody
+    format: html
+    name: City Section Content
+  -
+    format: blocks
+    name: Footer Columns
+    singular: Column
+    pattern: footer-column
+    preview: name
+    key: footer

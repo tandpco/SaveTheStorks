@@ -1,0 +1,5 @@
+pattern:
+  - 
+    key: fact
+    format: html
+    name: Question

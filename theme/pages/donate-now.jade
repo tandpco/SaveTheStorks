@@ -1,0 +1,106 @@
+include ../includes/sidebar
+
+theme:template(title="Donate", name="_project")
+  content
+    #donate
+      div.banner
+        h1 Grow The <strong>Movement</strong>
+          p.small Your contribution is vital to impacting the future.
+      .container: .row.donation-options
+        .donation-amount
+          .col.width-20.toggle: div.amount-toggle.active(data-monthly="30.00", data-yearly="350.00")
+            .head.clearfix
+              h1 1
+              img(src='assets://images/stork-alone.png', width="60")
+            small $30/mo. or $350 once
+          .col.width-20.toggle: div.amount-toggle(data-monthly="60.00", data-yearly="750.00")
+            .head.clearfix
+              h1 2
+              img(src='assets://images/stork-alone.png', width="60")
+            small $60/mo. or $750 once
+          .col.width-20.toggle: div.amount-toggle(data-monthly="150.00", data-yearly="1800.00")
+            .head.clearfix
+              h1 5
+              img(src='assets://images/stork-alone.png', width="60")
+            small $150/mo. or $1800 once
+          .col.width-20.toggle: div.amount-toggle(data-monthly="350.00", data-yearly="4200.00")
+            .head.clearfix
+              h1 12
+              img(src='assets://images/stork-alone.png', width="60")
+            small $350/mo. or $4200 once
+          .col.width-20.toggle: div.amount-toggle(data-monthly="", data-yearly="")
+            .head.any: h1 Any Amount
+            small Saves Storks
+          .col.width-60
+            .amount
+              .prepend Your Donation:
+              input(type='text', value='30.00', placeholder='Enter custom amount...')
+              .cash $
+              .usd USD
+          .col.width-20: a(href='#', class='button active frequency', data-frequency="month") Monthly
+          .col.width-20: a(href='#', class='button frequency', data-frequency="year") One Time
+        .campaign-level
+          .col.width-75
+            h1 Campaign Level: <span class="level"> Save A Stork</span>
+            p.description We divided the cost of a Bus by the number of moms and children who could be saved in one year. It costs about $30/month to Save a Stork. By partnering with us at $30/month, you can save a mother from the grief and heartache of abortion.
+            h1 Choose Your Advocacy Gift
+            p As a our way to say "Thank You!", please select a free gift that will give you the opportunity to tell people about Save The Storks.
+            div.gifts
+              .col.width-33
+                label(for="declineGift") Decline Gift
+                input#declineGift.gift(type="radio", name="gift", value="declineGift")
+              .col.width-33
+                label Silver Stork Pendant
+                input.gift(type="radio", name="gift", value="Silver")
+              .col.width-33
+                label Two T-Shirts
+                input.gift(type="radio", name="gift", value="Four")
+            .sizes.two
+              .col.width-100: small Select Sizes
+              br
+              .clearfix
+                .col.width-25: select(name="shirtOne")
+                  option Small
+                  option Medium
+                  option Large
+                  option Extra Large
+                  option XXL
+                .col.width-25: select(name="shirtTwo")
+                  option Small
+                  option Medium
+                  option Large
+                  option Extra Large
+                  option XXL
+            .sizes.four
+              .col.width-100: small Select Sizes
+              br
+              .clearfix
+                .col.width-25: select(name="shirtOne")
+                  option Small
+                  option Medium
+                  option Large
+                  option Extra Large
+                  option XXL
+                .col.width-25: select(name="shirtTwo")
+                  option Small
+                  option Medium
+                  option Large
+                  option Extra Large
+                  option XXL
+                .col.width-25: select(name="shirtThree")
+                  option Small
+                  option Medium
+                  option Large
+                  option Extra Large
+                  option XXL
+                .col.width-25: select(name="shirtFour")
+                  option Small
+                  option Medium
+                  option Large
+                  option Extra Large
+                  option XXL
+          .col.width-25.img
+            img(src='https://savethestorks.com/donateform/images/donate-form-levela.png', width='100%')
+        .summary: .col.width-100
+          a(href='#', class='button', id='donateModal') Continue Donation
+      +sidebar

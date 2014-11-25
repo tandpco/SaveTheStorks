@@ -1,0 +1,1622 @@
+header#completedProjects
+  background-image url('../images/completed-projects_banner.png')
+  background-size cover
+  h1.pull-left
+    margin 0
+  a#menuToggle
+    background transparent
+    color #FFF
+    padding 55px 0
+    span, span:before, span:after
+      background #FFF
+  .content
+    color #FFF
+    padding 175px 15px 75px
+    text-align center
+    h1
+      font-size 56px
+      margin-bottom 0
+      text-transform uppercase
+    p
+      font-weight 100
+      font-size 22px
+div.cities
+  background #F1F5F6
+  padding 20px 30px
+  margin-bottom 45px
+  ul.tabs
+    list-style-type none
+    margin 0
+    padding 0
+    text-align center
+    li
+      color #C9CFD0
+      cursor pointer
+      display inline
+      text-decoration none
+      font-size 18px
+      font-weight 300
+      text-align center
+      padding 5px 25px
+      &:hover, &:active
+        color darken(#C9CFD0, 25%)
+      &.active
+        color #313436
+        font-weight bold
+        position relative
+        &:after
+          content ''
+          position absolute
+          top 42px
+          left 50%
+          margin-left -25px
+          width 0
+          height 0
+          border-style solid
+          border-width 10px 25px 0 25px
+          border-color #F1F5F6 transparent transparent transparent
+        &:hover
+          color #313436
+    .slick-slide
+      font-size 20px
+      font-weight 300
+      padding-left 10px
+      margin-left 10px
+      margin-right 10px
+      padding-right 10px
+      padding-bottom 5px
+      padding-top 5px
+      vertical-align middle
+      &:nth-of-type(odd)
+        border-left 1px solid #D5DFD1
+        border-right 1px solid #D5DFD1
+      &:last-of-type
+        margin-right 0
+        border-right 0
+        padding-right 0
+    span
+      padding 5px
+      position relative
+      vertical-align middle
+      a
+        color #C9CFD0
+        text-decoration none
+      &.left-scroll
+        position absolute
+        display block
+        height 20px
+        width 20px
+        line-height 0
+        cursor pointer
+        top 50%
+        margin-top -10px
+        padding 0
+        &:after, &:before
+          right 0
+          top 50%
+          border solid transparent
+          content " "
+          height 0
+          width 0
+          position absolute
+          pointer-events none
+        &:after
+          border-color transparent
+          border-right-color #F1F5F6
+          border-width 18px
+          margin-top -18px
+        &:before
+          border-radius 4px
+          border-color transparent
+          border-right-color #C9CFD0
+          border-width 19px
+          margin-top -19px
+      &.right-scroll
+        position absolute
+        display block
+        height 20px
+        width 20px
+        line-height 0
+        cursor pointer
+        top 50%
+        right 0
+        margin-top -10px
+        padding 0
+        &:after, &:before
+          left 0
+          top 50%
+          border solid transparent
+          content " "
+          height 0
+          width 0
+          position absolute
+          pointer-events none
+        &:after
+          border-color transparent
+          border-left-color #F1F5F6
+          border-width 18px
+          margin-top -18px
+        &:before
+          border-radius 4px
+          border-color transparent
+          border-left-color #C9CFD0
+          border-width 19px
+          margin-top -19px
+.completedProjects
+  div.container
+    clearfix()
+  .left, .right
+    @media (min-width: 769px)
+      width 50%
+      float left
+  .right
+    // margin-bottom 175px
+    h1, h2
+      color #303030
+    h1
+      font-weight 300
+      font-size 34px
+      position relative
+      &:after
+        position absolute
+        top 45px
+        left 0
+        width 80px
+        height 2px 
+        background #C4C4C4
+        content ''
+    .group
+      margin-bottom 20px
+      h2
+        margin-bottom 0
+        text-transform uppercase
+        font-size 16px
+      p
+        margin-top 0
+        font-size 16px
+        color #a6a6a6
+        line-height 26px
+    a.button
+      background #59C77F
+      display inline
+      font-size 16px
+      font-weight 500
+      padding 15px 40px
+      letter-spacing 0.075em
+      text-transform uppercase
+      &:hover, &:focus, &:active
+        background darken(#59C77F, 15%)
+.panel
+  background #F1F5F6
+  padding 30px
+  position relative
+  h4
+    font-weight 600
+    margin 0
+    text-transform uppercase
+    vertical-align middle
+    i
+      font-size 24px
+      vertical-align middle
+  hr
+    border 3px solid darken(#F1F5F6, 15%)
+    margin 10px 0
+  .row:first-of-type
+    margin-top 15px
+    margin-bottom 5px
+  .col.width-25
+    & > span.numberBox
+      border 1px solid darken(#F1F5F6, 15%)
+      border-radius 3px
+      display inline-block
+      font-size 18px
+      margin 0 0 10px
+      padding 5px 0
+      text-align center
+      width 100%
+      &:hover
+        background darken(#F1F5F6, 15%)
+        cursor pointer
+      &:active, &.active
+        background #59C77F
+        border 1px solid #3B8956
+        color #FFFFFF
+        cursor pointer
+  input[type='text']
+    padding-left 30px
+  .cash
+    position relative
+    i
+      font-style normal
+      left 15px
+      position absolute
+      top 0
+  button.button
+    background #E6756F
+    color #FFF
+    cursor pointer
+    font-size 16px
+    text-transform uppercase
+    letter-spacing 0.075em
+div.banner
+  display block
+  height 400px
+  overflow hidden
+  clearfix()
+  .left, .right
+    position relative
+    float left
+    min-height 400px
+  .left
+    background-size cover
+    background-position center
+    @media (min-width: 769px)
+      width 70%
+    @media (max-width: 768px)
+      width 100%
+    h1.title
+      color #FFF
+      position absolute
+      bottom 20px
+      left 45px
+      &:after
+        position absolute
+        top 50px
+        height 4px
+        content ''
+        background #FFF
+        width 100px
+        left 0
+    img
+      width 100%
+  .right
+    @media (min-width: 769px)
+      width 30%
+    @media (max-width: 768px)
+      width 100%
+    img
+      min-height 100%
+      min-width 100%
+div.intro
+  &.one
+    padding 45px
+    p
+      color #767676
+      font-size 16px
+      line-height 26px
+      margin-bottom 30px
+    .row
+      margin-left -15px
+      margin-right -15px
+    .left, .right
+      float left
+      padding 0 15px
+      .row
+        margin-left -10px
+        margin-right -10px
+    @media (min-width: 1000px)
+      .left
+        width 70%
+      .right
+        width 30%
+    @media (max-width: 999px)
+      .left
+        width 60%
+      .right
+        width 40%
+    @media (max-width: 768px)
+      .left, .right
+        width 100%
+      .content
+        float left
+      .image
+        background-size cover
+        float right
+        height 300px
+section.section
+  display block
+  .left, .image
+    background-repeat no-repeat
+    background-size cover
+    box-sizing border-box
+    float left
+  clearfix()
+  &:nth-of-type(3n+1)
+    .content
+      background #46C1DD
+      color #FFF
+      padding 45px
+      h1
+        text-transform uppercase
+        font-size 18px
+        margin-bottom 20px
+      ul
+        margin-bottom 35px
+        padding-left 15px
+        li
+          font-weight 100
+          margin-bottom 10px
+      small
+        font-size 12px
+  &:nth-of-type(3n+2)
+    .content
+      color #767676
+      h1
+        text-transform uppercase
+        font-size 24px
+        margin-bottom 20px
+      p
+        font-size 16px
+        line-height 26px
+  &:nth-of-type(3n+3)
+    .content
+      background #E6756F
+      color #FFF
+      padding 45px
+      h1
+        text-transform uppercase
+        font-size 24px
+        margin-bottom 20px
+      p
+        font-size 16px
+        line-height 26px
+  &:nth-of-type(odd)
+    .content
+      float left
+    .image
+      float right
+  &:nth-of-type(even)
+    .content
+      float right
+    .image
+      float left
+  .content
+    padding 45px
+    width 30%
+  .image
+    width 70%
+div.footer
+  padding 45px 15px
+  text-align center
+  h1
+    font-size 35px
+    font-weight 300
+    margin-bottom 40px
+  .center
+    @media (min-width: 769px)
+      border-left 1px solid #F1F5F6
+      border-right 1px solid #F1F5F6
+    @media (max-width: 768px)
+      margin 45px 0
+      padding 45px 0
+      border-top 1px solid #F1F5F6
+      border-bottom 1px solid #F1F5F6
+  span.rounded
+    border 2px solid
+    border-radius 50%
+    color #4F4F4F
+    display inline-block
+    padding 15px 0
+    text-align center
+    height 100px
+    width 100px
+    i
+      font-size 60px
+  .col h1
+    color #00B5D7
+    font-size 34px
+    font-weight bold
+    text-transform uppercase
+    margin-bottom 0
+    p
+      color #757575
+      font-size 16px
+      font-weight 300
+      line-height 24px
+      margin 0 0 30px
+      text-transform initial
+  a.blue
+    background #00B5D7
+    text-transform uppercase
+    letter-spacing 0.05em
+    font-size 16px
+    width auto
+    display inline-block
+    padding 0 25px
+  .inline-form
+    input, button
+      border-radius 2px
+    .form-group, input
+      display inline-block
+      vertical-align middle
+      &:first-of-type
+        margin-right 5px
+    ::placeholder
+      font-size 16px
+    button.success
+      letter-spacing 0.05em
+      background #59C77F
+      border 0
+      color #FFF
+      font-size 16px
+      padding 0 25px
+      text-transform uppercase
+    input[name=donationAmount]
+      padding-left 30px
+    .cash
+      position relative
+      i
+        font-style normal
+        left 15px
+        position absolute
+        top 0
+    button.wine
+      letter-spacing 0.05em
+      background #E6756F
+      color #FFF
+      cursor pointer
+      font-size 16px
+      text-transform uppercase
+      letter-spacing 0.075em
+    &#give
+      .form-group:first-of-type
+        margin-right 0
+      button, input
+        width 135px
+#about
+  hr
+    border 0
+    border-top 1px solid #E3E3E3
+    margin 0
+  div.banner
+    background-image url('../images/about-us_banner.png')
+    background-size cover
+    color #FFF
+    text-align center
+    height auto
+    @media (min-width: 769px)
+      margin-bottom 70px
+      padding 100px 15px 150px
+    @media (max-width: 768px)
+      border-bottom 1px solid #E3E3E3
+      margin-bottom 35px
+      padding 50px 0 0
+    position relative
+    h1
+      @media (min-width: 769px)
+        font-size 50px
+      @media (max-width: 768px)
+        font-size 32px
+      font-weight 100
+      letter-spacing 0.075em
+      text-transform uppercase
+      padding 0 15px
+      margin-bottom 45px
+      strong
+        font-weight bold
+      p.small
+        letter-spacing 0.05em
+        font-size 24px
+        text-transform initial
+    ul.tabs
+      @media (min-width: 769px)
+        position absolute
+        bottom 20px
+        left 0
+        right 0
+      margin 0
+      padding 0
+      list-style-type none
+      li  
+        @media (min-width: 769px)
+          display inline
+        @media (max-width: 768px)
+          display block
+          width 100%
+        border-style solid
+        @media (min-width: 769px)
+          border-width 1px 1px 0 0
+          margin 0 0 0 -5px
+        @media (max-width: 768px)
+          border-width 1px 0 0
+        padding 20px 30px
+        text-transform uppercase
+        transition all 0.3s ease
+        &:hover, &:active
+          border-color #FFF
+          background #FFF
+          color #061616
+          cursor pointer
+        &.active
+          border-color #FFF
+          font-weight bold
+          background #FFF
+          color #061616
+        &:first-of-type
+          @media (min-width: 769px)
+            border-width 1px 1px 0 1px
+          @media (max-width: 768px)
+            border-width 1px 0 0 0
+          margin 0 0 0 0
+        &:last-of-type
+          @media (min-width: 769px)
+            border-width 1px 1px 0 0
+          @media (max-width: 768px)
+            border-width 1px 0 0 0
+  .container
+    max-width 925px
+    div.tab
+      transition opacity 0.3s ease
+      height 0
+      overflow hidden
+      opacity 0
+      margin-bottom 0
+      &.in
+        height auto
+        overflow visible
+        opacity 1
+        @media (min-width: 769px)
+          margin-bottom 70px
+        @media (max-width: 768px)
+          margin-bottom 35px
+    p
+      color #A6A6A6
+      font-size 16px
+      line-height 24px
+      margin 0 0 30px
+    strong
+      font-size 20px
+      color #555555
+    .row
+      margin 0 -10px 0
+    blockquote
+      background #F1F5F6
+      color #A6A6A6
+      padding 40px 60px
+      margin 30px 0
+      text-align center
+      font-size 24px
+      font-style italic
+      line-height 32px
+    .team
+      h1
+        font-size 24px
+        color #6F6F6F
+        text-transform uppercase
+        position relative
+        padding-bottom 20px
+        margin 20px 0
+        &:after
+          content ''
+          position absolute
+          width 65px
+          height 1px
+          background #46C1DD
+          bottom 0
+          left 0
+        p
+          margin 0
+          font-size 14px
+          color #46C1DD
+          font-weight 300
+          text-transform initial
+    #faq
+      ul
+        list-style-type none
+        padding 0
+        margin 0
+        @media (max-width: 769px)
+          display none
+        li
+          border-bottom 1px solid
+          color #E3E3E3
+          font-size 20px
+          line-height 24px
+          padding 20px 0
+          cursor pointer
+          transition all 0.3s ease
+          &:hover
+            color darken(#E3E3E3, 10%)
+          &.active
+            border-color #E3E3E3
+            color #46C1DD
+            font-weight bold
+            padding-left 25px
+            position relative
+            &:before
+              content ''
+              position absolute
+              left 0
+              top 50%
+              margin-top -10px
+              width 0
+              height 0
+              border-top 10px solid transparent
+              border-left 10px solid #46C1DD
+              border-bottom 10px solid transparent
+              border-right 10px solid transparent             
+          &:first-of-type
+            padding-top 0
+            &.active:before
+              margin-top -20px
+      div.question
+        @media (min-width: 769px)
+          display block
+          height 0
+          overflow hidden
+          opacity 0
+          transition all 0.6s ease
+        &.in
+          height auto
+          overflow visible
+          opacity 1
+#contact
+  margin-bottom 50px
+  div.banner
+    background-image url('../images/contact_banner.png')
+    background-size cover
+    background-position center
+    color #FFF
+    text-align center
+    height auto
+    overflow visible
+    @media (min-width: 769px)
+      margin-bottom 70px
+      padding 100px 15px
+    @media (max-width: 768px)
+      margin-bottom 35px
+      padding 50px 15px
+    position relative
+    h1
+      font-size 50px
+      font-weight bold
+      letter-spacing 0.075em
+      padding 0 15px
+      margin-bottom 45px
+      p.small
+        font-weight 300
+        letter-spacing 0.05em
+        font-size 24px
+    &:after
+      display block
+      position absolute
+      bottom -15px
+      content ""
+      left 0
+      right 0
+      height 15px
+      background-image url('../images/gradient.gif')
+      background-repeat repeat
+  .container
+    h2
+      color #313436
+      font-size 16px
+      text-transform uppercase
+    form
+      @media (min-width: 769px)
+        width 80%
+      div.input-group
+        border 1px solid lighten(#383838, 70%)
+        border-radius 3px
+        margin-bottom 20px
+        padding 10px
+        .row
+          margin 0
+        label
+          font-weight bold
+          font-size 12px
+          text-transform uppercase
+        input[type="text"]
+          border 0
+          padding 0
+          line-height 15px
+          margin 10px 0 5px
+          max-height 22px
+          &[name='lastName']
+            border-left 1px solid lighten(#383838, 70%)
+            padding-left 15px
+        textarea
+          border 0
+          padding 7px 0
+          font-size 18px
+      ::-webkit-input-placeholder
+        font-size 18px
+        font-weight 100
+      :-moz-placeholder
+        font-size 18px
+        font-weight 100
+      ::-moz-placeholder
+        font-size 18px
+        font-weight 100
+      :-ms-input-placeholder
+        font-size 18px
+        font-weight 100
+      button.button.success
+        background #59C77F
+        border-radius 3px
+        color #FFFFFF
+        border 0
+        font-size 20px
+        height auto
+        letter-spacing 0.2em
+        margin 0 0 25px
+        padding 15px
+        text-transform uppercase
+        &:hover
+          cursor pointer
+          background darken(#59C77F, 15%)
+    .info-group
+      margin-bottom 35px
+      p, address
+        margin 0
+        color #A6A6A6
+        font-style normal
+    a
+      text-decoration none
+    .facebook, .twitter, .pinterest, .instagram
+      border-radius 2px
+      padding 8px
+      margin-bottom 10px
+      font-size 20px
+      @media (min-width: 481px)
+        width 260px
+      @media (max-width: 480px)
+        width 100%
+      span.icon
+        border-radius 0
+        color #FFF
+        display inline-block
+        margin-right 15px
+        padding 10px
+        font-size 16px
+    .facebook
+      background #EAEEF4
+      color #3B5998
+      .icon
+        background #3B5998
+    .twitter
+      background #E2EFF5
+      color #28A9E0
+      .icon
+        background #28A9E0
+    .pinterest
+      background #F4E5E5
+      color #CB2027
+      .icon
+        background #CB2027
+    .instagram
+      background #E9EEF4
+      color #375989
+      .icon
+        background #375989
+#action
+  padding-bottom 50px
+  div.banner
+    background-image url('../images/action_banner.png')
+    background-size cover
+    background-position center
+    color #FFF
+    text-align center
+    height auto
+    position relative
+    overflow visible
+    @media (min-width: 769px)
+      margin-bottom 70px
+      padding 100px 15px 150px
+    @media (max-width: 768px)
+      border-bottom 1px solid #E3E3E3
+      margin-bottom 35px
+      padding 50px 0
+    h1
+      @media (min-width: 769px)
+        font-size 50px
+      @media (max-width: 768px)
+        font-size 32px
+      font-weight 100
+      letter-spacing 0.075em
+      text-transform uppercase
+      padding 0 15px
+      margin-bottom 45px
+      strong
+        font-weight bold
+      p.small
+        letter-spacing 0.05em
+        font-size 26px
+        text-transform initial
+    .inline-form
+      @media (max-width: 768px)
+        padding 0 15px
+      input 
+        border-radius 3px
+        ::placeholder
+          font-size 16px
+          font-weight 100
+      .form-group, input
+        display inline-block
+        margin-right 10px
+        vertical-align middle
+        @media (max-width: 768px)
+          margin-bottom 5px
+          width 100%
+      @media (min-width: 769px)
+        input#email
+          min-width 320px
+      button
+        background #59C77F
+        border 0
+        color #FFF
+        font-size 16px
+        padding 0 25px
+        text-transform uppercase
+        letter-spacing 0.175em
+        @media (max-width: 768px)
+          width 100%
+    &:after
+      display block
+      position absolute
+      bottom -15px
+      content ""
+      left 0
+      right 0
+      height 15px
+      background-image url('../images/gradient.gif')
+      background-repeat repeat    
+  div.featured-action
+    margin-bottom 30px
+    clearfix()
+    #thumb
+      @media (min-width: 769px)
+        img
+          float right
+    a
+      text-decoration none
+      &:hover
+        text-decoration underline
+    h2
+      color #303030
+      font-size 16px
+      text-transform uppercase
+      letter-spacing 0.075em
+      margin 0 0 15px
+      padding-bottom 15px
+      position relative
+      &:after
+        content ''
+        bottom 0
+        position absolute
+        left 0
+        width 70px
+        height 1px
+        background #C4C4C4
+    h1 
+      font-size 38px
+      font-weight 300
+      line-height 40px
+      letter-spacing 0.05em
+      color #00B5D7
+    p
+      font-size 16px
+      line-height 20px
+      color #333
+      margin-bottom 30px
+    a.button
+      background #59C77F
+      font-size 16px
+      letter-spacing 0.175em
+      text-transform uppercase
+      width auto
+      height auto
+      padding 0 20px
+      display inline-block
+      &:hover, &:active
+        background darken(#59C77F, 15%)
+  div.center
+    display block
+    width 100%
+    text-align center
+    h2
+      color #303030
+      font-size 16px
+      text-transform uppercase
+      letter-spacing 0.075em
+      margin 60px 0
+      padding-bottom 15px
+      position relative
+      &:after
+        content ''
+        bottom 0
+        position absolute
+        left 50%
+        margin-left -35px
+        width 70px
+        height 1px
+        background #C4C4C4
+  ul.actions
+    padding 0
+    margin 0
+    list-style-type none
+    li
+      border 1px solid #E7E7E7
+      @media (min-width: 769px)
+        padding 40px 30px
+      @media (max-width: 768px)
+        padding 0 20px
+      &:nth-child(1)
+        display none
+      &:nth-child(n+3)
+        border-top 0
+      clearfix()
+      a
+        text-decoration none
+        &:hover
+          text-decoration underline
+      h3
+        margin 0
+        font-size 24px
+        font-weight 300
+        color #00547C
+      p
+        font-size 16px
+        line-height 24px
+        color #313436
+        &:first-of-type
+          margin-top 5px
+div.project-tabs
+  padding-bottom 60px
+  .map, .map img
+    border-radius 50%
+    width 100%
+  .map
+    background-position center
+    background-size cover
+    border 8px solid #F1F5F6
+    width 80%
+  h1
+    margin-top 0
+  div.tab
+    overflow hidden
+    height 0
+    opacity 0
+    transition opacity 0.3s ease
+    &.in
+      height auto
+      overflow visible
+      opacity 1
+#approach
+  div.banner    
+    @media (max-width 768px)
+      .container .row .push-2
+        margin-left 0% !important
+    background-image url('../images/approach_banner.png')
+    background-size cover
+    background-position center
+    color #FFF
+    text-align center
+    height auto
+    position relative
+    overflow visible
+    @media (min-width: 769px)
+      padding 100px 15px 130px
+    @media (max-width: 768px)
+      border-bottom 1px solid #E3E3E3
+      padding 50px 0
+    h1
+      @media (min-width: 769px)
+        font-size 58px
+      @media (max-width: 768px)
+        font-size 32px
+      font-weight bold
+      letter-spacing 0.075em
+      text-transform uppercase
+      padding 0 15px
+      margin-bottom 45px
+      p.small
+        letter-spacing 0.05em
+        font-size 26px
+        font-weight 300
+        text-transform initial
+    a.green
+      display block
+      padding 20px 25px
+      letter-spacing 0.175em
+      font-size 16px
+      font-weight bold
+      border-radius 3px
+      border 2px solid #59c77f
+      background #59c77f
+      line-height initial
+      @media (min-width: 1091px)
+        height 64px
+      @media (max-width: 1090px)
+        height auto
+      &:hover, &:active
+        border 2px solid darken(#59c77f, 15%)
+        background darken(#59c77f, 15%)
+    a.outline
+      display block
+      padding 15px 25px
+      letter-spacing 0.175em
+      font-size 12px
+      font-weight bold
+      border-radius 3px
+      border 2px solid #FFF
+      background transparent
+      line-height initial
+      height auto
+      @media (max-width: 768px)
+        padding 0 15px
+      @media (min-width: 769px)
+        padding 15px 25px
+      .text
+        text-align left
+      clearfix()
+      &:hover, &:active
+        border 2px solid darken(#FFF, 15%)
+        background rgba(#FFF, 0.2)
+      .playIcon
+        background #FFF
+        border-radius 50%
+        display inline-block
+        float left
+        height 30px
+        width 30px
+        position relative
+        @media (max-width: 768px)
+          margin-right 10px
+        &:after
+          content ""
+          display block
+          width 0
+          height 0
+          border-style solid
+          border-width 6px 0 6px 10px
+          border-color transparent transparent transparent #313436
+          position absolute
+          left 50%
+          top 50%
+          margin-left -4px
+          margin-top -6px
+  .section
+    .row
+      margin 0 -10px 0
+    &.one
+      background #313436
+      padding 45px
+      .col.width-25:nth-child(n+6)
+        display none
+      h1
+        color #FFF
+        text-align center
+        font-weight 100
+        margin-top 0
+        text-transform uppercase
+        font-size 30px
+      .thumb
+        background-color #797F82
+        background-size cover
+        background-position center
+        height 170px
+        width 100%
+        overflow hidden
+      h2
+        margin 10px 0 5px
+        color #EEE
+        font-size 14px
+        text-transform uppercase
+        letter-spacing 0.05em
+      p 
+        margin 0
+        color #A5A5A5
+        font-size 14px
+        letter-spacing 0.05em
+        line-height 16px
+    &.two
+      background #252729
+      min-height 100vh
+      .row
+        margin 0 -10px 0
+        position relative
+      .content
+        min-height 100vh
+        display table
+        color #A5A5A5
+        padding 60px 45px
+        .body
+          display table-cell
+          vertical-align middle
+        p.sub
+          text-transform uppercase
+          color #A9A9A9
+          font-size 14px
+          margin-bottom 30px
+        h1
+          text-transform uppercase
+          font-weight 100
+          color #FFF
+          font-size 24px
+        p
+          font-size 14px
+          line-height 18px
+          font-weight 300
+      .gallery
+        position absolute
+        bottom 0
+        left 35%
+        top 0
+        .col.width-50
+          height 40%
+          padding 0
+        .image-one, .image-two, .image-three
+          background-size cover
+          background-position center
+          background-repeat no-repeat
+        .image-one
+          height 60%
+        .image-two, .image-three
+          height 100%
+    &.three
+      background #FFF
+      padding 45px 0
+      .col.width-25:nth-child(n+6)
+        display none
+      h1
+        color #252729
+        text-align center
+        font-weight 100
+        margin-top 0
+        text-transform uppercase
+        font-size 30px
+      .thumb
+        background-color #797F82
+        background-size cover
+        background-position center
+        height 170px
+        width 100%
+      h2
+        margin 10px 0 5px
+        color #252729
+        font-size 14px
+        text-transform uppercase
+        letter-spacing 0.05em
+      p 
+        margin 0
+        color #A5A5A5
+        font-size 14px
+        letter-spacing 0.05em
+        line-height 16px
+    &.slider-area
+      background #313436
+      padding 45px
+      .col
+        position relative
+        @media (max-width: 769px)
+          &.width-80
+            width 100%
+          &.width-10
+            display none
+      h1
+        text-align center
+        color #FFF
+        font-weight 100
+        text-transform uppercase
+        font-size 30px
+        margin-top 0
+      .slider
+        width 100%
+        margin 0 auto
+        ul
+          overflow auto
+          padding 0
+          position relative
+          li
+            list-style none
+            overflow visible
+            h2
+              color #FFF
+              font-size 18px
+              letter-spacing 0.075em
+              text-transform uppercase
+            p
+              color #A5A5A5
+              font-size 16px
+              line-height 22px
+            .thumb
+              width 100%
+              height 200px
+              background-color #797F82
+              background-size cover
+              background-position center
+        ul li
+            float left
+            overflow hidden
+      span
+        padding 5px
+        position relative
+        vertical-align middle
+        a
+          color #C9CFD0
+          text-decoration none
+        &.left-scroll
+          position absolute
+          display block
+          height 200px
+          width 20px
+          line-height 0
+          cursor pointer
+          top 50%
+          margin-top -10px
+          padding 0
+          &:after, &:before
+            right 0
+            top 50%
+            border solid transparent
+            content " "
+            height 0
+            width 0
+            position absolute
+            pointer-events none
+          &:after
+            border-color transparent
+            border-right-color #313436
+            border-width 18px
+            margin-top -18px
+          &:before
+            border-radius 4px
+            border-color transparent
+            border-right-color #C9CFD0
+            border-width 19px
+            margin-top -19px
+        &.right-scroll
+          position absolute
+          display block
+          height 200px
+          width 20px
+          line-height 0
+          cursor pointer
+          top 50%
+          right 0
+          margin-top -10px
+          padding 0
+          &:after, &:before
+            left 0
+            top 50%
+            border solid transparent
+            content " "
+            height 0
+            width 0
+            position absolute
+            pointer-events none
+          &:after
+            border-color transparent
+            border-left-color #313436
+            border-width 18px
+            margin-top -18px
+          &:before
+            border-radius 4px
+            border-color transparent
+            border-left-color #C9CFD0
+            border-width 19px
+            margin-top -19px
+    &.van-info
+      color lighten(#313436, 10%)
+      p
+        color lighten(#313436, 10%)
+      h1
+        margin-bottom 70px
+      .block
+        margin 225px 0 0
+        text-align center
+        small
+          border-bottom 1px solid
+          display block
+          margin-bottom 2px
+          padding-bottom 2px
+          position relative
+          &:after, &:before
+            background lighten(#313436, 10%)
+            bottom -5px
+            content ''
+            width 1px
+            height 10px
+            position absolute
+          &:after
+            right 0
+          &:before
+            left 0
+      .col.width-20
+        position relative
+        text-align center
+        &:after
+          background lighten(#313436, 10%)
+          content ''
+          height 120px
+          position absolute
+          right 0
+          top -25px
+          width 1px
+        .col.width-50
+          padding 0
+        &.mpg
+          font-weight 100
+          strong
+            font-size 48px
+            display block
+            margin 13px 0 10px
+          .icon-fuel
+            font-size 90px
+            left -45px
+            position relative
+            top -15px
+          p
+            display inline-block
+            span.big
+              font-size 20px
+        &.engine
+          .icon-engine
+            font-size 60px
+            position relative
+            left -5px
+          strong
+            display block
+            font-size 40px
+            margin 10px 0 20px
+          p
+            font-weight 100
+            position relative
+            top -20px
+        &.battery
+          .icon-battery
+            font-size 68px
+            position relative
+            left 10px
+            top -12px
+          p.main
+            position relative
+            left -20px
+            top -12px
+            font-weight 100
+            strong
+              display block
+              font-size 72px
+              margin 26px 0 15px
+          p.sub
+            font-size 14px
+            font-weight 100
+            display inline-block
+            position relative
+            top -22px
+        &.parking
+          .icon-parking
+            font-size 90px
+            position relative
+            left -45px
+            top -16px
+          p
+            font-size 13px
+            font-weight 100
+            position relative
+            top -12px
+            strong
+              font-size 60px
+              display block
+              margin 20px 0
+        &.service
+          position relative
+          top -3px
+          .icon-service
+            font-size 48px
+          p.main
+            strong
+              display block
+              font-size 72px
+              margin 15px 0
+          p.sub
+            display inline-block
+            font-size 13px
+            font-weight 100
+          &:after
+            display none
+    &.city
+      background-image url('../images/city_bg.png')
+      background-repeat no-repeat
+      background-size 100% auto
+      background-position bottom
+      padding 60px 0 400px
+      text-align center
+      h1
+        font-size 60px
+        color #E6756F
+        font-weight 100
+      p 
+        font-size 16px
+        line-height 22px
+        color #A5A5A5
+    &.footer
+      .image
+        width 100%
+        padding 60px 15px
+        background lightgray
+        position relative
+        &:before
+          content ''
+          position absolute
+          left 0
+          right 0
+          top 0
+          bottom 0
+          width 100%
+          height 100%
+          background black
+          opacity 0
+          transition opacity 0.3s ease
+        &:hover
+          &:before
+            opacity 0.15
+        p
+          color #FFF
+          font-size 20px
+          font-weight bold
+          text-transform uppercase
+#donate
+  div.banner
+    background-image url('../images/about-us_banner.png')
+    background-size cover
+    background-position center
+    color #FFF
+    text-align center
+    height auto
+    overflow visible
+    @media (min-width: 769px)
+      padding 80px 15px
+    @media (max-width: 768px)
+      padding 50px 15px
+    position relative
+    h1
+      font-size 50px
+      font-weight 100
+      letter-spacing 0.075em
+      padding 0 15px
+      text-transform uppercase
+      p.small
+        font-weight 100
+        letter-spacing 0.05em
+        font-size 24px
+        margin 0
+        text-transform initial
+  .donation-options
+    margin-top 60px
+    clearfix()
+    div.amount-toggle
+      background #46C1DD
+      border-radius 2px
+      color #FFF
+      cursor pointer
+      @media (min-width: 925px)
+        height 135px
+      margin-bottom 20px
+      padding 15px
+      text-align center
+      transition all 0.3s ease
+      .head
+        clearfix()
+        &.any
+          h1
+            text-transform uppercase
+            @media (min-width: 925px)
+              font-size 28px
+              line-height 28px
+            margin 15px 0 2px
+        h1
+          margin 0 5px 0 0
+          font-size 60px
+        h1, small
+          display inline-block
+      &:hover, &:active
+        background darken(#46C1DD, 15%)
+      &.active
+        background #E6756F
+      small
+        display block
+        margin-bottom 10px
+    a.frequency
+      transition all 0.3s ease
+    a.button
+      border-radius 2px
+    .amount
+      border-collapse seperate
+      display table
+      margin-bottom 20px
+      position relative
+      input
+        border-bottom-right-radius 2px
+        border-top-right-radius 2px
+        display table-cell
+        float left
+        padding-left 25px
+        position relative
+        width 100%
+        z-index 2
+      .prepend
+        border-top-left-radius 2px
+        border-bottom-left-radius 2px
+        background #46C1DD
+        color #FFF
+        display table-cell
+        height 42px
+        line-height 42px
+        width 1%
+        padding 0 15px
+        white-space nowrap
+        vertical-align middle
+      .cash
+        font-weight bold
+        position absolute
+        left 150px
+        top 12px
+        z-index 3
+      .usd
+        font-weight bold
+        letter-spacing 0.05em
+        position absolute
+        right 15px
+        top 10px
+        z-index 3
+    a.button
+      background #46C1DD
+      border 1px solid #46C1DD
+      color #FFF
+      &.active
+        background #E6756F
+        border 1px solid #E6756F
+  .donation-amount
+    clearfix()
+  .campaign-level
+    border-bottom 1px solid #DDD
+    border-top 1px solid #DDD
+    margin 30px 0 40px
+    padding 40px 0
+    clearfix()
+    h1
+      font-weight 100
+      margin-bottom 10px
+      margin-top 0
+      margin-bottom 0
+    p
+      color #A6A6A6
+      font-size 16px
+      line-height 24px
+      margin-top 0
+    p:last-of-type
+      margin-bottom 0
+    img
+      width 100
+    .gifts
+      margin 20px -10px
+      label, input
+        display inline
+      label
+        margin-right 5px
+    .sizes
+      display none
+      margin 0 -10px
+      select
+        width 100%
+      .clearfix
+        clearfix()
+  .summary
+    margin 60px 0 120px
+    text-align center
+    clearfix()
+    a.button
+      background-color #59C77F
+      border 1px solid #59C77F
+      display inline-block
+      padding 5px 60px
+      font-size 14px
+      height auto
+      letter-spacing 0.075em
+      text-transform uppercase
+      width auto
+      &:hover
+        background darken(#59C77F, 15%)
+      

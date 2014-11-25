@@ -1,0 +1,12 @@
+page:
+  path: /site
+  slug: featured-fundraisers
+  name: Featured Fundraisers
+pattern:
+  -
+    key: featuredFundraisers
+    format: blocks
+    name: Featured Fundraiser
+    singular: Fundraiser
+    pattern: featured-fundraiser
+    # preview: name

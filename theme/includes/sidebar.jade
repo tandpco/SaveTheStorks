@@ -1,0 +1,74 @@
+mixin sidebar
+  .sideMenu: .content
+    span.close &nbsp;
+    a(href='#/my/portal', id='account'): div.myAccount
+      span.icon-account
+      | My Account
+    ul.main-nav
+      li: a(href='/') Home
+      li: a(href='/about') About Us
+      li: a(href='/our-approach') Our Approach
+      li: a(href='/completed-projects') Completed Projects
+      li: a(href='/take-action') Take Action
+      li: a(href='/store') Store
+      //- li: a(href='#') Blog
+    div.buttons
+      a(href='#', id='donate') Donate Now
+      a(href='#', id='join') Join Now
+    ul.sub-nav
+      li: a(href='/contact') Contact
+      //- li: a(href='#') Jobs
+      li: a(href='#') Privacy Policy
+    div.social
+      a(href='{:settings.facebook-page}'): span.icon.facebook
+        i.icon-facebook
+      a(href='https://twitter.com/{:settings.social-twitter}'): span.icon.twitter
+        i.icon-twitter
+      a(href='http://www.pinterest.com/{:settings.social-pinterest}'): span.icon.pinterest
+        i.icon-pinterest
+      a(href='http://instagram.com/{:settings.social-instagram}'): span.icon.instagram
+        i.icon-instagramm
+    div.credits
+      small Designed and Built By:
+        br
+        a(href='http://www.theoryandpractice.co', alt='Theory+Practice') Theory+Practice
+
+mixin footer
+  div.footer: div.row
+    h1 HOW YOU CAN HELP SERVE MOTHERS AND SAVE BABIES
+    div.col.width-33
+      span.rounded 
+        i.icon-pledge
+      h1 Join
+        p Join 63,811 others in your <br> commitment to life.
+      form(class='inline-form' action='/api/3.0/contacts/', method='post')
+        input(type='hidden', name='type', value='individual')
+        input(type='hidden', name='--success', value='/my-storks/sign-up?step=2')
+        input(type='hidden', name='--failure', value='/my-storks/sign-up?step=1')
+        input(type='hidden', name='--namespace', value='signUp')
+        input(type='hidden', name='--login', value='true')
+        .form-group
+          input(type='text', name='email', placeholder='Email Address')
+        .form-group
+          button(class='success', type='submit') Join
+    div.col.width-33.center
+      span.rounded 
+        i.icon-megaphone
+      h1 Act
+        p Find your unique place <br> in the pro-life movement.
+      a(class='button blue', href='/take-action') Take Action 
+    div.col.width-33
+      span.rounded 
+        i.icon-heart
+      h1 Give
+        p Your gift is the only <br> way to grow this movement.
+      .row.columns.inline-form#give
+        .form-group
+          span.cash
+            input(type='text', placeholder='Enter Amount', name='donationAmount')
+            i $
+        .form-group
+          form(action='donate', class='rain')
+            input(type='hidden', name='amount', value='50')
+            input(type='hidden', name='group', value='{fundraiser.id}')
+            button(type='submit', class='wine') Donate

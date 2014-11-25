@@ -1,0 +1,61 @@
+include ../includes/sidebar
+
+theme:template(title="About", name="_project")
+  content
+    #about(:load=":api(3.0).content(site/about-page) as project")
+      //- {project|dump}
+      div.banner
+        h1 About&nbsp;
+          strong Save The Storks
+          p.small Building the next wave of the pro-life movement.
+        ul.tabs
+          li(class='active', data-target='#mission') Our Mission
+          li(data-target='#team') Our Team
+          li(data-target='#board') Board Members
+          li(data-target='#story') Our Story
+          li(data-target='#storks') Why Storks
+          li(data-target='#faq') FAQ
+      div.container
+        div.tabs
+          .tab.in#mission
+            {project.content.intro}
+            .row
+              .col.width-50
+                img(src='{project.relationships(leftimage,attachments).first.version()}', alt='Stork Bus', title='Stork Bus')
+              .col.width-50
+                img(src='{project.relationships(rightimage,attachments).first.version()}', alt='Stork Bus Interior', title='Stork Bus Interior')
+            blockquote {project.content.blockquote}
+            {project.content.maincontent}
+          .tab#team
+            {project.content.ourteam}
+            .row.team
+              .col.width-33(:load="project.relationships(team,contacts) as contact", :iterate="self")
+                .img: img(src="{contact.photo-url}/x:300/y:300")
+                h1 {contact.name}
+                  p {contact.organizationRole}
+                p {contact.bio}
+          .tab#board
+            {project.content.ourboard}
+            .row.team
+              .col.width-33(:load="project.relationships(board,contacts) as contact", :iterate="self")
+                .img: img(src="{contact.photo-url}/x:300/y:300")
+                h1 {contact.name}
+                  p {contact.organizationRole}
+                p {contact.bio}
+          .tab#story
+            {project.content.ourstory}
+          .tab#storks
+            {project.content.whystorks}
+          .tab#faq
+            .row
+              .col.width-50
+                ul.faq
+                  li(:load="project.relationships(faq) as question", :iterate="self", data-target='\#{question.id}') {question.content.question}
+              .col.width-50
+                div.question(:load="project.relationships(faq) as question", :iterate="self", id='{question.id}')
+                  strong {question.content.question}
+                  p {question.content.answer}
+      hr
+      +footer
+      +sidebar
+

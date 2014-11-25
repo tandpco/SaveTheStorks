@@ -96,7 +96,7 @@ module.exports = function(grunt) {
         tasks:['jshint','uglify']
       },
       stylus: {
-        files: ['lib/style/*.styl'],
+        files: ['lib/style/*.styl', 'lib/style/partials/*.styl'],
         tasks:['stylus']
       },
       s3: {

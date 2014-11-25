@@ -1,0 +1,9 @@
+pattern:
+  -
+    key: sectioncontent
+    format: html
+    name: Section Content 
+  -
+    key: sectionimage
+    format: image
+    name: Section Image

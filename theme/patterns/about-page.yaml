@@ -1,0 +1,58 @@
+page:
+  path: /site
+  slug: about-page
+  name: About Page
+pattern:
+  - 
+    key: intro
+    format: html
+    name: Intro Paragraph
+  -
+    key: leftimage
+    format: image
+    name: Left Image
+  -
+    key: rightimage
+    format: image
+    name: Right Image
+  -
+    key: blockquote
+    format: text
+    name: Quote
+  -
+    key: maincontent
+    format: html
+    name: About Us Text
+  -
+    key: ourteam
+    format: html
+    name: Our Team Intro
+  -
+    key: team
+    format: relationship
+    collections: ['contacts']
+    name: Team Members
+  -
+    key: ourboard
+    format: html
+    name: Our Board Intro
+  -
+    key: board
+    format: relationship
+    collections: ['contacts']
+    name: Board Members
+  -
+    key: ourstory
+    format: html
+    name: Our Story
+  - 
+    key: whystorks
+    format: html
+    name: Why Storks?
+  -
+    key: faq
+    format: blocks
+    name: FAQ
+    singular: Question
+    pattern: faq-question
+    preview: question

@@ -1,0 +1,12 @@
+page:
+  path: /site
+  slug: take-action
+  name: Take Action
+pattern:
+  -
+    key: takeaction
+    format: blocks
+    name: Actions
+    singular: Action
+    pattern: take-action
+    preview: name

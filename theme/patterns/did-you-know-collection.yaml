@@ -1,0 +1,12 @@
+page:
+  path: /site
+  slug: did-you-know
+  name: Did You Know
+pattern:
+  -
+    key: questions
+    format: blocks
+    name: Did You Know
+    singular: Question
+    pattern: did-you-know
+    # preview: name

@@ -1,0 +1,17 @@
+page:
+  path: /site
+  slug: home-numbers
+  name: Home Numbers
+pattern:
+  -
+    key: funds
+    format: text
+    name: Funds Raised
+  -
+    key: supporters
+    format: text
+    name: Supporters
+  -
+    key: buses
+    format: text
+    name: Buses Funded

@@ -1,0 +1,24 @@
+include ../includes/sidebar
+
+theme:template(title="Completed Projects", name="_jumbotron")
+  content
+    div.cities
+      ul.tabs
+        li(:load=":api(3.0).content(site.completed-projects).relationships(completedprojects) as project", :iterate="self", data-target='\#{project.id}') {project.content.name}
+    div.container.project-tabs: div.tab(:load=":api(3.0).content(site.completed-projects).relationships(completedprojects) as project", :iterate="self", id="{project.id}")
+      div.left
+        .map(style='background-image: url({project.relationships(mapimage,attachments).first.version(500,500)})')
+          img(src='{project.relationships(mapimage,attachments).first.version(500,500)}')
+      div.right
+        h1 {project.content.name}
+        .group
+          h2 Partner
+          p {project.content.partner}
+        .group
+          h2 Unit Type
+          p {project.content.unittype}
+        .group
+          h2 Overview
+          {project.content.overview}
+        a(class='button', href='/project/{project.slug}') Learn More
+    +sidebar

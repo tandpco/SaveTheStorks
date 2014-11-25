@@ -1,0 +1,155 @@
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="submit"],
+input[type="button"],
+textarea,
+button,
+.pt-select-lite,
+a.button
+  font-family $form_font
+  border-radius 0px
+  height $form_line + 2px
+  border 1px solid $form_borderColor
+  font-size $form_fontSize
+  color $form_textColor
+  padding 0px 14px
+  outline 0px
+  width 100%
+  -webkit-appearance:none 
+  &.inline
+    width auto
+    vertical-align middle
+    display inline-block
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea
+  &:focus
+    border-color $form_borderColor_focus
+    color $form_textColor_focus
+
+input[type="submit"],
+input[type="button"],
+a.button
+  background-color $button_bgColor
+  color $button_textColor
+  border-width 0px
+  cursor pointer
+  font-weight bold
+  font-size 14px
+  text-align center
+      
+  &.inline
+    padding-left $gutterWidth
+    padding-right $gutterWidth
+  &:focus,
+  &:active
+    background-color $button_bgColor
+
+a.button.arrow
+  text-align left
+  position relative
+  &:after
+    display block
+    content ""
+    width 8px
+    height 8px
+    border-right 2px solid #FFF
+    border-bottom 2px solid #FFF
+    border-color inherit
+    position absolute
+    right 18px
+    top 50%
+    margin-top -4px
+    transform:rotate(-45deg)
+
+textarea
+  height auto
+  padding 14px
+  resize vertical
+a.button
+  display block
+  text-decoration none
+  line-height $form_line + 2
+  text-align center
+  font-weight normal
+
+  i.fa
+    margin-right 10px
+    font-size 1.3em
+    line-height $form_line + 2
+  &.facebook
+    background-color #3b5998
+    color #fff
+    &:hover
+      background-color darken(#3b5998,30%)
+label
+  font-family $form_label_font
+  font-size 14px
+  display block
+  input[type="checkbox"],
+  input[type="radio"]
+    margin-right $whiteSpace
+    vertical-align text-bottom
+.row.full-height .col
+  label
+    line-height $form_line + 2px
+    vertical-align middle
+
+.row
+  &.error
+    background-color $form_error_bgColor
+    padding ((($form_line +2px) - 20) / 2) 14px
+    line-height 20px
+    color $form_error_textColor
+    font-size 14px
+    min-height $form_line +2px
+div.pt-select-lite
+  border 1px solid transparent
+  padding 0
+  height 20px
+  line-height 15px
+  font-size 16px
+  position relative
+  cursor pointer
+  overflow hidden
+  background-color #fff
+  margin 10px 0 5px
+  span
+    overflow: hidden
+    text-overflow: ellipsis
+    max-width: 100%
+    padding-right: 14px
+    display: inline-block
+  select.pt-select-lite
+    padding 0
+    position absolute
+    top 0
+    left 0
+    opacity 0
+    z-index 10
+  &.active
+    border-color $color_primary
+    // z-index 950
+  &:after
+    content:''
+    display block
+    position absolute
+    right 14px
+    top 50%
+    margin-top -3px
+    z-index 5
+    height: 0
+    width: 0
+    border-left 5px solid transparent
+    border-right 5px solid transparent
+    border-top 7px solid #00B5D7
+  &.active:after
+    border-top-color darken(#00b5d7, 15%)
+
+::-webkit-input-placeholder { color:$form_placeholder_textColor;font-family: $form_placeholder_font;letter-spacing:normal;font-weight:normal; }
+::-moz-placeholder { color:$form_placeholder_textColor; } /* firefox 19+ */
+:-ms-input-placeholder { color:$form_placeholder_textColor; } /* ie */
+input:-moz-placeholder { color:$form_placeholder_textColor; }

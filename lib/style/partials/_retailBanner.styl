@@ -1,0 +1,201 @@
+h1.lined
+	color #383838
+	font-size 40px
+	font-weight 300
+	position relative
+	text-align center
+	&:after
+		background #383838
+		content ''
+		left 50%
+		margin-left -35px
+		position absolute
+		top 50px
+		height 1px
+		width 70px
+.bannerOne
+	background url('../images/bannerImage.png') no-repeat
+	background-size cover
+	color #FFF
+	.row
+		margin-bottom 0
+	.col.width-30
+		.pledgePane
+			margin 45px 0
+			background rgba(#FFF,0.7)
+			color #383838
+			padding 5px 25px 25px
+			h1
+				font-size 24px
+				font-weight 100
+				text-align center
+			a.button.facebook-pledge
+				background #3B5998
+				border-radius 3px
+				font-size 16px
+				height auto
+				letter-spacing 1px
+				padding 5px
+				text-transform uppercase
+			p.lined
+				font-weight 300
+				font-size 24px
+				margin 20px 0
+				position relative
+				text-align center
+				&:before, &:after
+					background #383838
+					content ''
+					height 1px
+					position absolute
+					top 16px
+					width 35%
+				&:before
+					left 0
+				&:after
+					right 0
+			form
+				input
+					border-radius 2px
+					margin-bottom 5px
+					padding 25px
+				::placeholder
+					font-size 16px
+					font-weight 100
+					letter-spacing 1px
+				button
+					background #59C77F
+					border-radius 3px
+					color #FFF
+					font-size 16px
+					height auto
+					letter-spacing 1px
+					margin-top 10px
+					padding 15px
+					text-transform uppercase
+			small
+				color lighten(#383838, 35%)
+				display block
+				margin 10px 0 0
+				text-align center
+
+	.col.width-60
+		padding 150px 0 130px
+		h1
+			font-size 50px
+			margin-top 25px
+			position relative
+			text-shadow 0 0 50px rgba(#000,0.75)
+			text-transform uppercase
+			& > p.small
+				font-family 'museo-slab'
+				font-weight 100
+				font-size 32px
+				font-style italic
+				text-transform none
+			&:before
+				background #FFF
+				content ''
+				height 5px
+				position absolute
+				top -25px
+				width 160px
+.bannerTwo
+	background #F1F5F6
+	color #383838
+	padding 30px 0 40px
+	text-align center
+	.col
+		h1
+			font-size 18px
+			font-weight 500
+			text-transform uppercase
+			&:after
+				display none
+			i
+				font-size 60px
+				margin-bottom 5px
+		p
+			color lighten(#383838, 15%)
+			font-weight 300
+			line-height 24px
+			margin-top 5px
+.sectionThree
+	clearfix()
+	color #383838
+	text-align center
+	padding 30px 0 40px
+	p 
+		color lighten(#383838, 15%)
+		font-size 18px
+		font-weight 300
+		line-height 24px
+		margin 25px 0
+		&.callout
+			line-height initial
+			font-size 34px
+			color #383838
+			margin 80px 0 40px
+		&.shoutout
+			line-height initial
+			font-size 32px
+			color #383838
+			margin 100px 0 0
+	a.button
+		border-radius 3px
+		display inline
+		margin-top 20px
+		padding 0px 15px
+		text-transform uppercase
+		height auto
+		width auto
+		i
+			margin-right 5px
+		&.success
+			background #59C77F
+			display inline-block
+			font-size 18px
+			letter-spacing 1px
+			margin 20px 0 100px
+			padding 10px 35px
+		&.twitter
+			background #55ACEE
+			&:hover, &:active
+				background darken(#55ACEE, 15%)
+	.pane
+		border 1px solid lighten(#383838, 70%)
+		border-radius 3px
+		@media (max-width: 1000px)
+			height 370px
+		@media (min-width: 1001px)
+			height 340px
+		overflow hidden
+		padding 0 15px
+		position relative
+		text-align left
+		&:before
+			content ''
+			display block
+			height 140px
+		div.mainImage
+			background-color #36C2DC
+			background-repeat no-repeat
+			background-size cover
+			height 140px
+			position absolute
+			top 0
+			left 0
+			right 0
+			width 100%
+		div.header
+			height 70px
+			h4
+				margin 15px 0
+				p.small
+					font-size 14px
+					margin 0
+		div.body
+			height 100px
+			p
+				font-size 14px
+				margin 0 0 20px

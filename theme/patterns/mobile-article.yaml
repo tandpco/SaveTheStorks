@@ -1,0 +1,13 @@
+pattern:
+  -
+    key: image
+    format: image
+    name: Image
+  -
+    key: title
+    format: text
+    name: Title
+  -
+    key: content
+    format: html
+    name: Content 

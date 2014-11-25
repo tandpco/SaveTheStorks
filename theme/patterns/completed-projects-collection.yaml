@@ -1,0 +1,12 @@
+page:
+  path: /site
+  slug: completed-projects
+  name: Completed Projects
+pattern:
+  -
+    key: completedprojects
+    format: blocks
+    name: Completed Projects
+    singular: Completed Project
+    pattern: completed-project
+    preview: name

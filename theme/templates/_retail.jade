@@ -1,0 +1,44 @@
+doctype html
+html(lang="en")
+  head
+    title Save The Storks
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+
+    //- TYPEKIT
+    script(src="//use.typekit.net/duk0vdw.js")
+    script.
+      try{Typekit.load();}catch(e){}
+    script(src="https://assets.donate.io/static/widget/embed.js", :ignore="true")
+    script(:ignore="true") var __rmSettings = { organization:'storks' }
+
+    link(href='assets://css/sts.css', rel='stylesheet')
+    // build:css /styles/main.css
+    link(href='assets://css/main.css', rel='stylesheet')
+    // endbuild
+    -page = 'retail'
+
+  body(class=page)
+    div#wrapper: div#canvas: header: .container-fluid
+      //- @TODO: Save the Storks Logo Here
+      h1(class='pull-left'): a(alt='Save The Storks', href='/'): img(src='assets://images/saveTheStorks-Alt.png' alt='Save The Storks')
+
+    | <:jolt placeholder="content" />
+
+    // Footer
+    footer
+
+    // build:js /scripts/main.js
+    
+    script(src='assets://bower_components/jquery/dist/jquery.js')
+    script(src='assets://js/build.js')
+    script(src='assets://js/main.js')
+    // endbuild
+    script(type="text/javascript").
+      var facebookAppId = '{:settings.facebook-app-id}'; 
+      var $memberId = {:member.id ? :member.id : 'null'};
+      var facebookChannelFile = '//{:e.url.domain()}/act/session/facebook_channel_file';
+    script.
+      $('a#menuToggle').click(function() {
+        $(this).find('i').toggleClass('active');
+      });

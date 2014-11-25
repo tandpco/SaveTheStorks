@@ -1,0 +1,17 @@
+pattern:
+  - 
+    key: image
+    format: upload
+    name: Image
+  -
+    key: title
+    format: text
+    name: Title
+  -
+    key: author
+    format: text
+    name: Created By
+  -
+    key: body
+    format: html
+    name: Description

@@ -1,0 +1,77 @@
+doctype html
+html(lang="en")
+  head
+    title {:options.title} - Save The Storks
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+
+    //- TYPEKIT
+    script(src="//use.typekit.net/duk0vdw.js")
+    script.
+      try{Typekit.load();}catch(e){}
+    script(src='assets://bower_components/jquery/dist/jquery.js')
+    script(src="https://assets.donate.io/static/widget/embed.js", :ignore="true")
+    script(:ignore="true") var __rmSettings = { organization:'storks' }
+    // endbuild
+    script(src='assets://js/build.js')
+    script(src='assets://js/main.js')
+
+
+    link(href='assets://css/sts.css', rel='stylesheet')
+    // build:css /styles/main.css
+    link(href='assets://css/main.css', rel='stylesheet')
+    // endbuild
+    -var page = 'home'
+
+  body(class=page)
+    div#wrapper: div#canvas
+      header(:load=":api(3.0).groups({:url.2}) as fundraiser", id="home"): .container
+        //- @TODO: Save the Storks Logo Here\
+        .nav
+          h1(class='pull-left'): a(alt='Save The Storks', href='/'): img(src='assets://images/homeLogo.png' alt='Save The Storks')
+          span(class='pull-right')
+            a(id='menuToggle', href='#menuToggle')
+              |Menu
+              i.nav-toggle: span
+        .content
+          h1 The Best Way To<br>Serve Mothers And<br>Save Babies
+            small A tangible way to make an external difference.
+
+          p.byline Join 
+            strong 63,811
+            |&nbsp;others committed to life!
+          form(class='inline-form' action='/api/3.0/contacts/', method='post')
+            input(type='hidden', name='type', value='individual')
+            input(type='hidden', name='--success', value='/take-action?thanks=true')
+            input(type='hidden', name='--failure', value='/my-storks/sign-up?step=1')
+            input(type='hidden', name='--namespace', value='signUp')
+            input(type='hidden', name='--login', value='true')
+            |<:module slug="messages-display" namespace="signUp" />
+            .form-group
+              input(type='text', name='firstName', placeholder='First Name')
+            .form-group
+              input(type='text', name='email', placeholder='Email Address (We promise never to spam you!)', id='email')
+            .form-group
+              button(type='submit', class='button success') Join Now!
+          #video
+            span.unique
+              .playIcon
+              p
+                |See What Makes <br>
+                |Us Unique
+            
+      //- block content
+      | <:jolt placeholder="content" />
+
+      // Footer
+      footer
+
+      // build:js /scripts/main.js
+      script(type="text/javascript").
+        var facebookAppId = '{:settings.facebook-app-id}'; 
+        var $memberId = {:member.id ? :member.id : 'null'};
+        var facebookChannelFile = '//{:e.url.domain()}/act/session/facebook_channel_file';
+      script.
+        $('a#menuToggle').click(function() {
+          $(this).find('i').toggleClass('active');
+        });

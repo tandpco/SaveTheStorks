@@ -1,0 +1,134 @@
+*
+  box-sizing border-box
+.container-fluid
+  clearfix()
+  margin 0 auto
+  max-width 1280px + $gutterWidth
+  padding 0 ($gutterWidth/2)
+.container
+  margin 0 auto
+  max-width 1024px + $gutterWidth
+  padding 0 ($gutterWidth/2)
+.section, .container
+  .row:first-child
+    margin-bottom 5px
+  .row:last-child
+    margin-bottom 0px
+    
+.row
+  margin 0 0 $whiteSpace 0
+  img
+    max-width 100%
+  clearfix()
+  &.columns
+    margin-left 0 - ($whiteSpace/2)
+    margin-right 0 - ($whiteSpace/2)
+  &.center
+    text-align center
+    > .col
+      display inline-block
+      // margin-righ -1em
+      margin-top 0px
+      float none
+      vertical-align top
+  for i in 1..20
+    .col-{i}
+      width unit((i/20)*100,'%')
+      padding-left ($whiteSpace/2)
+      padding-right ($whiteSpace/2)
+      float left
+  @media (max-width: 600px)
+    for i in 1..20
+      .push-{i}
+        margin-left 0 !important
+  for i in 1..20
+    .push-{i}
+      margin-left unit((i/20)*100,'%')
+  .col
+    padding-left ($whiteSpace/2)
+    padding-right ($whiteSpace/2)
+    float left
+    // width 100%
+    
+    &.width-100
+      width 100%
+    &.width-5
+      width 5%
+    &.width-10
+      width 10%
+    &.width-15
+      width 15%
+    &.width-25
+      width 25%
+    &.width-20
+      width 20%
+    &.width-30
+      width 30%
+    &.width-35
+      width 35%
+    &.width-33
+      width 33.33%
+    &.width-40
+      width 40%
+    &.width-45
+      width 45%
+    &.width-50
+      width 50%
+    &.width-55
+      width 55%
+    &.width-60
+      width 60%
+    &.width-65
+      width 65%
+    &.width-70
+      width 70%
+    &.width-75
+      width 75%
+    &.width-80
+      width 80%
+    &.width-85
+      width 85%
+    &.width-90
+      width 90%
+    &.width-95
+      width 95%
+
+
+@media only screen and (max-width: 760px)
+  .row
+    &.columns
+      margin-left 0px
+      margin-right 0px
+      margin-top 0 - $whiteSpace
+      margin-bottom 0 - $whiteSpace
+    .col
+      &.width-5
+      &.width-10
+      &.width-15
+      &.width-20
+      &.width-25
+      &.width-30
+      &.width-33
+      &.width-35
+      &.width-40
+      &.width-45
+      &.width-50
+      &.width-55
+      &.width-60
+      &.width-65
+      &.width-70
+      &.width-75
+      &.width-80
+      &.width-85
+      &.width-90
+      &.width-95
+        width 100%
+      padding-left 0px
+      padding-right 0px
+      margin-top ($whiteSpace)
+      margin-bottom ($whiteSpace)
+      float none
+      &.first-child
+        margin-bottom 0px
+      &.last-child
+        margin-bottom 0px

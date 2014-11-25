@@ -1,0 +1,43 @@
+include ../includes/sidebar
+
+theme:template(title="Project Name", name="_project")
+  content(:load=":api(3.0).content(site/completed-projects/{:url.2}) as project")
+    div.banner
+      .left(style='background-image: url({project.relationships(mainimage,attachments).first.version(1280,400)})')
+        h1 &nbsp;
+        h1.title {project.content.name}
+      .right
+        img(src='{project.relationships(mapimage,attachments).first.version(500,500)}')
+    div.intro.one: div.row
+      .left
+        {project.content.description}
+      .right: .panel
+        h4
+          i.icon-currency
+          |&nbsp;Support This Campaign
+        hr
+        .row.columns
+          .col.width-25
+            span.numberBox(data-value='25') $25
+          .col.width-25
+            span.numberBox(data-value='50', class='active') $50
+          .col.width-25
+            span.numberBox(data-value='100') $100
+          .col.width-25
+            span.numberBox(data-value='250') $250
+        .row.columns
+          .col.width-50
+            span.cash
+              input(type='text', placeholder='Enter Amount', name='donationAmount')
+              i $
+          .col.width-50
+            form(action='donate', class='rain')
+              input(type='hidden', name='amount', value='50')
+              input(type='hidden', name='group', value='{fundraiser.id}')
+              button(type='submit', class='button') Donate
+    section.section(:load="project.relationships(sections) as section", :iterate="self")
+      .content(class='{:index}')
+        {section.content.sectioncontent}
+      .image(style='background-image: url({section.relationships(sectionimage,attachments).first.version()})')
+    +footer
+    +sidebar

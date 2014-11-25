@@ -1,0 +1,149 @@
+$font_primary = "Proxima Nova","proxima-nova","Helvetica","Arial",sans-serif
+$font_titling = "proxima-nova-extra-condensed","Helvetica Neue","Helvetica","Arial",sans-serif
+$font_slab = "Museo Slab","museo-slab","Helvetica Neue","Helvetica","Arial",sans-serif
+$font_helvetica = "Helvetica Neue","Helvetica","Arial",sans-serif
+$font_arial = "Arial",sans-serif
+$font_monospace = "Courier New", "Courier",mono
+$font_tisa = 'ff-tisa-web-pro', serif;
+
+$color_text = #393d3e
+$color_readable = #727272
+$color_ghost = #313436
+$color_highlight = #04b3ea
+$color_highlight_alt = #017ea6
+$color_link = #04b3ea
+$color_orange = #ff5a00
+
+$gutterWidth = 40px
+
+// Make sure that this is an even number, It is frequently divided in half
+$whiteSpace = 20px
+
+
+// form widths
+$form_line = 40px
+$form_font = $font_primary
+$form_fontSize = 14px
+$form_borderColor = #dadada
+$form_borderColor_focus = #a8a8a8
+$form_textColor = #353535
+$form_textColor_focus = #353535
+
+// form placeholder
+$form_placeholder_textColor = #c4c4c4
+$form_placeholder_font = $font_primary
+
+// form label
+$form_label_font = $font_primary
+
+// form errir
+$form_error_textColor = #000
+$form_error_bgColor = #ffa29e
+
+
+// buttons
+$button_bgColor = #a82d49
+$button_textColor = #fff
+
+
+// header
+$header_link_color = #737373
+
+
+
+
+// adaptive breaks
+
+
+desktop = "only screen and (min-width: 700px) and (max-width: 1100px)"
+desktop-small = "only screen and (min-width: 700px) and (max-width: 900px)"
+desktop-wide = "only screen and (min-width: 1100px)"
+// tablet = "only screen and (min-width: 1100px)"
+// phone = "only screen and (min-width: 1100px)"
+
+//== Media queries breakpoints
+//
+//## Define the breakpoints at which your layout will change, adapting to different screen sizes.
+
+// Extra small screen / phone
+// Note: Deprecated @screen-xs and @screen-phone as of v3.0.1
+$screen-xs ?=                  480px;
+$screen-xs-min ?=              $screen-xs;
+$screen-phone ?=               $screen-xs-min;
+
+// Small screen / tablet
+// Note: Deprecated $screen-sm and $screen-tablet as of v3.0.1
+$screen-sm ?=                  768px;
+$screen-sm-min ?=              $screen-sm;
+$screen-tablet ?=              $screen-sm-min;
+
+// Medium screen / desktop
+// Note: Deprecated $screen-md and $screen-desktop as of v3.0.1
+$screen-md ?=                  992px;
+$screen-md-min ?=              $screen-md;
+$screen-desktop ?=             $screen-md-min;
+
+// Large screen / wide desktop
+// Note: Deprecated $screen-lg and $screen-lg-desktop as of v3.0.1
+$screen-lg ?=                  1200px;
+$screen-lg-min ?=              $screen-lg;
+$screen-lg-desktop ?=          $screen-lg-min;
+
+// So media queries don't overlap when required, provide a maximum
+$screen-xs-max ?=              ($screen-sm-min - 1);
+$screen-sm-max ?=              ($screen-md-min - 1);
+$screen-md-max ?=              ($screen-lg-min - 1);
+
+// Stylus Extras
+// --------------------------------------------------
+
+// Variables need to be passed after @media declarations
+// Media Helpers
+
+minw(w)
+  '(min-width:' + w +')'
+
+maxw(w)
+  '(max-width:' + w +')'
+
+min-max(min-w, max-w)
+  minw(min-w) +  ' and ' + maxw(max-w)
+
+screen-min(w)
+  'screen and ' + minw(w)
+
+screen-max(w)
+  'screen and ' + maxw(w)
+
+screen-min-max(min-w, max-w)
+  'screen and ' + min-max(min-w, max-w)
+
+
+// Commonly used @media variables
+// Min
+$media-min-phone ?= minw($screen-xs)
+$media-min-tablet ?= minw($screen-sm)
+$media-min-desktop ?= minw($screen-md)
+$media-min-lg-desktop ?= minw($screen-lg)
+$media-min-grid-float-breakpoint ?= minw($grid-float-breakpoint)
+
+// Max
+$media-max-sm ?= maxw($screen-sm)
+
+// Max -1
+$media-max-grid-float-breakpoint ?= maxw($grid-float-breakpoint-max)
+
+$media-max-phone ?= maxw($screen-xs-max)
+$media-max-tablet ?= maxw($screen-sm-max)
+$media-max-desktop ?= maxw($screen-md-max)
+
+
+// Screen and min
+$media-screen-min-phone ?= screen-min($screen-xs)
+$media-screen-min-tablet ?= screen-min($screen-sm)
+$media-screen-min-desktop ?= screen-min($screen-md)
+$media-screen-min-lg-desktop ?= screen-min($screen-lg)
+
+// Min Max
+$media-tablet ?= min-max($screen-sm, $screen-sm-max)
+$media-desktop ?= min-max($screen-md, $screen-md-max)

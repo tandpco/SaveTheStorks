@@ -1,0 +1,65 @@
+include ../includes/sidebar
+
+theme:template(title="Contact", name="_project")
+  content
+    #contact
+      div.banner
+        h1 We’re Eager To Hear From You!
+          p.small Simply call, email, or use the form below to get in touch.
+      .container: .row
+        .col.width-60
+          h2 Send Us a Message
+          form(action='/api/3.0/contacts/', method='post', id='test')
+            input(type='hidden', name='type', value='individual')
+            input(type='hidden', name='--success', value='/contact?success=true')
+            input(type='hidden', name='--failure', value='/contact?success=false')
+            input(type='hidden', name='--namespace', value='contact')
+            |<:module slug="messages-display" namespace="contact" />
+            div.input-group#individual
+              label Your Name*
+              .row
+                input(type='text', name='firstName', placeholder='First Name', class='col width-50')
+                input(type='text', name='lastName', placeholder='Last Name', class='col width-50', id='singlePerson')
+            div.input-group
+              label Your Email*
+              .row
+                input(type='text', name='email', placeholder='janedoe@gmail.com', class='col width-100')
+            div.input-group
+              label Your Phone Number*
+              .row
+                input(type='text', name='phone', placeholder='(000) 123 - 4567', class='col width-100')
+            div.input-group
+              label Message*
+              textarea(name='message', rows='6')
+            button(class='button success' type='submit') Submit Message
+        .col.width-40
+          .info-group
+            h2 Connect on Social Media
+            a(href='{:settings.facebook-page}'): div.facebook
+              span.icon
+                i.icon-facebook
+              span Facebook
+            a(href='https://twitter.com/{:settings.social-twitter}'): div.twitter
+              span.icon
+                i.icon-twitter
+              span Twitter
+            a(href='http://www.pinterest.com/{:settings.social-pinterest}'): div.pinterest
+              span.icon
+                i.icon-pinterest
+              span Pinterest
+            a(href='http://instagram.com/{:settings.social-instagram}'): div.instagram
+              span.icon
+                i.icon-instagramm
+              span Instagram
+          .info-group
+            h2 General Enquiries
+            p Please call: (970) 387-8675
+          .info-group
+            h2 Donation Related Enquiries
+            p Please call: (719) 659-8297
+          .info-group
+            h2 Office Address
+            address 5373 N Union Blvd, Suite 200
+            address Colorado Springs, CO 80918
+      +sidebar
+

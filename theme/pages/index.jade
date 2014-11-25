@@ -1,0 +1,91 @@
+include ../includes/sidebar
+
+theme:template(title="Home", name="_home")
+  content
+    .mapSection
+      h1 Expecting Mothers across The Country Are In Crisis
+      p 84% of post-abortive women say they felt that abortion was their only option!
+        br 
+        |We're changing that. Join us!
+      a(href='/take-action', class='success') Pledge Your Support
+    .bannerTwo: .container-fluid: .columns.row
+      h1(class='lined') How It Works
+      .col.push-2.width-20
+        h1
+          i.icon-pledge
+          br
+          |Make A Pledge
+        p It starts with your commitment to serve mothers and save babies at risk of abortion.
+      .col.width-20
+        h1
+          i.icon-heart
+          br
+          |Donate to Life
+        p After you commit to saving lives, partner with us financially to make it possible.
+      .col.width-20
+        h1
+          i.icon-handshake
+          br
+          |Partner with PRCs
+        p We use your contribution to deliver mobile medical units to pregnancy resource centers.
+      .col.width-20
+        h1 
+          i.icon-stroller
+          br
+          |Save Babies
+        p Storks Buses hit the streets and start providing life saving services to mothers and babies.
+      a(href='/take-action', class='success') Start Saving Storks
+    .bannerThree: .container
+      .columns.row
+        .col.width-50
+          h1(class='lined') Why Mobile Medical Units?
+          p A mobile unit gives you the ability to educate, love, and support the women you encounter in your community. Many women in crisis pregnancy situations are often unaware of the services provided by pregnancy resource centers.
+          a(href='/take-action', class='success') Join The Mobile Revolution!
+        .col.width-50: .video-wrapper
+          iframe(src="//player.vimeo.com/video/85475638", width="100%", height="350", frameborder="0", webkitAllowFullScreen="1", mozallowfullscreen="1", allowFullScreen="1")
+    .bannerFour: .container
+      p.byline Our commitment is to serving mothers and saving babies.
+      h1 So far we've made some amazing progress.
+      .columns.row(:load=":api(3.0).content(site/home-numbers) as numbers")
+        .col.push-2.width-20 
+          h1
+            i.icon-dollars
+            br
+            small Funds Raised
+          p {numbers.content.funds}
+        .col.width-20
+          h1
+            i.icon-fam
+            br
+            small Supporters
+          p {numbers.content.supporters}
+        .col.width-20
+          h1
+            i.icon-stork
+            br
+            small Buses Funded
+          p {numbers.content.buses}
+        .col.width-20(:load=":api(3.0).groups() as group")
+          h1
+            i.icon-chat-home
+            br
+            small Fundraisers
+          p {group.length}
+      form(class='inline-form' action='/api/3.0/contacts/', method='post')
+        input(type='hidden', name='type', value='individual')
+        input(type='hidden', name='--success', value='/my-storks/sign-up?step=2')
+        input(type='hidden', name='--failure', value='/my-storks/sign-up?step=1')
+        input(type='hidden', name='--namespace', value='signUp')
+        input(type='hidden', name='--login', value='true')
+        |<:module slug="messages-display" namespace="signUp" />
+        .form-group
+          input(type='text', name='firstName', placeholder='First Name')
+        .form-group
+          input(type='text', name='email', placeholder='Email Address (We promise never to spam you!)', id='email')
+        .form-group
+          button(type='submit', class='button success') Join Now!
+    .modal.video: .container: .video-wrapper
+      |<iframe width="420" height="315" src="//www.youtube.com/embed/pPd3MkDxRr4" frameborder="0" allowfullscreen=""></iframe>
+    .overlay
+
+    +sidebar
