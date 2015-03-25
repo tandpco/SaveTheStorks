@@ -1,0 +1,29 @@
+page:
+  path: /site
+  slug: church-landing
+  name: My Storks Church Landing Page
+pattern:
+  - 
+    key: title
+    format: text
+    name: Title
+  -
+    key: subtitle
+    format: text
+    name: Subtitle
+  -
+    key: supportingtitle
+    format: text
+    name: Supporting Title
+  -
+    key: image
+    format: image
+    name: Image
+  -
+    key: content
+    format: html
+    name: Content
+  -
+    key: formtitle
+    format: text
+    name: Form Title

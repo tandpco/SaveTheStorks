@@ -1,0 +1,53 @@
+page:
+  path: /site
+  slug: churches-landing
+  name: Churches Landing Page
+pattern:
+  -
+    key: columnonetitle
+    format: text
+    name: Column One Title
+  -
+    key: columnonetext
+    format: html
+    name: Column One Text
+  -
+    key: columnoneimage
+    format: image
+    name: Column One Image
+  -
+    key: columnonelink
+    format: text
+    name: Column One Link
+  -
+    key: columntwotitle
+    format: text
+    name: Column Two Title
+  -
+    key: columntwotext
+    format: html
+    name: Column two Text
+  -
+    key: columntwoimage
+    format: image
+    name: Column Two Image
+  -
+    key: columntwolink
+    format: text
+    name: Column Two Link
+  -
+    key: columnthreetitle
+    format: text
+    name: Column Three Title
+  -
+    key: columnthreetext
+    format: html
+    name: Column three Text
+  -
+    key: columnthreeimage
+    format: image
+    name: Column Three Image
+  -
+    key: columnthreelink
+    format: text
+    name: Column Three Link

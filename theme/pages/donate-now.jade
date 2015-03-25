@@ -48,24 +48,24 @@ theme:template(title="Donate", name="_project")
             div.gifts
               .col.width-33
                 label(for="declineGift") Decline Gift
-                input#declineGift.gift(type="radio", name="gift", value="declineGift")
+                input#declineGift.gift(type="radio", name="gift", value="declineGift" checked)
               .col.width-33
                 label Silver Stork Pendant
-                input.gift(type="radio", name="gift", value="Silver")
+                input.gift(type="radio", name="gift", value="Silver-Stork-Pendant")
               .col.width-33
                 label Two T-Shirts
-                input.gift(type="radio", name="gift", value="Four")
+                input.gift(type="radio", name="gift", value="Two-Shirts")
             .sizes.two
               .col.width-100: small Select Sizes
               br
               .clearfix
-                .col.width-25: select(name="shirtOne")
+                .col.width-25: select(name="shirtOne", data-shirt="One")
                   option Small
                   option Medium
                   option Large
                   option Extra Large
                   option XXL
-                .col.width-25: select(name="shirtTwo")
+                .col.width-25: select(name="shirtTwo", data-shirt="Two")
                   option Small
                   option Medium
                   option Large
@@ -75,32 +75,32 @@ theme:template(title="Donate", name="_project")
               .col.width-100: small Select Sizes
               br
               .clearfix
-                .col.width-25: select(name="shirtOne")
+                .col.width-25: select(name="shirtOne", data-shirt="One")
                   option Small
                   option Medium
                   option Large
                   option Extra Large
                   option XXL
-                .col.width-25: select(name="shirtTwo")
+                .col.width-25: select(name="shirtTwo", data-shirt="Two")
                   option Small
                   option Medium
                   option Large
                   option Extra Large
                   option XXL
-                .col.width-25: select(name="shirtThree")
+                .col.width-25: select(name="shirtThree", data-shirt="Three")
                   option Small
                   option Medium
                   option Large
                   option Extra Large
                   option XXL
-                .col.width-25: select(name="shirtFour")
+                .col.width-25: select(name="shirtFour", data-shirt="Four")
                   option Small
                   option Medium
                   option Large
                   option Extra Large
                   option XXL
           .col.width-25.img
-            img(src='https://savethestorks.com/donateform/images/donate-form-levela.png', width='100%')
+            img(src='assets://images/tier-2.png', width='100%')
         .summary: .col.width-100
           a(href='#', class='button', id='donateModal') Continue Donation
       +sidebar

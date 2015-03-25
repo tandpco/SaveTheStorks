@@ -10,11 +10,16 @@ theme:template(title="Home", name="_signUp")
 		* type
 		* target
 	content
-		//@IF :get.step == '1' || !:get.step
-		section.one(style='display: ')
+		//- .test
+		//- 	//@IF !:member 
+		//- 	p None
+		//- 	//@ELSEIF :member
+		//- 	p {:member}
+		//@IF !:member && :get.step == 1
+		section.one
 			h1.intro Let's get started
 				p.small
-					strong 347
+					strong(:load=":api(3.0).groups().status(active) as group") {group.length}
 					|&nbsp;people have already started fundraisers.
 			div.panel
 				a(class='button facebook' href='#' rel="facebook-login") Sign In With Facebook
@@ -52,33 +57,34 @@ theme:template(title="Home", name="_signUp")
 						a(href='#', id='toggle') Sign up as a group
 					.pull-right
 						//- a(href='#signIn') Already have an account?
-		//@ELSEIF :get.step == '2'
-		section.two(style='display: ')
+		//@ELSEIF (:member && :get.step == 1) || :get.step == 2
+		section.two
 			h1.intro Let's get started
 				p.small
-					strong 347
+					strong(:load=":api(3.0).groups().status(active) as group") {group.length}
 					|&nbsp;people have already started fundraisers.
 			div.list
 				ol.pull-left
 					li 
 						span 1
-						| Sign Up
+						| Details
 				ol.pull-right
 					li: span 2
 					li: span 3
 					li: span 4
 			div.panel
 				h2 Create Your Fundraiser
-				form(action='/api/3.0/groups', method='post')
+				form(action='/api/3.0/groups', method='post', id='create')
 					input(type='hidden', name='type', value='individual')
 					input(type='hidden', name='--success', value='/my-storks/sign-up?step=3')
 					input(type='hidden', name='--failure', value='/my-storks/sign-up?step=2')
 					input(type='hidden', name='--namespace', value='my-storks/sign-up')
 					input(type='hidden', name='project', value='249')
 					input(type='hidden', name='description', value='Placeholder description')
+					input(type='hidden', name='status', value='active')
 					|<:module slug="messages-display" namespace="my-storks/sign-up" />
 					div.input-group
-						label Funds Raised
+						label Name Your Fundraiser
 						.row
 							input(type='text', name='name', placeholder='Rachel\'s Baby Shower Fundraiser', class='col width-100')
 					div.input-group
@@ -89,16 +95,26 @@ theme:template(title="Home", name="_signUp")
 						label Fundraiser Type
 						.row
 							select(name='type', class='col width-100 pt-select-lite', value='fundraiser')
-								option(value='fundraiser') Baby Shower
-								option(value='fundraiser') Two
-								option(value='fundraiser') Baby Shower
-								option(value='fundraiser') Two
+								option Birthday
+								option Baby Shower
+								option Car Wash
+								option Run/Bike/Walk
+								option Raffle
+								option Other
+					div.input-group
+						label End Date
+						.row
+							input(type='text', placeholder='MM', class='col width-15', id="m", maxlength="2")
+							input(type='text', placeholder='DD', class='col width-15', id="d", maxlength="2")
+							input(type='text', placeholder='YYYY', class='col width-15', id="y", maxlength="4")
+						input(type='hidden', id="date_until", name="date_until")
+
 					button(class='button success' type='submit') Continue
 		//@ELSEIF :get.step == '3'
 		section.three(style='display: ')
 			h1.intro Let's get started
 				p.small
-					strong 347
+					strong(:load=":api(3.0).groups().status(active) as group") {group.length}
 					|&nbsp;people have already started fundraisers
 			div.list
 				ol.pull-left
@@ -111,13 +127,14 @@ theme:template(title="Home", name="_signUp")
 					li: span 4
 			div.panel(:load=":api(3.0).contacts(me).groups_owned().first() as group")
 				h2 Choose A Cover Photo
-				-var images = [ {'url':'https://static.pexels.com/wp-content/uploads/2014/10/headphone-mp3-music-3088-525x350.jpg'},{'url':'https://static.pexels.com/wp-content/uploads/2014/10/compose-hand-music-3090-525x350.jpg'},{'url':'https://static.pexels.com/wp-content/uploads/2014/10/audio-england-great-britain-3084-525x350.jpg'} ]
+				//- -var images = [ {'url':'https://static.pexels.com/wp-content/uploads/2014/10/headphone-mp3-music-3088-525x350.jpg'},{'url':'https://static.pexels.com/wp-content/uploads/2014/10/compose-hand-music-3090-525x350.jpg'},{'url':'https://static.pexels.com/wp-content/uploads/2014/10/audio-england-great-britain-3084-525x350.jpg'} ]
 				div.browse
 					h2 Choose A Cover Photo
 					div.images: .row.columns
-						for image in images
-							.col.width-50
-								span.image: img(src=image.url)
+						.col.width-50(:load=":api(3.0).content(site.default-images).relationships(default_images) as image", :iterate="self")
+							span.image: img(src="{image.relationships(image,attachments).first.version()}")
+							//- span.image: img(src=image.url)
+							//- {image|dump}
 					.row.columns
 						.col.width-50: a.button.outline#goBack Go Back 
 						.col.width-50
@@ -152,7 +169,7 @@ theme:template(title="Home", name="_signUp")
 		section.four(:load=":api(3.0).contacts(me).groups_owned().first() as group")
 			h1.intro Let's get started
 				p.small
-					strong 347
+					strong(:load=":api(3.0).groups().status(active) as group") {group.length}
 					|&nbsp;people have already started fundraisers.
 			div.list
 				ol.pull-left
@@ -190,9 +207,8 @@ theme:template(title="Home", name="_signUp")
 		section.five(:load=":api(3.0).contacts(me).groups_owned().first() as group")
 			h1.intro Let's get started
 				p.small
-					strong 347
+					strong(:load=":api(3.0).groups().status(active) as group") {group.length}
 					|&nbsp;people have already started fundraisers.
-			h1 {page.content.example_one|strip_tags}
 			div.list
 				ol.pull-left
 					li: span.complete: i.icon-ok
@@ -203,14 +219,14 @@ theme:template(title="Home", name="_signUp")
 						| Write A Message
 				ol.pull-right
 					//- li 4
-			div.panel(:load=":api(3.0).content(site.example-content) as page")
+			div.panel(:load=":api(3.0).content(site.exampleContent) as page")
 				h2 Write A Message <br> For Your Fundraiser
 
-				input(type='hidden', name='four', value='{page.content.example_one|strip_tags}')
-				input(type='hidden', name='five', value='{page.content.example_two|strip_tags}')
-				input(type='hidden', name='six', value='{page.content.example_three|strip_tags}')
+				input(type='hidden', name='four', value='{page.content.example_one|strip_tags|unsafe}')
+				input(type='hidden', name='five', value='{page.content.example_two|strip_tags|unsafe}')
+				input(type='hidden', name='six', value='{page.content.example_three|strip_tags|unsafe}')
 				form(action='/api/3.0/groups/{group.id}/', method='post')
-					input(type='hidden', name='--success', value='https://storks.donate.io/fundraiser/{group.slug}')
+					input(type='hidden', name='--success', value='/fundraiser/{group.slug}')
 					input(type='hidden', name='--failure', value='/my-storks/sign-up?step=5')
 					input(type='hidden', name='--namespace', value='description')
 					|<:module slug="messages-display" namespace="description" />
@@ -226,4 +242,4 @@ theme:template(title="Home", name="_signUp")
 					button(class='button success' type='submit') Continue
 		//@ENDIF
 		div.spacer
-		//- +sidebar
+		+sidebar

@@ -6,16 +6,16 @@ theme:template(title="Our Approach", name="_project")
       div.banner: div.container: .row
         h1 Every Movement Begins With Mobility
           p.small 3 in 5 Women Who Board a Stork Bus Choose Life.
-        .col.width-40.push-1
-          a(href='#', class='button green') GET A STORK BUS FOR YOUR PRC
-        .col.width-45
-          a(href='#', class='button outline')
-            .col.width-15
-              i.playIcon
-            .col.width-85.text
-              span.top SEE WHY THE STORK BUS 
-              br
-              span.bottom IS THE BEST MOBILE MEDICAL UNIT
+        .col.width-40.push-6
+          a(href='/stork-bus-application', class='button green') GET A STORK BUS FOR YOUR PRC
+        //- .col.width-45
+        //-   a(href='#', class='button outline')
+        //-     .icon
+        //-       i.playIcon
+        //-     .text
+        //-       span.top SEE WHY THE STORK BUS 
+        //-       br
+        //-       span.bottom IS THE BEST MOBILE MEDICAL UNIT
       .section.one: .container: .row
         h1 {project.content.articlesec1}
         .col.width-25(:load="project.relationships(mobile) as article", :iterate="self")
@@ -39,7 +39,7 @@ theme:template(title="Our Approach", name="_project")
           {article.content.content}
       .section.two: .row  
         .col.width-35.content: .body
-          {project.content.gallerytextone}
+          {project.content.gallerytexttwo}
         .col.width-65.gallery
           .image-one(style='background-image: url({project.relationships(galleryimages2one,attachments).first.version()})')
           .col.width-50
@@ -68,7 +68,7 @@ theme:template(title="Our Approach", name="_project")
         .col.width-20.mpg
           .col.width-60
             p <span class="big">over</span>
-              strong 20
+              strong 24
               | highway MPG
           .col.width-40
             div.icon-fuel
@@ -131,17 +131,7 @@ theme:template(title="Our Approach", name="_project")
         p {project.content.citybody}
       .section.footer: .container: .row
         .col.width-33(:load="project.relationships(footer) as column", :iterate="self")
-          .image(style='background-image: url({column.relationships(image,attachments).first.version()})')
+          a(href="{column.content.link}"): .image(style='background-image: url({column.relationships(image,attachments).first.version()})')
             p {column.content.title}
           p {column.content.content}
-        .col.width-33
-          .image
-            p Guide To Going <br> Mobile
-          p Read our full booklet to learn more.
-        .col.width-33
-          .image
-            p Learn About <br> Our Mission
-          p 3 out of 5 women who board a Stork Bus choose to keep their baby.
-
-
     +sidebar

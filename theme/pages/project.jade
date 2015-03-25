@@ -1,7 +1,7 @@
 include ../includes/sidebar
 
-theme:template(title="Project Name", name="_project")
-  content(:load=":api(3.0).content(site/completed-projects/{:url.2}) as project")
+theme:template(title="{project.content.name}", name="_project", :load=":api(3.0).content(site/completed-projects/{:url.2}) as project")
+  content
     div.banner
       .left(style='background-image: url({project.relationships(mainimage,attachments).first.version(1280,400)})')
         h1 &nbsp;
@@ -14,7 +14,7 @@ theme:template(title="Project Name", name="_project")
       .right: .panel
         h4
           i.icon-currency
-          |&nbsp;Support This Campaign
+          |&nbsp;Support This Stork Bus
         hr
         .row.columns
           .col.width-25
@@ -33,11 +33,20 @@ theme:template(title="Project Name", name="_project")
           .col.width-50
             form(action='donate', class='rain')
               input(type='hidden', name='amount', value='50')
-              input(type='hidden', name='group', value='{fundraiser.id}')
+              input(type='hidden', name='project', value='{project.content.projectid}')
               button(type='submit', class='button') Donate
     section.section(:load="project.relationships(sections) as section", :iterate="self")
       .content(class='{:index}')
         {section.content.sectioncontent}
       .image(style='background-image: url({section.relationships(sectionimage,attachments).first.version()})')
+    //@IF project.content.video
+    .video__floating#video
+      span.unique
+        .playIcon
+        p Watch a short video about this Stork Bus
+    .modal.video: .container: .video-wrapper
+      {project.content.video}
+    .overlay
+    //@ENDIF
     +footer
     +sidebar

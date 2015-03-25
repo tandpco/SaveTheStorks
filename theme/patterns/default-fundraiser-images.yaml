@@ -1,0 +1,12 @@
+page:
+  path: /site
+  slug: default-images
+  name: Default Images
+pattern:
+  -
+    key: defaultImages
+    format: blocks
+    name: Default Fundraiser Images
+    singular: Image
+    pattern: default-image
+    # preview: image

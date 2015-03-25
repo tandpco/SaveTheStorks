@@ -42,7 +42,7 @@ theme:template(title="Home", name="_home")
           p A mobile unit gives you the ability to educate, love, and support the women you encounter in your community. Many women in crisis pregnancy situations are often unaware of the services provided by pregnancy resource centers.
           a(href='/take-action', class='success') Join The Mobile Revolution!
         .col.width-50: .video-wrapper
-          iframe(src="//player.vimeo.com/video/85475638", width="100%", height="350", frameborder="0", webkitAllowFullScreen="1", mozallowfullscreen="1", allowFullScreen="1")
+          iframe(src="//player.vimeo.com/video/104248655", width="100%", height="350", frameborder="0", webkitAllowFullScreen="1", mozallowfullscreen="1", allowFullScreen="1")
     .bannerFour: .container
       p.byline Our commitment is to serving mothers and saving babies.
       h1 So far we've made some amazing progress.
@@ -65,7 +65,7 @@ theme:template(title="Home", name="_home")
             br
             small Buses Funded
           p {numbers.content.buses}
-        .col.width-20(:load=":api(3.0).groups() as group")
+        .col.width-20(:load=":api(3.0).groups().status(active) as group")
           h1
             i.icon-chat-home
             br
@@ -73,8 +73,8 @@ theme:template(title="Home", name="_home")
           p {group.length}
       form(class='inline-form' action='/api/3.0/contacts/', method='post')
         input(type='hidden', name='type', value='individual')
-        input(type='hidden', name='--success', value='/my-storks/sign-up?step=2')
-        input(type='hidden', name='--failure', value='/my-storks/sign-up?step=1')
+        input(type='hidden', name='--success', value='/take-action?thanks=welcome')
+        input(type='hidden', name='--failure', value='?error=1')
         input(type='hidden', name='--namespace', value='signUp')
         input(type='hidden', name='--login', value='true')
         |<:module slug="messages-display" namespace="signUp" />
@@ -87,5 +87,4 @@ theme:template(title="Home", name="_home")
     .modal.video: .container: .video-wrapper
       |<iframe width="420" height="315" src="//www.youtube.com/embed/pPd3MkDxRr4" frameborder="0" allowfullscreen=""></iframe>
     .overlay
-
     +sidebar

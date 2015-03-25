@@ -1,5 +1,5 @@
 mixin sidebar
-  .sideMenu: .content
+  .sideMenu: .content    
     span.close &nbsp;
     a(href='#/my/portal', id='account'): div.myAccount
       span.icon-account
@@ -8,13 +8,14 @@ mixin sidebar
       li: a(href='/') Home
       li: a(href='/about') About Us
       li: a(href='/our-approach') Our Approach
-      li: a(href='/completed-projects') Completed Projects
+      li: a(href='/our-projects') Our Projects
       li: a(href='/take-action') Take Action
+      li: a(href='/my-storks') My Storks
       li: a(href='/store') Store
       //- li: a(href='#') Blog
     div.buttons
-      a(href='#', id='donate') Donate Now
-      a(href='#', id='join') Join Now
+      a(href='/donate-now', id='donate') Donate Now
+      a(href='/take-action', id='join') Join Now
     ul.sub-nav
       li: a(href='/contact') Contact
       //- li: a(href='#') Jobs
@@ -28,7 +29,7 @@ mixin sidebar
         i.icon-pinterest
       a(href='http://instagram.com/{:settings.social-instagram}'): span.icon.instagram
         i.icon-instagramm
-    div.credits
+    //- div.credits
       small Designed and Built By:
         br
         a(href='http://www.theoryandpractice.co', alt='Theory+Practice') Theory+Practice
@@ -41,15 +42,17 @@ mixin footer
         i.icon-pledge
       h1 Join
         p Join 63,811 others in your <br> commitment to life.
-      form(class='inline-form' action='/api/3.0/contacts/', method='post')
+      form(class='inline-form col width-90 push-1' action='/api/3.0/contacts/', method='post')
         input(type='hidden', name='type', value='individual')
-        input(type='hidden', name='--success', value='/my-storks/sign-up?step=2')
-        input(type='hidden', name='--failure', value='/my-storks/sign-up?step=1')
+        input(type='hidden', name='--success', value='/take-action?thanks=welcome')
+        input(type='hidden', name='--failure', value='/take-action')
         input(type='hidden', name='--namespace', value='signUp')
         input(type='hidden', name='--login', value='true')
-        .form-group
-          input(type='text', name='email', placeholder='Email Address')
-        .form-group
+        .col.width-100
+          input(type='text', name='email', placeholder='Email Address', style='margin-bottom: 15px;')
+        .col.width-50
+          input(type='text', name='firstName', placeholder='First Name')
+        .col.width-50
           button(class='success', type='submit') Join
     div.col.width-33.center
       span.rounded 

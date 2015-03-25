@@ -9,4 +9,4 @@ pattern:
     name: Actions
     singular: Action
     pattern: take-action
-    preview: name
+    preview: title

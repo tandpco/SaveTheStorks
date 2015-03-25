@@ -9,29 +9,34 @@ theme:template(title="Contact", name="_project")
       .container: .row
         .col.width-60
           h2 Send Us a Message
-          form(action='/api/3.0/contacts/', method='post', id='test')
-            input(type='hidden', name='type', value='individual')
-            input(type='hidden', name='--success', value='/contact?success=true')
-            input(type='hidden', name='--failure', value='/contact?success=false')
-            input(type='hidden', name='--namespace', value='contact')
-            |<:module slug="messages-display" namespace="contact" />
+          //@IF :get.success == 'true'
+          h1 Thanks for getting in touch!
+          //@ELSE
+          form(action="/api/3.0/form-completions",role="form",id="form", method="post")
+            | <:module slug="messages-display" namespace="signup-form" />
+            | <input type="hidden" name="--namespace" value="signup-form" />
+            | <input type="hidden" name="--failure" value="/contact#form" />
+            | <input type="hidden" name="--form" value="contact" />
+            | <input type="hidden" name="--success" value="/contact?success=true" />
+            | <input type="hidden" name="--conversation" value="message" />
             div.input-group#individual
               label Your Name*
               .row
-                input(type='text', name='firstName', placeholder='First Name', class='col width-50')
-                input(type='text', name='lastName', placeholder='Last Name', class='col width-50', id='singlePerson')
+                input(type='text', name='contact[firstName]', placeholder='First Name', class='col width-50')
+                input(type='text', name='contact[lastName]', placeholder='Last Name', class='col width-50', id='singlePerson')
             div.input-group
               label Your Email*
               .row
-                input(type='text', name='email', placeholder='janedoe@gmail.com', class='col width-100')
+                input(type='text', name='contact[email]', placeholder='janedoe@gmail.com', class='col width-100')
             div.input-group
               label Your Phone Number*
               .row
-                input(type='text', name='phone', placeholder='(000) 123 - 4567', class='col width-100')
+                input(type='text', name='contact[phone]', placeholder='(000) 123 - 4567', class='col width-100')
             div.input-group
               label Message*
               textarea(name='message', rows='6')
             button(class='button success' type='submit') Submit Message
+          //@ENDIF
         .col.width-40
           .info-group
             h2 Connect on Social Media

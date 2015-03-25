@@ -1,0 +1,15 @@
+page:
+  path: /site
+  slug: blog
+  name: Blog Advertisement
+pattern:
+  - 
+    key: link
+    format: button
+    name: 'Advertisement Link & Title'
+    description: The button text will be used as the title of the link.
+  -
+    key: image
+    format: image
+    name: Ad Image
+    description: Your AD should be at least 280px wide

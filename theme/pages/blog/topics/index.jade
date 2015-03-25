@@ -1,0 +1,36 @@
+include ../../../includes/sidebar
+
+theme:template(title="Blog", name="_default")
+  content
+    .blog
+      div.topics
+        ul.topic__list: .container-fluid
+          li(:load=":api(3.0).taxonomy.cloud(posts) as topic", :iterate="self"): a(href='/blog/topics/{topic.pretty}')
+            {topic.pretty|replace(-, )}
+          li.search
+            a(href='#', id='search')
+              i.icon-search
+            form
+              input(type='search', name='q', placeholder='Search here...', class='search')
+              span Show Tags
+      .container-fluid: .row
+        .col.width-75
+          a(href='/blog', class='back') &lt;&lt; Back To Blog Home
+          .col.width-100: h1 Showing Posts Tagged: {:url.3|cleanslug|replace(-, )|ucwords}
+          ul.post-loop
+            li(:load=":api(3.0).posts.tags(post:{:url.3}) as result", :iterate="self"): .row
+              .col.width-30
+                img(src='{result.attachments().first.version(,)}')
+              .col.width-70
+                h1 {result.title}
+                {result.excerpt}
+                a(href='/blog/{result.id}' class='btn') Read More
+            //- {results|dump}
+        .col.width-25
+          img(src='assets://images/ad.png', width='100%')
+          section.most-read
+            ul
+              li(class="post", :load=":api(3.0).posts().limit() as post", :iterate="self"): a(href='/blog/{post.id}')
+                |{post.title}
+
+    +sidebar

@@ -3,7 +3,6 @@ include ../includes/sidebar
 theme:template(title="About", name="_project")
   content
     #about(:load=":api(3.0).content(site/about-page) as project")
-      //- {project|dump}
       div.banner
         h1 About&nbsp;
           strong Save The Storks
@@ -11,7 +10,6 @@ theme:template(title="About", name="_project")
         ul.tabs
           li(class='active', data-target='#mission') Our Mission
           li(data-target='#team') Our Team
-          li(data-target='#board') Board Members
           li(data-target='#story') Our Story
           li(data-target='#storks') Why Storks
           li(data-target='#faq') FAQ
@@ -48,10 +46,10 @@ theme:template(title="About", name="_project")
             {project.content.whystorks}
           .tab#faq
             .row
-              .col.width-50
+              .col.width-50.answers
                 ul.faq
                   li(:load="project.relationships(faq) as question", :iterate="self", data-target='\#{question.id}') {question.content.question}
-              .col.width-50
+              .col.width-50.questions
                 div.question(:load="project.relationships(faq) as question", :iterate="self", id='{question.id}')
                   strong {question.content.question}
                   p {question.content.answer}

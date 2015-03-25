@@ -1,6 +1,6 @@
 window.fbAsyncInit = ->
   FB.init
-    appId: window.facebookAppId
+    appId: '347159378788273'
     channelUrl: window.facebookChannelFile # Path to your Channel File
     status: true # check login status
     cookie: true # enable cookies to allow the server to access the session
@@ -58,7 +58,11 @@ $ ->
 
   # Default success behavior
   $(document).on "momentum:facebook-login-success", (e, response) ->
-    window.location = "/my-storks/sign-up?step=2"
+    console.log 'Index: ' + window.location.pathname.indexOf "my-storks"
+    if window.location.pathname.indexOf "my-storks" > -1
+      window.location = window.location.pathname
+    else
+      window.location = "/my-storks/sign-up?step=2"
     return
 
 

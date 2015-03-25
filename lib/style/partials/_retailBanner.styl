@@ -37,6 +37,10 @@ h1.lined
 				letter-spacing 1px
 				padding 5px
 				text-transform uppercase
+				&.disabled
+					background darken(#EEE, 15%)
+					cursor not-allowed
+					
 			p.lined
 				font-weight 300
 				font-size 24px
@@ -65,6 +69,7 @@ h1.lined
 					letter-spacing 1px
 				button
 					background #59C77F
+					border 1px solid #59C77F
 					border-radius 3px
 					color #FFF
 					font-size 16px
@@ -73,6 +78,11 @@ h1.lined
 					margin-top 10px
 					padding 15px
 					text-transform uppercase
+					cursor pointer
+					transition all 0.3s ease
+					&:hover
+						background darken(#59C77F, 10%)
+						
 			small
 				color lighten(#383838, 35%)
 				display block
@@ -149,6 +159,7 @@ h1.lined
 		text-transform uppercase
 		height auto
 		width auto
+		cursor pointer
 		i
 			margin-right 5px
 		&.success
@@ -158,6 +169,9 @@ h1.lined
 			letter-spacing 1px
 			margin 20px 0 100px
 			padding 10px 35px
+			transition all 0.3s ease
+			&:hover
+				background darken(#59C77F, 10%)
 		&.twitter
 			background #55ACEE
 			&:hover, &:active

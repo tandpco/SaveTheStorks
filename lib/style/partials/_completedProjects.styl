@@ -209,7 +209,10 @@ div.cities
       border 1px solid darken(#F1F5F6, 15%)
       border-radius 3px
       display inline-block
-      font-size 18px
+      @media (max-width: 1200px)
+        font-size 14px
+      @media (min-width: 1201px)
+        font-size 18px
       margin 0 0 10px
       padding 5px 0
       text-align center
@@ -232,10 +235,14 @@ div.cities
       position absolute
       top 0
   button.button
+    border 1px solid #E6756F
     background #E6756F
     color #FFF
     cursor pointer
-    font-size 16px
+    @media (max-width: 1200px)
+      font-size 14px
+    @media (min-width: 1201px)        
+      font-size 16px
     text-transform uppercase
     letter-spacing 0.075em
 div.banner
@@ -315,6 +322,7 @@ div.intro
         height 300px
 section.section
   display block
+  position relative
   .left, .image
     background-repeat no-repeat
     background-size cover
@@ -365,17 +373,25 @@ section.section
       float left
     .image
       float right
+      margin-left 30%
   &:nth-of-type(even)
     .content
       float right
+      margin-left 70%
     .image
       float left
   .content
     padding 45px
     width 30%
   .image
+    position absolute
+    left 0
+    right 0
+    top 0
+    bottom 0
     width 70%
 div.footer
+  margin-bottom 60px
   padding 45px 15px
   text-align center
   h1
@@ -423,9 +439,13 @@ div.footer
     width auto
     display inline-block
     padding 0 25px
+    transition all 0.3s ease
+    &:hover, &:active
+        background darken(#00B5D7, 10%)
   .inline-form
     input, button
       border-radius 2px
+      transition all 0.3s ease
     .form-group, input
       display inline-block
       vertical-align middle
@@ -435,12 +455,15 @@ div.footer
       font-size 16px
     button.success
       letter-spacing 0.05em
+      cursor pointer
       background #59C77F
       border 0
       color #FFF
       font-size 16px
       padding 0 25px
       text-transform uppercase
+      &:hover, &:active
+        background darken(#59C77F, 10%)
     input[name=donationAmount]
       padding-left 30px
     .cash
@@ -453,11 +476,14 @@ div.footer
     button.wine
       letter-spacing 0.05em
       background #E6756F
+      border 0
       color #FFF
       cursor pointer
       font-size 16px
       text-transform uppercase
       letter-spacing 0.075em
+      &:hover, &:active
+        background darken(#E6756F, 10%)
     &#give
       .form-group:first-of-type
         margin-right 0
@@ -601,6 +627,9 @@ div.footer
           font-weight 300
           text-transform initial
     #faq
+      position relative
+      .row
+        position relative
       ul
         list-style-type none
         padding 0
@@ -1017,7 +1046,7 @@ div.project-tabs
         text-transform initial
     a.green
       display block
-      padding 20px 25px
+      padding 21px 25px
       letter-spacing 0.175em
       font-size 16px
       font-weight bold
@@ -1043,12 +1072,22 @@ div.project-tabs
       background transparent
       line-height initial
       height auto
+      display table
       @media (max-width: 768px)
         padding 0 15px
       @media (min-width: 769px)
-        padding 15px 25px
+        padding 15px 15%
+      .icon
+        display table-cell
+        vertical-align middle
+        width 1%
       .text
+        display table-cell
+        float left
+        margin-left 5px
         text-align left
+        vertical-align middle
+        width 100%
       clearfix()
       &:hover, &:active
         border 2px solid darken(#FFF, 15%)
@@ -1117,7 +1156,8 @@ div.project-tabs
         margin 0 -10px 0
         position relative
       .content
-        min-height 100vh
+        @media (min-width: 769px)
+          min-height 100vh
         display table
         color #A5A5A5
         padding 60px 45px
@@ -1139,6 +1179,8 @@ div.project-tabs
           line-height 18px
           font-weight 300
       .gallery
+        @media (max-width: 768px)
+          display none
         position absolute
         bottom 0
         left 35%
@@ -1202,6 +1244,7 @@ div.project-tabs
         font-size 30px
         margin-top 0
       .slider
+        height 250px !important
         width 100%
         margin 0 auto
         ul
@@ -1432,6 +1475,8 @@ div.project-tabs
         line-height 22px
         color #A5A5A5
     &.footer
+      a
+        text-decoration none
       .image
         width 100%
         padding 60px 15px
@@ -1494,10 +1539,11 @@ div.project-tabs
       @media (min-width: 925px)
         height 135px
       margin-bottom 20px
-      padding 15px
+      padding 30px 15px 15px
       text-align center
       transition all 0.3s ease
       .head
+        line-height 2em
         clearfix()
         &.any
           h1
@@ -1505,7 +1551,7 @@ div.project-tabs
             @media (min-width: 925px)
               font-size 28px
               line-height 28px
-            margin 15px 0 2px
+            margin 0 0 2px
         h1
           margin 0 5px 0 0
           font-size 60px
@@ -1516,6 +1562,7 @@ div.project-tabs
       &.active
         background #E6756F
       small
+        line-height 1em
         display block
         margin-bottom 10px
     a.frequency
@@ -1619,4 +1666,145 @@ div.project-tabs
       width auto
       &:hover
         background darken(#59C77F, 15%)
-      
+.fundraiser-modal
+  display none
+  position fixed
+  top 0
+  bottom 0
+  right 0
+  left 0
+  width 100%
+  height 100%
+  z-index 1000
+  .modal
+    background #FFF
+    left 0
+    letter-spacing 0.05em
+    position fixed    
+    margin 0 auto 40px
+    max-width 460px
+    padding 30px 15px
+    right 0
+    text-align center
+    top 150px
+    width 100%
+    z-index 1001
+    h1
+      margin 0 0 20px
+    a.button
+      border-radius 3px
+      padding 10px
+      height auto
+      letter-spacing 0.1em
+      text-transform uppercase
+      margin-bottom 25px
+    a.button.facebook
+      font-size 20px
+    a.button.upload
+      background transparent
+      border 1px solid 
+      color #00B5D7
+      font-size 18px
+      font-weight 600
+      span
+        color darken(#E1E1E1, 15%)
+        font-weight 100
+  .overlay
+    opacity 1
+    background rgba(#d2d2d2, 0.9)
+    height auto
+    z-index 1000
+.thanks
+  display inline-block
+  position fixed
+  top 0
+  bottom 0
+  right 0
+  left 0
+  width 100%
+  height 100%
+  .modal
+    background #FFF
+    color #59C77F
+    left 0
+    letter-spacing 0.05em
+    position fixed    
+    margin 0 auto 40px
+    max-width 460px
+    padding 30px 15px
+    right 0
+    top 150px
+    text-align center
+    width 100%
+    z-index 5
+    i
+      display block
+      font-size 100px
+    small
+      font-size 30px
+      font-weight 100
+    h1
+      font-size 35px
+      margin 0 
+  .overlay
+    display inline-block
+    opacity 1
+    background rgba(#d2d2d2, 0.9)
+    height auto
+#apply
+  div.banner
+    background-image url('../images/application_banner.jpg')
+    background-size cover
+    color #FFF
+    text-align center
+    height auto
+    @media (min-width: 769px)
+      margin-bottom 30px
+      padding 100px 15px
+    @media (max-width: 768px)
+      border-bottom 1px solid #E3E3E3
+      margin-bottom 15px
+      padding 50px 0
+    position relative
+    h1
+      @media (min-width: 769px)
+        font-size 50px
+      @media (max-width: 768px)
+        font-size 32px
+      font-weight 100
+      letter-spacing 0.075em
+      text-transform uppercase
+      padding 0 15px
+      margin-bottom 45px
+      strong
+        font-weight bold
+      p.small
+        letter-spacing 0.05em
+        font-size 24px
+        text-transform initial
+  input[type="text"]
+    margin-bottom 20px
+  label
+    font-size 16px
+    font-weight 500
+  .radio-group
+    margin-bottom 20px
+    input, label
+      display inline
+  button
+    background #46C1DD
+    border 0
+    border-radius 2px
+    cursor pointer
+    color #FFF
+    margin-bottom 80px
+    text-transform uppercase
+    display inline-block
+    width auto
+    font-size 18px
+    padding 15px 25px
+    letter-spacing 0.05em
+    height auto
+    transition all 0.3s ease
+    &:hover
+      background darken(#46C1DD, 15%)

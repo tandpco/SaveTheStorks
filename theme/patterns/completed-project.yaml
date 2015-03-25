@@ -1,5 +1,5 @@
 pattern:
-  - 
+  -
     key: name
     format: text
     name: Project Name   
@@ -8,6 +8,14 @@ pattern:
     key: mainimage
     format: image
     name: Main Image
+  -
+    key: projectid
+    format: text
+    name: Project ID
+  -
+    key: overviewimage
+    format: image
+    name: Overview Image
   -
     key: mapimage
     format: image
@@ -21,6 +29,10 @@ pattern:
     format: html
     name: Project Overview
   -
+    key: video
+    format: text
+    name: Video Embed Code
+  -
     key: partner
     format: text
     name: Partner
@@ -28,6 +40,10 @@ pattern:
     key: unittype
     format: text
     name: Unit Type
+  -
+    key: status
+    format: text
+    name: Status
   -
     key: sections
     format: blocks

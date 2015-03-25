@@ -1,15 +1,17 @@
 include ../../includes/sidebar
 
-theme:template(title="Home", name="_retail", :load=":api(3.0).projects(249) as project")
+theme:template(title="Home", name="_project", :load=":api(3.0).projects(249) as project")
   content
-    .bannerOne: .container-fluid: .columns.row
+    .bannerOne(:load=":api(3.0).contacts(me).facebook() as user"): .container-fluid: .columns.row
       .col.width-30
         .pledgePane
-          //@IF :get.success
-          | Do SOMETHING here.
-          //@ELSE
           h1 Please To Save Life!
-          a(class='button facebook-pledge' href='#' rel="facebook-login") Pledge Via Facebook
+          .link
+            //@IF user.facebook
+            a(class='button facebook-pledge disabled' onclick='return false;') Pledge Via Facebook
+            //@ELSE
+            a(class='button facebook-pledge' href='#' rel="facebook-login") Pledge Via Facebook
+            //ENDIF
           form#facebook-connect-form
             input(type='hidden', id='facebook-id')
             input(type='hidden', id='facebook-access-token')
@@ -26,7 +28,6 @@ theme:template(title="Home", name="_retail", :load=":api(3.0).projects(249) as p
             input(type='text', name='email', placeholder='Email Address')
             button(class='button' type='submit') Pledge Via Email
             small (We promise never to spam you!)
-            //@ENDIF
       .col.push-2.width-60
         h1 The Distance Between <br> Dreams and Reality <br> Is Action
           p.small Take action to save life today! 
@@ -37,36 +38,36 @@ theme:template(title="Home", name="_retail", :load=":api(3.0).projects(249) as p
           i.icon-pledge
           br
           |Make A Pledge
-        p Lorem Ipsum dolor sit amet, consectetur adipiset.
+        p Your personal commitment to the movement is critical.
       .col.width-20
         h1
           i.icon-trophy-home
           br
           |Set A Goal
-        p Lorem Ipsum dolor sit amet, consectetur adipiset.
+        p Motivate your friends and supporters with a specific goal.
       .col.width-20
         h1
           i.icon-chat-home
           br
           |Start Fundraising
-        p Lorem Ipsum dolor sit amet, consectetur adipiset.
+        p Start promoting your fundraising campaign to friends.
       .col.width-20
         h1 
           i.icon-balloons
           br
           |Celebrate Life
-        p Lorem Ipsum dolor sit amet, consectetur adipiset.
+        p You’re making a difference. Don’t forget to celebrate!
     .sectionThree: .container-fluid
       h1(class='lined') Why Mobile Medical Units?
       p A mobile unit gives you the ability to educate, love, and support the women <br> you encounter in your community. Many women in crisis pregnancy situations are often unaware of <br> the services provided by pregnancy resource centers.
-      <iframe src="//player.vimeo.com/video/85475638" width="500" height="281" frameborder="0" webkitallowfullscreen="1" mozallowfullscreen="1" allowfullscreen="1"></iframe>
+      |<iframe width="500" height="281" src="//www.youtube.com/embed/pPd3MkDxRr4" frameborder="0" allowfullscreen="1"></iframe>
       .columns.row
         .col.width-50
-          a(class='button twitter pull-right', rel='twitter-share')
+          a(class='button twitter pull-right', rel='twitter-share', data-link='https://www.youtube.com/watch?v=pPd3MkDxRr4', data-message='This is a test.')
             i.icon-twitter
             | Tweet
         .col.width-50
-          a(class='button facebook pull-left', rel='facebook-share')
+          a(class='button facebook pull-left', rel='facebook-share', data-link='https://www.youtube.com/watch?v=pPd3MkDxRr4', data-message='This is a test.')
             i.icon-facebook
             | Share
       p.callout
@@ -85,4 +86,4 @@ theme:template(title="Home", name="_retail", :load=":api(3.0).projects(249) as p
       p.shoutout Join the movement to bring practical life-saving <br> solutions to mothers and babies in crisis.
       a(href="/my-storks/sign-up?step=1" class="button success") Start A Fundraiser
 
-    //- +sidebar
+    +sidebar

@@ -11,3 +11,8 @@ pattern:
     key: content
     format: text
     name: Content 
+  -
+    key: link
+    format: text
+    name: Links To
+    placeholder: https://savethestorks.com/take-action

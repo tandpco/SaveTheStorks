@@ -53,6 +53,10 @@ pattern:
     format: text
     name: Article Section Two Title
   -
+    key: gallerytexttwo
+    format: html
+    name: Gallery Block Two - Text
+  -
     key: galleryimages2one
     format: upload
     name: Gallery Block Two - Image One

@@ -1,0 +1,71 @@
+include ../includes/sidebar
+
+theme:template(title="Churches", name="_church")
+  content
+    .notMap
+      h1 Expecting Mothers across The Country Are In Crisis
+      p 84% of post-abortive women say they felt that abortion was their only option!
+        br 
+        |We're changing that. Join us!
+    .bannerTwo: .container-fluid: .columns.row
+      h1(class='lined') How It Works
+      .col.push-2.width-20
+        h1
+          i.icon-pledge
+          br
+          |Make A Pledge
+        p It starts with your commitment to serve mothers and save babies at risk of abortion.
+      .col.width-20
+        h1
+          i.icon-heart
+          br
+          |Donate to Life
+        p After you commit to saving lives, partner with us financially to make it possible.
+      .col.width-20
+        h1
+          i.icon-handshake
+          br
+          |Partner with PRCs
+        p We use your contribution to deliver mobile medical units to pregnancy resource centers.
+      .col.width-20
+        h1 
+          i.icon-stroller
+          br
+          |Save Babies
+        p Storks Buses hit the streets and start providing life saving services to mothers and babies.
+    .bannerThree: .container
+      .columns.row
+        .col.width-50
+          h1(class='lined') Why Mobile Medical Units?
+          p A mobile unit gives PRCs the ability to educate, love, and support the women they encounter in your community. Many women in crisis pregnancy situations are often unaware of the services provided by pregnancy resource centers. We help solve that by taking the options directly to them.
+        .col.width-50: .video-wrapper
+          iframe(src="//player.vimeo.com/video/104248655", width="100%", height="350", frameborder="0", webkitAllowFullScreen="1", mozallowfullscreen="1", allowFullScreen="1")
+    .bannerFour: .container
+      p.byline Our commitment is to serving mothers and saving babies.
+      h1 WILL YOU JOIN US IN THAT MISSION?
+      .columns.row.churches(:load=":api(3.0).content(site/churches-landing) as churches")
+        .col.width-33
+          span.rounded 
+            img(src='{churches.relationships(columnoneimage,attachments).first.version(0,0,0,png)}')
+          h1 {churches.content.columnonetitle}
+          {churches.content.columnonetext}
+          a(class='button success', href='{churches.content.columnonelink}') Learn More
+        .col.width-33
+          span.rounded 
+            img(src='{churches.relationships(columntwoimage,attachments).first.version(0,0,0,png)}')
+          h1 {churches.content.columntwotitle}
+          {churches.content.columntwotext}
+          a(class='button success', href='{churches.content.columntwolink}') Learn More
+        .col.width-33(style='border-right: 0;')
+          span.rounded 
+            img(src='{churches.relationships(columnthreeimage,attachments).first.version(0,0,0,png)}')
+          h1 {churches.content.columnthreetitle}
+          {churches.content.columnthreetext}
+          a(class='button success', href='{churches.content.columnthreelink}') Learn More
+        br
+        br
+        br
+    .modal.video: .container: .video-wrapper
+      |<iframe width="420" height="315" src="//www.youtube.com/embed/pPd3MkDxRr4" frameborder="0" allowfullscreen=""></iframe>
+    .overlay
+    +sidebar

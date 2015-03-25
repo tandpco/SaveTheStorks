@@ -34,14 +34,14 @@ module.exports = function(grunt) {
         // domain:'http://sandbox.rainmaker.local',
         key: '<%= config.momentum.key %>',
         secret: '<%= config.momentum.secret %>',
-        client: '<%= config.momentum.client %>'
+        client: '<%= config.momentum.client %>',
+        theme:'default'
       },
       files: {
         expand: true,
         cwd:'theme',
         src: ['**/*.{jade,html,lhtml,htm,xhtml,yaml}']
       }
-
     },
     // // to enable webfont compiling from svg files follow the readme isntructions in /lib/icons/readme.md
     // webfont: {

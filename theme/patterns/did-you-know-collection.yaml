@@ -9,4 +9,4 @@ pattern:
     name: Did You Know
     singular: Question
     pattern: did-you-know
-    # preview: name
+    preview: name

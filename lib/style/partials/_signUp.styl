@@ -3,8 +3,6 @@ body.signUp
 	background-size cover
 	color #383838
 	padding-bottom 100px
-		cursor pointer
-		background darken(#59C77F, 15%)
 	div.spacer
 		height 200px
 		width 100%
@@ -44,6 +42,7 @@ body.signUp
 				display inline-block
 				font-size 18px
 				font-weight 100
+				line-height 1.24em
 				padding-top 8px
 				text-align center
 				height 40px
@@ -82,7 +81,9 @@ body.signUp
 			position relative
 			form[name="customPhoto"]
 				a.button.success
+					border 1px solid #59C77F
 					background #59C77F
+					cursor pointer
 					border-radius 3px
 					color #FFFFFF
 					font-size 28px
@@ -91,6 +92,8 @@ body.signUp
 					margin 15px 0 25px
 					padding 10px 15px
 					text-transform uppercase
+					&:hover
+						background darken(#59C77F, 10%)
 		div.coverPhoto
 			background url('../images/photoPlaceholder.png') 50% 50% no-repeat
 			background-color #E1E1E1
@@ -120,7 +123,11 @@ body.signUp
 				margin 40px 0 0 !important
 				text-align center
 				text-transform uppercase
+				cursor pointer
+				&:hover
+					background darken(#59C77F, 10%)
 			a.button.outline
+				cursor pointer
 				background none
 				border 2px solid #59C77F
 				border-radius 3px
@@ -132,6 +139,9 @@ body.signUp
 				background #59C77F
 				border 2px solid #59C77F
 				color #FFF
+				cursor pointer
+				&:hover
+					background darken(#59C77F, 10%)
 			div.images
 				border lighten(#383838, 75%)
 				height 260px
@@ -153,7 +163,8 @@ body.signUp
 			border-radius 3px
 			cursor pointer
 			height 70px
-			padding 15px 10px
+			max-height 70px
+			padding 1em 0.05em
 			text-align center
 			h5
 				color #00B5D7
@@ -245,7 +256,7 @@ body.signUp
 				input[type="text"]
 					border 0
 					padding 0
-					line-height 15px
+					line-height 16px
 					margin 10px 0 5px
 					max-height 20px
 					&[name='lastName']
@@ -270,6 +281,7 @@ body.signUp
 			button.button.success
 				background #59C77F
 				border-radius 3px
+				border 1px solid #59C77F
 				color #FFFFFF
 				font-size 27px
 				height auto

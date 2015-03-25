@@ -1,0 +1,100 @@
+include ../includes/sidebar
+
+theme:template(title="Project Name", name="_project")
+  content(:load=":api(3.0).content(site/completed-projects/{:url.2}) as project")
+    #apply(:load=":api(3.0).content(site/about-page) as project")
+      div.banner
+        h1 Application for
+          br
+          strong Save The Storks Bus
+      .container.row: .col.width-80.push-4
+        p We are currently taking applications from pregnancy centers across America that are interested in operating their own Save The Storks bus.  It is our deepest desire to place a bus in every state in need. We are seeking centers that share a common heart in reaching the lost for Christ, have a passion to stop abortion on a nationwide scale, and have a burden for their local communities. If you feel you and your center share our vision and enthusiasm for saving storks, please prayerfully fill out this application.  Please provide us with as much detail as possible.  After review of the application, we will be sure to get back to you as soon as possible.
+        hr
+        h2 Application Form
+        //@IF :get.success == 'true'
+        h1 Submission Recieved
+        p We've recieved your application and will be in touch shortly.
+        h1 &nbsp;
+        //@ELSE
+        form#apply(action="/api/3.0/form-completions", role="form", method="post")
+          | <:module slug="messages-display" namespace="application" />
+          | <input type="hidden" name="--namespace" value="application" />
+          | <input type="hidden" name="--failure" value="/stork-bus-application?success=false" />
+          | <input type="hidden" name="--form" value="application" />
+          | <input type="hidden" name="--success" value="/stork-bus-application?success=true" />
+          | <input type="hidden" name="--conversation" value="message" />
+          .form-group(style="margin: 0 -10px;")
+            .col.width-50
+              label First Name
+              input(type='text', placeholder='John', name='contact[firstName]')
+          .form-group
+            .col.width-50
+              label Last Name
+              input(type='text', placeholder='Doe', name='contact[lastName]')
+          .form-group
+            label Your Email
+            input(type='text', placeholder='john.doe@johndoe.com', name='contact[email]') Your Email*
+          .form-group
+            label Your Phone Number
+            input(type='text', placeholder='(555) 555 5555', name='contact[phone]') Your Email*
+          .form-group
+            label Name of Center and Executive Director
+            input(type='text', name='center')
+          .form-group
+            label Location
+            input(type='text', name='location')
+          .form-group
+            label How many years has your center been in operation?
+            input(type='text', name='operational')
+          .form-group
+            label How many women do you see weekly?
+            input(type='text', name='women')
+          .form-group
+            label What services do you offer to clients visiting your center?
+            input(type='text', name='services')
+          .form-group
+            label Please describe anything unique to your center: 
+            input(type='text', name='unique')
+          .form-group
+            label Please explain if/how you are meeting the spiritual needs of your clients:
+            input(type='text', name='needs')
+          .form-group
+            label How many paid and volunteer employees work at your center?
+            input(type='text', name='employees')
+          .form-group
+            label What is the annual budget for your center?
+            input(type='text', name='budget')
+          .form-group
+            label How many abortion clinics are in your city?
+            input(type='text', name='clinics')
+          .form-group
+            label How close in proximity are the abortion clinic(s) to your center?
+            input(type='text', name='clinicProximity')
+          .form-group
+            label Do the abortion clinic(s) in your area have street side access?
+            .radio-group
+              input(type='radio', name='streetSideAccess', value='Yes')
+              span Yes
+              input(type='radio', name='streetSideAccess', value='No')
+              span No
+          .form-group
+            label Does your center have any experience with sidewalk counseling or anything of that nature?
+            .radio-group
+              input(type='radio', name='sidewalk', value='Yes')
+              span Yes
+              input(type='radio', name='sidewalk', value='No')
+              span No
+          .form-group
+            label If yes, please explain: 
+            input(type='text', name='sidewalkYes')
+          .form-group
+            label What would it mean to your community to have a Save The Storks van?
+            input(type='text', name='community')
+          .form-group
+            label Please list contact information of three churches or ministries that have experience working with your center that could serve as a reference:
+            input(type='text', name='references')
+          input(type='hidden', name='message')
+          button(type='submit') Submit
+        //@ENDIF
+      //- +footer
+      +sidebar

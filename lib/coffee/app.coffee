@@ -78,7 +78,16 @@ $ ->
     else
       $("div.tab-content:visible").fadeOut "fast", ->
         $('#' + val).fadeIn("fast")
-    return 
+    return
+
+  $('form#create').on 'submit', ->
+    month = $('#m').val()
+    day = $('#d').val()
+    year = $('#y').val()
+
+    date = month + '/' + day + '/' + year
+    $('input#date_until').val(date)
+    
 
   # Sidebar Menu Variables
   toggle = document.getElementById('menuToggle');
@@ -143,7 +152,7 @@ $ ->
       height = $(content).innerHeight();
       $(this).innerHeight(height)
 
-  resize()
+  # resize()
   # abso()
 
   $('ul.tabs li').click ->
@@ -162,10 +171,10 @@ $ ->
 
     return
 
-  $(window).resize ->
-    resize()
+  # $(window).resize ->
+    # resize()
     # abso()
-    return
+    # return
 
   $('.slider').each ->
     $(this).unslider
@@ -193,7 +202,7 @@ $ ->
       'height': 'auto'
       'z-index': 2
       'display': 'inline-block'
-  $('.modal').click ->
+  $('.modal.video').click ->
     $('.overlay').css
       'opacity': 0
       'height': 'auto'
@@ -209,34 +218,40 @@ $ ->
 
   # Scripts for Donate Form Page
   frequency = 'month'
+
   campaignLevels = [
     {
-      img: 'http://rainmakerapp.s3.amazonaws.com/storks/images/tier-2.png'
+      img: '//rainmakerapp.s3.amazonaws.com/storks/images/tier-2.png'
       level: 'Save A Stork'
       description: 'We divided the cost of a Bus by the number of moms and children who could be saved in one year. It costs about $30/month to Save a Stork. By partnering with us at $30/month, you can save a mother from the grief and heartache of abortion.'
-      gifts: ['Silver Stork Pendant', 'Two T-Shirts']
+      # gifts: ['Pendant', 'TwoShirts']
+      gifts: ['Silver Stork Pendant', 'Two Shirts']
     },
     {
-      img: 'http://rainmakerapp.s3.amazonaws.com/storks/images/tier-2.jpg'
+      img: '//rainmakerapp.s3.amazonaws.com/storks/images/tier-2.jpg'
       level: 'Save A Bundle'
       description: 'We divided the cost of a Bus by the number of moms and children who could be saved in one year. It costs about $30/month to Save a Stork. By partnering with us at $60/month, you can save two mothers from the grief and heartache of abortion.'
-      gifts: ['Silver Stork Pendant', 'Four T-Shirts']
+      # gifts: ['Pendant', 'FourShirts']
+      gifts: ['Silver Stork Pendant', 'Four Shirts']
     },
     {
-      img: 'http://rainmakerapp.s3.amazonaws.com/storks/images/tier-3.jpg'
+      img: '//rainmakerapp.s3.amazonaws.com/storks/images/tier-4.jpg'
       level: 'Be a Superhero'
       description: 'We divided the cost of a Bus by the number of moms and children who could be saved in one year. It costs about $30/month to Save a Stork. By partnering with us at $150/month, you can save five mothers from the grief and heartache of abortion.'
-      gifts: ['Silver Stork Pendant', 'Four T-Shirts']
+      # gifts: ['Pendant', 'FourShirts']
+      gifts: ['Silver Stork Pendant', 'Four Shirts']
     },
     {
-      img: 'http://rainmakerapp.s3.amazonaws.com/storks/images/tier-4.jpg'
+      img: '//rainmakerapp.s3.amazonaws.com/storks/images/tier-3.jpg'
       level: 'Save a Flock'
       description: 'We divided the cost of a Bus by the number of moms and children who could be saved in one year. It costs about $30/month to Save a Stork. By partnering with us at $350/month, you can save twelve mothers from the grief and heartache of abortion.'
-      gifts: ['Silver Stork Pendant', 'Four T-Shirts']
+      # gifts: ['Pendant', 'FourShirts']
+      gifts: ['Silver Stork Pendant', 'Four Shirts']
     }
   ]
 
   onChange = ->
+
     $('input[name="gift"]').change ->
 
       value = $(this).val()
@@ -249,6 +264,176 @@ $ ->
         $('.sizes.two').fadeIn()
       else
         $('.sizes').fadeOut()
+
+  oneTimeLevels = ->
+
+    amount = $('.amount input').val()
+
+    if (amount<=349)
+      $('.campaign-level').fadeOut()
+    else
+      $('.campaign-level').fadeIn()
+
+    # Tier 1
+    if (amount>=350 && amount<=749)
+      $('.level').text campaignLevels[0].level
+      $('.description').text campaignLevels[0].description
+      $('.gifts').html('<div class="col width-33"><label for="declineGift">Decline Gift</label><input type="radio" name="gift" id="declineGift" value="declineGift" checked></div>')
+      $('.img').html('<img src="' + campaignLevels[0].img + '" />')
+      for gift in campaignLevels[0].gifts
+        first = gift.split(' ').join('-')
+        $('.gifts').append '<div class="col width-33"><label>' + gift + '</label><input type="radio" name="gift" class="gift" value=' + first + '></div>'
+
+      onChange()
+
+    # Tier 2
+    else if (amount>=750 && amount<=1799)
+      $('.level').text campaignLevels[1].level
+      $('.description').text campaignLevels[1].description
+      $('.gifts').html('<div class="col width-33"><label for="declineGift">Decline Gift</label><input type="radio" name="gift"  id="declineGift" value="declineGift" class="gift" checked></div>')
+      $('.img').html('<img src="' + campaignLevels[1].img + '" />')
+      for gift in campaignLevels[1].gifts
+        first = gift.split(' ').join('-')
+        $('.gifts').append '<div class="col width-33"><label>' + gift + '</label><input type="radio" name="gift" class="gift" value="' + first + '"></div>'
+
+      onChange()
+
+    # Tier 3
+    else if (amount>=1800 && amount<=3199)
+      $('.level').text campaignLevels[2].level
+      $('.description').text campaignLevels[2].description
+      $('.gifts').html('<div class="col width-33"><label for="declineGift">Decline Gift</label><input type="radio" name="gift" id="declineGift" value="declineGift" class="gift" checked></div>')
+      $('.img').html('<img src="' + campaignLevels[2].img + '" />')
+      for gift in campaignLevels[2].gifts
+        first = gift.split(' ').join('-')
+        $('.gifts').append '<div class="col width-33"><label>' + gift + '</label><input type="radio" name="gift" class="gift" value=' + first + '></div>'
+
+      onChange()
+
+    # Tier 4
+    else if (amount>=3200)
+      $('.level').text campaignLevels[3].level
+      $('.description').text campaignLevels[3].description
+      $('.gifts').html('<div class="col width-33"><label for="declineGift">Decline Gift</label><input type="radio" name="gift"  id="declineGift" value="declineGift" class="gift" checked></div>')
+      $('.img').html('<img src="' + campaignLevels[3].img + '" />')
+      for gift in campaignLevels[3].gifts
+        first = gift.split(' ').join('-')
+        $('.gifts').append '<div class="col width-33"><label>' + gift + '</label><input type="radio" name="gift" class="gift" value=' + first + '></div>'
+
+      onChange()
+
+  frequencyChangeYearly = (val) ->
+
+    if (val<=349)
+      $('.campaign-level').fadeOut()
+    else
+      $('.campaign-level').fadeIn()
+
+    # Tier 1
+    if (val>=350 && val<=749)
+      $('.level').text campaignLevels[0].level
+      $('.description').text campaignLevels[0].description
+      $('.gifts').html('<div class="col width-33"><label for="declineGift">Decline Gift</label><input type="radio" name="gift" id="declineGift" value="declineGift" checked></div>')
+      $('.img').html('<img src="' + campaignLevels[0].img + '" />')
+      for gift in campaignLevels[0].gifts
+        first = gift.split(' ').join('-')
+        $('.gifts').append '<div class="col width-33"><label>' + gift + '</label><input type="radio" name="gift" class="gift" value=' + first + '></div>'
+
+      onChange()
+
+    # Tier 2
+    else if (val>=750 && val<=1799)
+      $('.level').text campaignLevels[1].level
+      $('.description').text campaignLevels[1].description
+      $('.gifts').html('<div class="col width-33"><label for="declineGift">Decline Gift</label><input type="radio" name="gift"  id="declineGift" value="declineGift" class="gift" checked></div>')
+      $('.img').html('<img src="' + campaignLevels[1].img + '" />')
+      for gift in campaignLevels[1].gifts
+        first = gift.split(' ').join('-')
+        $('.gifts').append '<div class="col width-33"><label>' + gift + '</label><input type="radio" name="gift" class="gift" value="' + first + '"></div>'
+
+      onChange()
+
+    # Tier 3
+    else if (val>=1800 && val<=3199)
+      $('.level').text campaignLevels[2].level
+      $('.description').text campaignLevels[2].description
+      $('.gifts').html('<div class="col width-33"><label for="declineGift">Decline Gift</label><input type="radio" name="gift" id="declineGift" value="declineGift" class="gift" checked></div>')
+      $('.img').html('<img src="' + campaignLevels[2].img + '" />')
+      for gift in campaignLevels[2].gifts
+        first = gift.split(' ').join('-')
+        $('.gifts').append '<div class="col width-33"><label>' + gift + '</label><input type="radio" name="gift" class="gift" value=' + first + '></div>'
+
+      onChange()
+
+    # Tier 4
+    else if (val>=3200)
+      $('.level').text campaignLevels[3].level
+      $('.description').text campaignLevels[3].description
+      $('.gifts').html('<div class="col width-33"><label for="declineGift">Decline Gift</label><input type="radio" name="gift"  id="declineGift" value="declineGift" class="gift" checked></div>')
+      $('.img').html('<img src="' + campaignLevels[3].img + '" />')
+      for gift in campaignLevels[3].gifts
+        first = gift.split(' ').join('-')
+        $('.gifts').append '<div class="col width-33"><label>' + gift + '</label><input type="radio" name="gift" class="gift" value=' + first + '></div>'
+
+      onChange()
+
+  frequencyChangeMonthly = (val) ->
+
+    if (val<=29)
+      $('.campaign-level').fadeOut()
+    else
+      $('.campaign-level').fadeIn()
+
+    # Tier 1
+    if (val>=30 && val<=59)
+      $('.level').text campaignLevels[0].level
+      $('.description').text campaignLevels[0].description
+      $('.gifts').html('<div class="col width-33"><label for="declineGift">Decline Gift</label><input type="radio" name="gift" id="declineGift" value="declineGift" checked></div>')
+      $('.img').html('<img src="' + campaignLevels[0].img + '" />')
+      for gift in campaignLevels[0].gifts
+        first = gift.split(' ').join('-')
+        $('.gifts').append '<div class="col width-33"><label>' + gift + '</label><input type="radio" name="gift" class="gift" value=' + first + '></div>'
+
+      onChange()
+
+    # Tier 2
+    else if (val>=60 && val<=149)
+      $('.level').text campaignLevels[1].level
+      $('.description').text campaignLevels[1].description
+      $('.gifts').html('<div class="col width-33"><label for="declineGift">Decline Gift</label><input type="radio" name="gift"  id="declineGift" value="declineGift" class="gift" checked></div>')
+      $('.img').html('<img src="' + campaignLevels[1].img + '" />')
+      for gift in campaignLevels[1].gifts
+        first = gift.split(' ').join('-')
+        $('.gifts').append '<div class="col width-33"><label>' + gift + '</label><input type="radio" name="gift" class="gift" value=' + first + '></div>'
+
+      onChange()
+
+    # Tier 3
+    else if (val>=150 && val<=349)
+      $('.level').text campaignLevels[2].level
+      $('.description').text campaignLevels[2].description
+      $('.gifts').html('<div class="col width-33"><label for="declineGift">Decline Gift</label><input type="radio" name="gift" id="declineGift" value="declineGift" class="gift" checked></div>')
+      $('.img').html('<img src="' + campaignLevels[2].img + '" />')
+      for gift in campaignLevels[2].gifts
+        first = gift.split(' ').join('-')
+        $('.gifts').append '<div class="col width-33"><label>' + gift + '</label><input type="radio" name="gift" class="gift" value=' + first + '></div>'
+
+      onChange()
+
+    # Tier 4
+    else if (val>=350)
+      $('.level').text campaignLevels[3].level
+      $('.description').text campaignLevels[3].description
+      $('.gifts').html('<div class="col width-33"><label for="declineGift">Decline Gift</label><input type="radio" name="gift"  id="declineGift" value="declineGift" class="gift" checked></div>')
+      $('.img').html('<img src="' + campaignLevels[3].img + '" />')
+      for gift in campaignLevels[3].gifts
+        first = gift.split(' ').join('-')
+        $('.gifts').append '<div class="col width-33"><label>' + gift + '</label><input type="radio" name="gift" class="gift" value=' + first + '></div>'
+
+      onChange()
+
+
+
 
   getLevels = ->
 
@@ -263,11 +448,11 @@ $ ->
     if (amount>=30 && amount<=59)
       $('.level').text campaignLevels[0].level
       $('.description').text campaignLevels[0].description
-      $('.gifts').html('<div class="col width-33"><label for="declineGift">Decline Gift</label><input type="radio" name="gift" id="declineGift" value="declineGift"></div>')
+      $('.gifts').html('<div class="col width-33"><label for="declineGift">Decline Gift</label><input type="radio" name="gift" id="declineGift" value="declineGift" checked></div>')
       $('.img').html('<img src="' + campaignLevels[0].img + '" />')
       for gift in campaignLevels[0].gifts
-        first = gift.split(' ')
-        $('.gifts').append '<div class="col width-33"><label>' + gift + '</label><input type="radio" name="gift" class="gift" value=' + first[0] + '></div>'
+        first = gift.split(' ').join('-')
+        $('.gifts').append '<div class="col width-33"><label>' + gift + '</label><input type="radio" name="gift" class="gift" value=' + first + '></div>'
 
       onChange()
 
@@ -275,11 +460,11 @@ $ ->
     else if (amount>=60 && amount<=149)
       $('.level').text campaignLevels[1].level
       $('.description').text campaignLevels[1].description
-      $('.gifts').html('<div class="col width-33"><label for="declineGift">Decline Gift</label><input type="radio" name="gift"  id="declineGift" value="declineGift" class="gift"></div>')
+      $('.gifts').html('<div class="col width-33"><label for="declineGift">Decline Gift</label><input type="radio" name="gift"  id="declineGift" value="declineGift" class="gift" checked></div>')
       $('.img').html('<img src="' + campaignLevels[1].img + '" />')
       for gift in campaignLevels[1].gifts
-        first = gift.split(' ')
-        $('.gifts').append '<div class="col width-33"><label>' + gift + '</label><input type="radio" name="gift" class="gift" value=' + first[0] + '></div>'
+        first = gift.split(' ').join('-')
+        $('.gifts').append '<div class="col width-33"><label>' + gift + '</label><input type="radio" name="gift" class="gift" value=' + first + '></div>'
 
       onChange()
 
@@ -287,11 +472,11 @@ $ ->
     else if (amount>=150 && amount<=349)
       $('.level').text campaignLevels[2].level
       $('.description').text campaignLevels[2].description
-      $('.gifts').html('<div class="col width-33"><label for="declineGift">Decline Gift</label><input type="radio" name="gift" id="declineGift" value="declineGift" class="gift"></div>')
+      $('.gifts').html('<div class="col width-33"><label for="declineGift">Decline Gift</label><input type="radio" name="gift" id="declineGift" value="declineGift" class="gift" checked></div>')
       $('.img').html('<img src="' + campaignLevels[2].img + '" />')
       for gift in campaignLevels[2].gifts
-        first = gift.split(' ')
-        $('.gifts').append '<div class="col width-33"><label>' + gift + '</label><input type="radio" name="gift" class="gift" value=' + first[0] + '></div>'
+        first = gift.split(' ').join('-')
+        $('.gifts').append '<div class="col width-33"><label>' + gift + '</label><input type="radio" name="gift" class="gift" value=' + first + '></div>'
 
       onChange()
 
@@ -299,17 +484,35 @@ $ ->
     else if (amount>=350)
       $('.level').text campaignLevels[3].level
       $('.description').text campaignLevels[3].description
-      $('.gifts').html('<div class="col width-33"><label for="declineGift">Decline Gift</label><input type="radio" name="gift"  id="declineGift" value="declineGift" class="gift"></div>')
+      $('.gifts').html('<div class="col width-33"><label for="declineGift">Decline Gift</label><input type="radio" name="gift"  id="declineGift" value="declineGift" class="gift" checked></div>')
       $('.img').html('<img src="' + campaignLevels[3].img + '" />')
       for gift in campaignLevels[3].gifts
-        first = gift.split(' ')
-        $('.gifts').append '<div class="col width-33"><label>' + gift + '</label><input type="radio" name="gift" class="gift" value=' + first[0] + '></div>'
+        first = gift.split(' ').join('-')
+        $('.gifts').append '<div class="col width-33"><label>' + gift + '</label><input type="radio" name="gift" class="gift" value=' + first + '></div>'
 
       onChange()
 
+  sizes = {
+    'One': 'Small'
+    'Two': 'Small'
+    'Three': 'Small'
+    'Four': 'Small'
+  }
+  $('.sizes select').each ->
+    $(this).on "change", ->
+      shirt = $(this).data("shirt")
+      val = $(this).val()
+      sizes[shirt] = val
+      return
+
   $('.amount input').on 'keyup keydown keypress blur', ->
     $('.any').parent().addClass('active').parent().siblings('.toggle').find('.active').removeClass('active')
-    getLevels()
+    frequency = $('.frequency.active').data 'frequency'
+    console.log frequency
+    if frequency == 'month'
+      getLevels()
+    else
+      oneTimeLevels()
 
   $('.amount-toggle').on 'click', ->
     monthly = $(this).data 'monthly'
@@ -321,7 +524,7 @@ $ ->
 
     else
       $('.amount input').val yearly
-      getLevels()
+      oneTimeLevels()
 
     $(this).toggleClass('active').parent().siblings('.toggle').find('.active').removeClass('active')
 
@@ -330,27 +533,167 @@ $ ->
     monthly = $(document).find('.amount-toggle.active').data 'monthly'
     yearly = $(document).find('.amount-toggle.active').data 'yearly'
 
-    if frequency == 'month' 
-      $('.amount input').val monthly
+    $('input[name=gift][value=declineGift]').prop('checked', true);
+
+    if frequency == 'month'
+      if monthly
+        $('.amount input').val monthly 
+      val = $('.amount input').val()
+      frequencyChangeMonthly(val)
 
     else if frequency == 'year'
-      $('.amount input').val yearly
+      if yearly
+        $('.amount input').val yearly
+      val = $('.amount input').val()
+      frequencyChangeYearly(val)
 
     $(this).addClass('active').parent().siblings().find('.frequency').not($(this)).removeClass('active')
     return false
 
   $('a#donateModal').click ->
     frequency = $('.frequency.active').data 'frequency'
+    gift = $('input[name=gift]:checked').val()
     if frequency == 'month'
       frequency = 'm'
     $rain
       action: 'donate'
       amount: $('.amount input').val()
-      project: 249
+      # project: 249
       recurring: frequency
+      memo: "Gift: " + gift + ((gift is "Two-Shirts" or gift is "Four-Shirts") and ", Shirt Sizes: " + JSON.stringify(sizes) or "")
       lockamount: true
-      message: 'Customize this message!'
+      message: 'Thank you for your donation!'
     false
 
+  $('.thanks').click ->  
+    $(this).fadeOut() ->
+      $('.overlay').css
+        'opacity': 0
+        'height': 'auto'
+        'z-index': 0
+        'display': 'none'
+      $('.modal').css
+        'opacity': 0
+        'height': 'auto'
+        'z-index': 0
+        'display': 'none'
+
+  $('.upload').on "click", ->
+    $('.fundraiser-modal').fadeIn ->
+      $('.fundraiser-modal .overlay').fadeIn()
+      $('.fundraiser-modal .modal').fadeIn()
+      return
+
+  $('button#customPhoto').on "click", ->
+    console.log('Setting preference...')
+    $.ajax
+      type: 'POST'
+      url: '/api/3.0/contacts/me/'
+      async: false,
+      data: { prop: { 'prefer-facebook': 0 } },
+      success: ->
+        console.log('You now prefer to use your uploaded photo.');
+        return;
+
+  $('a.button.facebook').on "click", ->
+    $.ajax
+      type: 'POST'
+      url: '/api/3.0/contacts/me/'
+      async: false,
+      data: { prop: { 'prefer-facebook': 1 } },
+      success: ->
+        # window.location = window.location;
+        console.log('You now prefer to use your Facebook photo.');
+
+  $('.fundraiser-modal .overlay').on "click", ->
+    $('.fundraiser-modal').fadeOut()
+
+  message = ''
+  $('form#apply').on "submit", ->
+    $('.form-group').each ->
+      label = $(this).find('label').text()
+
+      if $(this).find('input:checked').length > 0
+        value = $(this).find('input:checked').val()
+      else
+        value = $(this).find('input').val()
+      
+      template = '<p><b>' + label + '</b><br>' + value + '</p>'
+
+      message += template
+
+    $('input[name=message]').val(message) 
+    
+    return
+
+  window.setTimeout (->
+    $('.thanks').fadeOut()
+  ), 2000
+
+  onChange()
+
+  $.fn.isOnScreen = ->
+    win = $(window)
+    viewport =
+      top: win.scrollTop()
+      left: win.scrollLeft()
+
+    viewport.right = viewport.left + win.width()
+    viewport.bottom = viewport.top + win.height()
+    bounds = @offset()
+    bounds.right = bounds.left + @outerWidth()
+    bounds.bottom = bounds.top + @outerHeight()
+    not (viewport.right < bounds.left or viewport.left > bounds.right or viewport.bottom < bounds.top or viewport.top > bounds.bottom)
+  $('a#upload').on "click", ->
+    $('.upload-new').fadeIn();
+    return
+  $('span.close-upload').on "click", ->
+    $('.upload-new').fadeOut();
+    return
+  $('form#conversation').on "submit", ->
+    church = $('#church').val()
+    position = $('#position').val()
+    phone = $('#phone').val()
+    strBuild = '<strong>Church:</strong> ' + church + '<br><strong>Position:</strong> ' + position + '<br><strong>Phone:</strong> ' + phone
+    $('input[name=message]').val(strBuild)
+
+  $(window).on "scroll", ->
+    winTop = $(window).scrollTop()
+    faqTop = $('#faq').offset()
+    relTop = (winTop - faqTop.top)
+    leftDist = $('.questions').offset()
+    answers = $('.answers').width()
+    qHeight = $('.questions').height()
+
+    lPos = $('.question').offset().left
+    tPos = $('.question').offset().top
+
+    console.log 'WinTop' + (winTop - $('.footer').offset().top), 'Questions Height' + (qHeight + 70)
+
+    if (Math.abs(winTop - $('.footer').offset().top)) <= (qHeight + 70)
+      $('.questions').css
+        "position": "absolute"
+        "top": ($('.answers').height() - qHeight) + 30
+        "left": (answers + 20)
+    else if relTop >= -15
+      $('.questions').css
+        "position": "fixed"
+        "top": 15
+        "left": leftDist.left
+        "width": answers  
+    else
+      $('.questions').css
+        "position": "relative"
+        "top": 0
+        "left": 0
+
+  $('#search').on "click", ->
+    $('.search').addClass 'active'
+
+  $('*').click (e) ->
+    className = $(e.target).attr 'class'
+    console.log className
+    if e.target.id != 'search' && className != 'icon-search' && className != 'search' && className != 'search active'
+      $('.search').removeClass 'active'
 
   return

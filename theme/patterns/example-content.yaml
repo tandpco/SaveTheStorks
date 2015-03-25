@@ -1,0 +1,17 @@
+page:
+  path: /site
+  slug: exampleContent
+  name: Example Content
+pattern:
+  -
+    key: exampleOne
+    name: Example One
+    format: text
+  -
+    key: exampleTwo
+    name: Example Two
+    format: text
+  -
+    key: exampleThree
+    name: Example Three
+    format: text

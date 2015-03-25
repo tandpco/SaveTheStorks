@@ -8,7 +8,7 @@ theme:template(title="Take Action", name="_project")
           strong Take Action&nbsp;
           |To Save Lives
           p.small Together we can build a movement!
-        //@IF !:get.thanks == 'true' || !:get.step
+        //@IF !:get.thanks
         form(class='inline-form' action='/api/3.0/contacts/', method='post')
           input(type='hidden', name='type', value='individual')
           input(type='hidden', name='--success', value='/my-storks/sign-up?step=2')
@@ -42,6 +42,14 @@ theme:template(title="Take Action", name="_project")
             .col.width-50
               a(href='{action.content.destination}'): h3 {action.content.title}
               {action.content.content}
+      //@IF :get.thanks
+      .thanks(:load=":api(3.0).contacts(me) as user")
+        .modal(style='display: inline'): .container
+          i.icon-icon_61751
+          small Thank You for your pledge,
+          h1 {user.first_name}
+        .overlay(style='display: inline')
+      //@ENDIF
               
       +sidebar
 
