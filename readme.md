@@ -4,12 +4,6 @@
 * Node.JS ( http://nodejs.org/ )
 * Grunt `sudo npm install -g grunt-cli`
 
-## Setup
-1. Open terminal and `cd` to the directory of this file.
-2. Type `npm i`
-3. Copy the contents of `./momentum.example.json` to `momentum.json`
-4. Setup the values of `momentum.json` with the information you received from your account rep.
-
 ## Usage
 1. Open terminal and `cd` to the directory of this file.
 2. Type `grunt watch`
@@ -23,24 +17,7 @@ Everything you put in `./public` will be automatically deployed to amazon s3 as 
 
 Everything you put in `./theme` will automatically save to your live Rainmaker account. You can use `.lhtml` or `.jade` files. Read the readme file in `./theme` for more information on theming syntax.
 
-## Best Practices
-### Style
-We recommend coding in `stylus` with `nib` (see http://learnboost.github.io/stylus/ and http://visionmedia.github.io/nib/).
+## Important Notes
+Please make sure that any files with the same name as an existing file are appended with "-new" before they are saved, this goes for all files on the site. Save The Storks is currently live and they experience heavy traffic, we do not want to disrupt the user experience while doing maintenance. If you are making changes to an existing file, please duplicate that file and append "-new" to the name.
 
-Nib is a small and powerful library for the Stylus CSS language, providing robust cross-browser CSS3 mixins to make your life as a designer easier.
-      
-    body {
-      background: linear-gradient(top, white, black);
-    }
-          
-            
-    body {
-      background: -webkit-gradient(linear,
-        left top,
-        left bottom,
-        color-stop(0, #fff),
-        color-stop(1, #000));
-      background: -webkit-linear-gradient(top, #fff 0%, #000 100%);
-      background: -moz-linear-gradient(top, #fff 0%, #000 100%);
-      background: linear-gradient(top, #fff 0%, #000 100%);
-    }
+Create a new "Stylus" partial for whatever CSS you add, and import it in "main.styl", at the top of the file.
