@@ -1,0 +1,76 @@
+include ../includes/sidebar
+
+theme:template(title="Media Gallery", name="_project")
+  content
+    - var images = ['http://barnimages.com/wp-content/uploads/2015/04/barnimages-foehr-1-500x380.jpg', 'http://barnimages.com/wp-content/uploads/2015/03/barnimages-5-500x380.jpg', 'http://barnimages.com/wp-content/uploads/2015/04/barnimages-letter-3-500x380.jpg', 'http://barnimages.com/wp-content/uploads/2015/03/barnimages_upload_30-500x380.jpg', 'http://barnimages.com/wp-content/uploads/2015/03/barnimages_tiere_05-500x380.jpg']
+    .media-gallery
+      .featured-media#lightbox: .container
+        .item-container
+          img(src='http://barnimages.com/wp-content/uploads/2015/03/barnimages-1-4-1024x686.jpg')
+        .meta
+          h2 Featured Item
+          .pull-right: a(href='#', class='btn btn-green')
+            i.fa.fa-share-square-o
+            |  Share
+      .container
+        //@IF :get.view == 'graphics'
+        .sectionThree
+          .header
+            h3.align-left.tr-up All Shareable Graphics
+              .pull-right: small: a(href='/gallery') Go Back
+          .row.columns
+            for i in [0,1,2,3,4,4,3,2,1,0]
+              .col.width-20: .item(data-name="Column #{i + 1}, Row 1", data-src="#{images[i]}")
+                .thumbnail: img(src='#{images[i]}')
+                .item-footer: p Column #{i + 1}, Row 1
+        //@ELSEIF :get.view == 'photos'
+        .sectionThree
+          .header
+            h3.align-left.tr-up All Stork Bus Photos
+              .pull-right: small: a(href='/gallery') Go Back
+          .row.columns
+            for i in [0,1,2,3,4,4,3,2,1,0]
+              .col.width-20: .item(data-name="Column #{i + 1}, Row 1", data-src="#{images[i]}")
+                .thumbnail: img(src='#{images[i]}')
+                .item-footer: p Column #{i + 1}, Row 1
+        //@ELSEIF :get.view == 'videos'
+        .sectionThree
+          .header
+            h3.align-left.tr-up All Videos
+              .pull-right: small: a(href='/gallery') Go Back
+          .row.columns
+            for i in [0,1,2,3,4,4,3,2,1,0]
+              .col.width-20: .item(data-name="Column #{i + 1}, Row 1", data-src="<iframe width='560' height='315' src='https://www.youtube.com/embed/9GKwyV-LK14' frameborder='0' allowfullscreen='1'></iframe>")
+                .thumbnail: img(src='#{images[i]}')
+                .item-footer: p Column #{i + 1}, Row 1
+        //@ELSE
+        .sectionThree
+          .header
+            h3.align-left.tr-up Shareable Graphics
+              .pull-right: small: a(href='/gallery?view=graphics') View All Graphics
+          .row.columns
+            for i in [0,1,2,3,4]
+              .col.width-20: .item(data-name="Column #{i + 1}, Row 1", data-src="#{images[i]}")
+                .thumbnail: img(src='#{images[i]}')
+                .item-footer: p Column #{i + 1}, Row 1
+        .sectionThree
+          .header
+            h3.align-left.tr-up(style='margin-top: 0;') Stork Bus Photos
+              .pull-right: small: a(href='/gallery?view=photos') View All Photos
+          .row.columns
+            for i in [0,1,2,3,4]
+              .col.width-20: .item(data-name="Column #{i + 1}, Row 2", data-src="#{images[i]}")
+                .thumbnail: img(src='#{images[i]}')
+                .item-footer: p Column #{i + 1}, Row 2
+        .sectionThree
+          .header
+            h3.align-left.tr-up(style='margin-top: 0;') Videos
+              .pull-right: small: a(href='/gallery?view=videos') View All Videos
+          .row.columns
+            for i in [0,1,2,3,4]
+              .col.width-20: .item(data-name="Column #{i + 1}, Row 3", data-src="<iframe width='560' height='315' src='https://www.youtube.com/embed/9GKwyV-LK14' frameborder='0' allowfullscreen='1'></iframe>")
+                .thumbnail: img(src='#{images[i]}')
+                .item-footer: p Column #{i + 1}, Row 3
+      //@ENDIF
+      .overlay
+    +sidebar

@@ -657,35 +657,60 @@ $ ->
     strBuild = '<strong>Church:</strong> ' + church + '<br><strong>Position:</strong> ' + position + '<br><strong>Phone:</strong> ' + phone
     $('input[name=message]').val(strBuild)
 
+  # Gallery Script
+  $('.item').on 'click', ->
+    item = $(this)
+    if item.data('name') && item.data('src')
+      name = item.data 'name'
+      src  = item.data 'src'
+      if src.indexOf('jpg') > -1 or src.indexOf('png') > -1 or src.indexOf('gif') > -1 or src.indexOf('jpeg')> -1
+        $('.featured-media')
+          .find('.item-container')
+          .html('<img src="' + src + '" alt="' + name + '" />')
+          .parents('.featured-media')
+          .find('h2')
+          .text(name)
+      else if src.indexOf('iframe') > -1
+        $('.featured-media')
+          .find('.item-container')
+          .html(src)
+          .parents('.featured-media')
+          .find('h2')
+          .text(name)
+      # location.href = '#lightbox'
+      $('html,body').animate {scrollTop: $('#lightbox').offset().top}, 500
+      return
+
   $(window).on "scroll", ->
-    winTop = $(window).scrollTop()
-    faqTop = $('#faq').offset()
-    relTop = (winTop - faqTop.top)
-    leftDist = $('.questions').offset()
-    answers = $('.answers').width()
-    qHeight = $('.questions').height()
+    if (window.location.href.indexOf('/about') > -1)
+      winTop = $(window).scrollTop()
+      faqTop = $('#faq').offset()
+      relTop = (winTop - faqTop.top)
+      leftDist = $('.questions').offset()
+      answers = $('.answers').width()
+      qHeight = $('.questions').height()
 
-    lPos = $('.question').offset().left
-    tPos = $('.question').offset().top
+      lPos = $('.question').offset().left
+      tPos = $('.question').offset().top
 
-    console.log 'WinTop' + (winTop - $('.footer').offset().top), 'Questions Height' + (qHeight + 70)
+      # console.log 'WinTop' + (winTop - $('.footer').offset().top), 'Questions Height' + (qHeight + 70)
 
-    if (Math.abs(winTop - $('.footer').offset().top)) <= (qHeight + 70)
-      $('.questions').css
-        "position": "absolute"
-        "top": ($('.answers').height() - qHeight) + 30
-        "left": (answers + 20)
-    else if relTop >= -15
-      $('.questions').css
-        "position": "fixed"
-        "top": 15
-        "left": leftDist.left
-        "width": answers  
-    else
-      $('.questions').css
-        "position": "relative"
-        "top": 0
-        "left": 0
+      if (Math.abs(winTop - $('.footer').offset().top)) <= (qHeight + 70)
+        $('.questions').css
+          "position": "absolute"
+          "top": ($('.answers').height() - qHeight) + 30
+          "left": (answers + 20)
+      else if relTop >= -15
+        $('.questions').css
+          "position": "fixed"
+          "top": 15
+          "left": leftDist.left
+          "width": answers  
+      else
+        $('.questions').css
+          "position": "relative"
+          "top": 0
+          "left": 0
 
   $('#search').on "click", ->
     $('.search').addClass 'active'

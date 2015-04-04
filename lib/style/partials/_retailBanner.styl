@@ -1,6 +1,7 @@
 h1.lined
 	color #383838
 	font-size 40px
+	line-height 42px
 	font-weight 300
 	position relative
 	text-align center
@@ -10,7 +11,7 @@ h1.lined
 		left 50%
 		margin-left -35px
 		position absolute
-		top 50px
+		bottom -15px
 		height 1px
 		width 70px
 .bannerOne
@@ -90,7 +91,11 @@ h1.lined
 				text-align center
 
 	.col.width-60
-		padding 150px 0 130px
+		@media (min-width: 480px)
+			padding 150px 0 130px
+		@media (max-width: 480px)
+			padding 30px 0
+
 		h1
 			font-size 50px
 			margin-top 25px

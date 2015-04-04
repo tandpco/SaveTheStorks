@@ -29,6 +29,7 @@ html(lang="en")
 
 
     link(href='assets://css/sts.css', rel='stylesheet')
+    link(href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css', rel='stylesheet')
     // build:css /styles/main.css
     link(href='assets://css/main.css', rel='stylesheet')
     // endbuild
@@ -58,6 +59,9 @@ html(lang="en")
       // Footer
       footer
 
+      script(type='text/javascript', src='assets://js/unslider.js')
+      script(type='text/javascript', src='assets://js/imagesLoaded.js')
+      script(type='text/javascript', src='assets://js/imagefill.js')
       // build:js /scripts/main.js
       script(type="text/javascript").
         var facebookAppId = '{:settings.facebook-app-id}'; 
@@ -67,13 +71,30 @@ html(lang="en")
         $('a#menuToggle').click(function() {
           $(this).find('i').toggleClass('active');
         });
-      <script type="text/javascript">
-      /* <![CDATA[ */
-      var google_conversion_id = 961069200;
-      var google_custom_params = window.google_tag_params;
-      var google_remarketing_only = true;
-      /* ]]> */
-      </script>
+        $('.thumbnail, .avatar').each(function() {
+          $(this).imagefill();
+        });
+        $('.fundraiser-slider').imagesLoaded(function() {
+
+          var slider = $('.fundraiser-slider').unslider({
+            speed: 300,
+            delay: 100000,
+            dots: true,
+            fluid: false
+          });
+
+          $('.slider-nav').on('click', function() {
+            var dir = this.className.split(' ')[1];
+            slider.data('unslider')[dir]();
+          });
+
+        });
+      script(type='text/javascript').
+        /* <![CDATA[ */
+        var google_conversion_id = 961069200;
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+        /* ]]> */
       <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
       </script>
       <noscript>

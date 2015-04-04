@@ -1,0 +1,29 @@
+page:
+  path: /site
+  slug: my-storks
+  name: My Storks - Testimonials
+pattern:
+  -
+    key: authorone
+    format: title
+    name: Author of Quote One
+  -
+    key: authoroneimage
+    format: image
+    name: Photo of Author One
+  -
+    key: quoteone
+    format: html
+    name: Quote One
+  -
+    key: authortwo
+    format: title
+    name: Author of Quote Two
+  -
+    key: authortwoimage
+    format: image
+    name: Photo of Author Two
+  -
+    key: quotetwo
+    format: html
+    name: Quote Two

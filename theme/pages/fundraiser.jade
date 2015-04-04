@@ -33,7 +33,7 @@ theme:template(title="{fundraiser.name}", name="_default", :load=":api(3.0).grou
             div.days Days
     .jumbotron(style='background-image: url({:e.url.link([fundraiser.photo_url])});')
     .container(:load="fundraiser.owner as owner", id="fundraiser")
-      .headline
+      .headline(style='position: relative;')
         //@IF fundraiser.owner.id == :member.id && owner.photos.count == 0 && !owner.facebook
         .portrait.upload: img(src='assets://images/placeholder-upload.png')
         //@ELSEIF fundraiser.owner.id == :member.id && owner.photos.count > 0 && fundraiser.owner.prop.prefer_facebook != 1
@@ -55,6 +55,9 @@ theme:template(title="{fundraiser.name}", name="_default", :load=":api(3.0).grou
           img(src='assets://images/public-profile.png')
         //@ENDIF  
         h1 {fundraiser.name}
+          //@IF fundraiser.owner.id == :member.id
+          a(href='#/my/account/fundraisers/{fundraiser.id}/details', class='manage') Manage Fundraiser
+          //@ENDIF
           .small {fundraiser.owner.name}
       .content.row.columns
         .col.width-35#sidebar

@@ -1,0 +1,53 @@
+page:
+  path: /site
+  slug: subscription-plans
+  name: Coffee Subscription Plans
+pattern:
+  - 
+    key: onetitle
+    format: title
+    name: Subscription Plan One
+  -
+    key: oneimage
+    format: image
+    name: Subscription Plan One Image
+  -
+    key: onesummary
+    format: html
+    name: Subscription Plan One Summary
+  -
+    key: onebutton
+    format: button
+    name: Subscription Plan One Button
+  - 
+    key: twotitle
+    format: title
+    name: Subscription Plan Two (The "Most Popular" Option)
+  -
+    key: twoimage
+    format: image
+    name: Subscription Plan Two Image
+  -
+    key: twosummary
+    format: html
+    name: Subscription Plan Two Summary
+  -
+    key: twobutton
+    format: button
+    name: Subscription Plan Two Button
+  - 
+    key: threetitle
+    format: title
+    name: Subscription Plan Three
+  -
+    key: threeimage
+    format: image
+    name: Subscription Plan Three Image
+  -
+    key: threesummary
+    format: html
+    name: Subscription Plan Three Summary
+  -
+    key: threebutton
+    format: button
+    name: Subscription Plan Three Button
