@@ -1,0 +1,31 @@
+include ../../includes/sidebar
+
+theme:template(title="About", name="_project")
+  content
+    #about(:load=":api(3.0).content(site/about-page) as project")
+      div.banner.uniqueness
+        h1 About&nbsp;
+          strong Save The Storks
+          p.small Building the next wave of the pro-life movement.
+        ul.tabs
+          li(class='aboutLink', data-target='#mission') 
+            a(href="index") Our Mission
+          li(class='aboutLink', data-target='#team') 
+            a(href="ourTeam-test") Our Strategy
+          li(class='active aboutLink', data-target='#story') Our Uniqueness
+          li(class='aboutLink', data-target='#storks') 
+            a(href="whyStorks-test") Our Name
+          li(class='aboutLink', data-target='#staff') 
+            a(href="ourStaff-test") Our Staff
+          li(class='aboutLink', data-target='#faq') 
+            a(href="faq-test") FAQ
+      div.container
+        div.tabs
+          .tab#story
+            {project.content.ourstory}
+          
+      hr
+      +footer
+      +sidebar
+
+

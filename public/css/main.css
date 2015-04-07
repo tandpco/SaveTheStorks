@@ -491,6 +491,9 @@ div.footer .inline-form button.wine:hover,div.footer .inline-form button.wine:ac
 div.footer .inline-form#give .form-group:first-of-type{margin-right:0}
 div.footer .inline-form#give button,div.footer .inline-form#give input{width:135px}
 #about hr{border:0;border-top:1px solid #e3e3e3;margin:0}
+.aboutLink a{text-decoration: none; color: white;}
+.aboutLink.active a{color:black;}
+.aboutLink:hover a{text-decoration: none; color: black;}
 #about div.banner{background-image:url("../images/about-us_banner.png");-webkit-background-size:cover;-moz-background-size:cover;background-size:cover;color:#fff;text-align:center;height:auto;position:relative;}
 @media (min-width: 769px){#about div.banner{margin-bottom:70px;padding:100px 15px 150px}
 }@media (max-width: 768px){#about div.banner{border-bottom:1px solid #e3e3e3;margin-bottom:35px;padding:50px 0 0}
@@ -514,7 +517,7 @@ div.footer .inline-form#give button,div.footer .inline-form#give input{width:135
 }@media (min-width: 769px){#about div.banner ul.tabs li:last-of-type{border-width:1px 1px 0 0}
 }@media (max-width: 768px){#about div.banner ul.tabs li:last-of-type{border-width:1px 0 0 0}
 }#about .container{max-width:925px;}
-#about .container div.tab{-webkit-transition:opacity 0.3s ease;-moz-transition:opacity 0.3s ease;-o-transition:opacity 0.3s ease;-ms-transition:opacity 0.3s ease;transition:opacity 0.3s ease;height:0;overflow:hidden;opacity:0;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";filter:alpha(opacity=0);margin-bottom:0;}
+#about .container div.tab{-webkit-transition:opacity 0.3s ease;-moz-transition:opacity 0.3s ease;-o-transition:opacity 0.3s ease;-ms-transition:opacity 0.3s ease;transition:opacity 0.3s ease;overflow:hidden;opacity:1;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";filter:alpha(opacity=0);margin-bottom:0;}
 #about .container div.tab.in{height:auto;overflow:visible;opacity:1;-ms-filter:none;filter:none;}
 @media (min-width: 769px){#about .container div.tab.in{margin-bottom:70px}
 }@media (max-width: 768px){#about .container div.tab.in{margin-bottom:35px}

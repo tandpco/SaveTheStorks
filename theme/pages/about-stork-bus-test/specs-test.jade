@@ -1,0 +1,38 @@
+include ../../includes/sidebar
+
+theme:template(title="About", name="_project")
+  content
+    #about(:load=":api(3.0).content(site/about-page) as project")
+      div.banner.strategy
+        h1 About&nbsp;
+          strong Save The Storks
+          p.small Building the next wave of the pro-life movement.
+        ul.tabs
+          li(class='aboutLink', data-target='#design') 
+            a(href="index") Stork Bus Design
+          li(class='active aboutLink', data-target='#specs') Stork Bus Specs
+          li(class='aboutLink', data-target='#strat') 
+            a(href="ourStory-test") Stork Bus Strategies
+      div.container
+        div.tabs
+          .tab#strat
+            {project.content.ourteam}
+            .row.team
+              .col.width-33(:load="project.relationships(team,contacts) as contact", :iterate="self")
+                .img: img(src="{contact.photo-url}/x:300/y:300")
+                h1 {contact.name}
+                  p {contact.organizationRole}
+                p {contact.bio}
+          .tab#board
+            {project.content.ourboard}
+            .row.team
+              .col.width-33(:load="project.relationships(board,contacts) as contact", :iterate="self")
+                .img: img(src="{contact.photo-url}/x:300/y:300")
+                h1 {contact.name}
+                  p {contact.organizationRole}
+                p {contact.bio}
+
+      hr
+      +footer
+      +sidebar
+
