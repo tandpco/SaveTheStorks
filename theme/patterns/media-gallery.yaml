@@ -1,0 +1,23 @@
+page:
+  path: /site
+  slug: media-gallery
+  name: Media Gallery
+pattern:
+  -
+    key: graphics
+    format: blocks
+    name: Graphics
+    singular: Shareable Graphic
+    pattern: graphics
+  -
+    key: images
+    format: blocks
+    name: Stork Bus Images
+    singular: Image
+    pattern: images
+  -
+    key: videos
+    format: blocks
+    name: Videos
+    singular: Video
+    pattern: videos

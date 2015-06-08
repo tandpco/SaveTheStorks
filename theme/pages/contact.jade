@@ -18,7 +18,7 @@ theme:template(title="Contact", name="_project")
             | <input type="hidden" name="--failure" value="/contact#form" />
             | <input type="hidden" name="--form" value="contact" />
             | <input type="hidden" name="--success" value="/contact?success=true" />
-            | <input type="hidden" name="--conversation" value="message" />
+            | <input type="hidden" name="--conversation" value="body" />
             div.input-group#individual
               label Your Name*
               .row
@@ -34,7 +34,7 @@ theme:template(title="Contact", name="_project")
                 input(type='text', name='contact[phone]', placeholder='(000) 123 - 4567', class='col width-100')
             div.input-group
               label Message*
-              textarea(name='message', rows='6')
+              textarea(name='body', rows='6')
             button(class='button success' type='submit') Submit Message
           //@ENDIF
         .col.width-40
@@ -66,5 +66,5 @@ theme:template(title="Contact", name="_project")
             h2 Office Address
             address 5373 N Union Blvd, Suite 200
             address Colorado Springs, CO 80918
-      +sidebar
+      theme:embed(file="includes/side-nav")
 

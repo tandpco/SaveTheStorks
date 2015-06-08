@@ -18,6 +18,7 @@ theme:template(title="Donate", name="_landing", :load=":api(3.0).content(site/ch
           | <input type="hidden" name="--form" value="My Storks Church Landing Page" />
           | <input type="hidden" name="--success" value="/mystork-church-landing-page?err=none" />
           | <input type="hidden" name="--conversation" value="message" />
+          input(type='hidden', name='contact[tags]', value='new-signup')
           //@IF :get.err == 'none'
           h1 Thanks for getting in touch!
           //@ELSE

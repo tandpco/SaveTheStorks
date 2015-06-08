@@ -1,14 +1,43 @@
 include ../includes/sidebar
 
-theme:template(title="Our Projects", name="_jumbotron")
+theme:template(title="Our Projects", name="_jumbotron-new")
   content
-    div.cities
-      ul.tabs
-        li(:load=":api(3.0).content(site.completed-projects).relationships(completedprojects) as project", :iterate="self", data-target='\#{project.id}') {project.content.name}
+    .city-bar(style="height: 158px; overflow: hidden;")
+      .loading(style="background-color: #313436; position: absolute; top: 0; bottom: 0; left: 0; right: 0; line-height: 158px; z-index: 6; text-align: center;"): i.fa.fa-spin.fa-spinner
+      .container-fluid.actions-container
+        .city-bar__actions
+          span.arrow.prev.list: i.fa.fa-angle-left
+          span.arrow.next.list: i.fa.fa-angle-right
+          span.arrow.prev.progress.hide: i.fa.fa-angle-left
+          span.arrow.next.progress.hide: i.fa.fa-angle-right
+      .container-fluid
+        .city-bar__nav
+          span.tab-toggle.completed.active(data-target='#completed') Completed
+          span.tab-toggle.progress(data-target='#progress') In Progress
+        .tab.in#completed
+          ul.city-bar__list
+            li(:load=":api(3.0).content(site.completed-projects).relationships(completedprojects) as project", :iterate="self", data-target='\#{project.id}')
+              .thumbnail(style='background-image: url({project.relationships(cityimage,attachments).first.version(,)})', id='project-{project.id}')
+                .overlay
+                p {project.content.name}
+        .tab#progress
+          ul.city-bar__progress
+            li(:load=":api(3.0).content(site.in-progress-projects).relationships(inprogress) as project", :iterate="self", data-target='\#{project.id}')
+                .thumbnail(style='background-image: url({project.relationships(cityimage,attachments).first.version(,)})', id='project-{project.id}')
+                  .overlay
+                  p {project.content.name}
+          //- ul.city-bar__list
+          //-   li(:load=":api(3.0).content(site.completed-projects).relationships(completedprojects) as project", :iterate="self", data-target='\#{project.id}')
+          //-     .thumbnail(style='background-image: url({project.relationships(cityimage,attachments).first.version(,)})')
+          //-       .overlay
+          //-       p {project.content.name}
+
+    //- div.cities
+    //-   ul.tabs
+    //-     li(:load=":api(3.0).content(site.completed-projects).relationships(completedprojects) as project", :iterate="self", data-target='\#{project.id}') {project.content.name}
     div.container.project-tabs: div.tab(:load=":api(3.0).content(site.completed-projects).relationships(completedprojects) as project", :iterate="self", id="{project.id}")
       div.left
-        .map(style='background-image: url({project.relationships(overviewimage,attachments).first.version(500,500)})')
-          img(src='{project.relationships(overviewimage,attachments).first.version(500,500)}')
+        .bus__wrapper: .wrapper__img(style="background-image: url({project.relationships(overviewimage,attachments).first.version(512,288)})")
       div.right
         h1 {project.content.name}
         .group
@@ -24,4 +53,4 @@ theme:template(title="Our Projects", name="_jumbotron")
           h2 Overview
           {project.content.overview}
         a(class='button', href='/project/{project.slug}') Learn More
-    +sidebar
+    theme:embed(file="includes/side-nav")

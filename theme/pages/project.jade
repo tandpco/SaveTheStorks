@@ -48,5 +48,5 @@ theme:template(title="{project.content.name}", name="_project", :load=":api(3.0)
       {project.content.video}
     .overlay
     //@ENDIF
-    +footer
-    +sidebar
+    theme:embed(file="includes/footer")
+    theme:embed(file="includes/side-nav")

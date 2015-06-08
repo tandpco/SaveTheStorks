@@ -10,3 +10,51 @@ pattern:
     singular: Action
     pattern: take-action
     preview: title
+  -
+    key: movementimage
+    format: image
+    name: Join The Movement - Header Image
+  -
+    key: donateimage
+    format: image
+    name: Donate - Header Image
+  -
+    key: advocateimage
+    format: image
+    name: Advocate - Header Image
+  -
+    key: volunteerimage
+    format: image
+    name: Volunteer - Header Image
+  -
+    key: volunteer
+    format: html
+    name: Volunteer - Content
+  -
+    key: volunteerbutton
+    format: button
+    name: Volunteer - Button
+  -
+    key: internimage
+    format: image
+    name: Intern - Header Image
+  -
+    key: intern
+    format: html
+    name: Intern - Content
+  -
+    key: internbutton
+    format: button
+    name: Intern - Button
+  -
+    key: joinimage
+    format: image
+    name: Join Our Team - Header Image
+  -
+    key: join
+    format: html
+    name: Join Our Team - Content
+  -
+    key: joinbutton
+    format: button
+    name: Join Our Team - Button

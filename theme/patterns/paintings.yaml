@@ -1,0 +1,12 @@
+page:
+  path: /site
+  slug: paintings
+  name: Stork Paintings
+pattern:
+  -
+    key: painting
+    format: blocks
+    name: Paintings
+    singular: Painting
+    pattern: painting
+    preview: name

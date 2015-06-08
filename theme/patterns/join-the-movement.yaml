@@ -1,0 +1,33 @@
+page:
+  path: /site
+  slug: join-the-movement
+  name: Join the Movement
+pattern:
+  -
+    key: content
+    format: html
+    name: Content
+  -
+    key: columnoneimg
+    format: image
+    name: Column One Image
+  -
+    key: columnonetxt
+    format: html
+    name: Column One Text
+  -
+    key: columntwoimg
+    format: image
+    name: Column Two Image
+  -
+    key: columntwotxt
+    format: html
+    name: Column Two Text
+  -
+    key: columnthreeimg
+    format: image
+    name: Column Three Image
+  -
+    key: columnthreetxt
+    format: html
+    name: Column Three Text

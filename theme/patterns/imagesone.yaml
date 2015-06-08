@@ -1,0 +1,5 @@
+pattern:
+  -
+    key: image
+    format: image
+    name: Image

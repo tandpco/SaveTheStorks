@@ -1,0 +1,255 @@
+include ../includes/sidebar
+
+theme:template(title="Donate", name="_project")
+  content
+    #donate-new(style="background: none;")
+      .banner
+        h1 Fuel The <strong>Movement</strong>
+          p.small Invest today in the next chapter of the pro-life movement.
+        .form-row
+          input(type='text', value='$25.00', name='amount')
+          a(class='btn btn-green banner-handler') Donate
+      a(href='/stork-paintings').banner-callout
+        i.fa.fa-gift
+        | Check Out Our Special Gifts
+      .container: .donation-options
+        form.option.two
+          .row.columns(style='margin-bottom: 0;')
+            .col.width-75: .info
+              h1 Save a Stork
+              p By partnering with us, your gift can 
+                strong save a mother 
+                | from the grief and heartache of abortion.
+              .row.columns: .gifts
+                label
+                  input(type='radio', name='gift', , value='Declined Gift', checked)
+                  | Decline Gift
+                label
+                  input(type='radio', name='gift', value='Silver Stork Pendant')
+                  | Silver Stork Pendant
+                label
+                  input(type='radio', name='gift', value='Two T-Shirts')
+                  | Two T-Shirts
+            .col.width-25: .pricing
+              .monthly.donation-handler(data-amount='$30', data-frequency='m') $30/
+                small MO
+                .go: i.fa.fa-angle-right
+              .once.donation-handler(data-amount='$360', data-frequency=null) $360/
+                small ONCE
+                .go: i.fa.fa-angle-right
+          .sizing
+            .size(style='display: inline-block; margin-right: 10px;')
+              label Shirt One
+              select
+                option Small
+                option Medium
+                option Large
+                option Extra Large
+                option XXL
+            .size(style='display: inline-block; margin-right: 10px;')
+              label Shirt Two
+              select
+                option Small
+                option Medium
+                option Large
+                option Extra Large
+                option XXL
+        form.option
+          .row.columns(style='margin-bottom: 0;')
+            .col.width-75: .info
+              h1 Save a Bundle
+              p By partnering with us, your gift can 
+                strong save two mothers 
+                | from the grief and heartache of abortion.
+              .row.columns: .gifts
+                label
+                  input(type='radio', name='gift', , value='Declined Gift', checked)
+                  | Decline Gift
+                label
+                  input(type='radio', name='gift', value='Silver Stork Pendant')
+                  | Silver Stork Pendant
+                label
+                  input(type='radio', name='gift', value='Four T-Shirts')
+                  | Four T-Shirts
+            .col.width-25: .pricing
+              .monthly.donation-handler(data-amount='$60', data-frequency='m') $60/
+                small MO
+                .go: i.fa.fa-angle-right
+              .once.donation-handler(data-amount='$750', data-frequency=null) $750/
+                small ONCE
+                .go: i.fa.fa-angle-right
+          .sizing
+            .size(style='display: inline-block; margin-right: 10px;')
+              label Shirt One
+              select
+                option Small
+                option Medium
+                option Large
+                option Extra Large
+                option XXL
+            .size(style='display: inline-block; margin-right: 10px;')
+              label Shirt Two
+              select
+                option Small
+                option Medium
+                option Large
+                option Extra Large
+                option XXL
+            .size(style='display: inline-block; margin-right: 10px;')
+              label Shirt Three
+              select
+                option Small
+                option Medium
+                option Large
+                option Extra Large
+                option XXL
+            .size(style='display: inline-block;')
+              label Shirt Four
+              select
+                option Small
+                option Medium
+                option Large
+                option Extra Large
+                option XXL
+        form.option
+          .row.columns(style='margin-bottom: 0;')
+            .col.width-75: .info
+              h1 Be a Superhero
+              p By partnering with us, your gift can 
+                strong save five mothers 
+                | from the grief and heartache of abortion.
+              .row.columns: .gifts
+                label
+                  input(type='radio', name='gift', , value='Declined Gift', checked)
+                  | Decline Gift
+                label
+                  input(type='radio', name='gift', value='Silver Stork Pendant')
+                  | Silver Stork Pendant
+                label
+                  input(type='radio', name='gift', value='Four T-Shirts')
+                  | Four T-Shirts
+            .col.width-25: .pricing
+              .monthly.donation-handler(data-amount='$150', data-frequency='m') $150/
+                small MO
+                .go: i.fa.fa-angle-right
+              .once.donation-handler(data-amount='$1800', data-frequency=null) $1800/
+                small ONCE
+                .go: i.fa.fa-angle-right
+          .sizing
+            .size(style='display: inline-block; margin-right: 10px;')
+              label Shirt One
+              select
+                option Small
+                option Medium
+                option Large
+                option Extra Large
+                option XXL
+            .size(style='display: inline-block; margin-right: 10px;')
+              label Shirt Two
+              select
+                option Small
+                option Medium
+                option Large
+                option Extra Large
+                option XXL
+            .size(style='display: inline-block; margin-right: 10px;')
+              label Shirt Three
+              select
+                option Small
+                option Medium
+                option Large
+                option Extra Large
+                option XXL
+            .size(style='display: inline-block;')
+              label Shirt Four
+              select
+                option Small
+                option Medium
+                option Large
+                option Extra Large
+                option XXL
+        form.option
+          .row.columns(style='margin-bottom: 0;')
+            .col.width-75: .info
+              h1 Save a Flock
+              p By partnering with us, your gift can 
+                strong save twelve mothers 
+                | from the grief and heartache of abortion.
+              .row.columns: .gifts
+                label
+                  input(type='radio', name='gift', , value='Declined Gift', checked)
+                  | Decline Gift
+                label
+                  input(type='radio', name='gift', value='Silver Stork Pendant')
+                  | Silver Stork Pendant
+                label
+                  input(type='radio', name='gift', value='Four T-Shirts')
+                  | Four T-Shirts
+            .col.width-25: .pricing
+              .monthly.donation-handler(data-amount='$360', data-frequency='m') $360/
+                small MO
+                .go: i.fa.fa-angle-right
+              .once.donation-handler(data-amount='$4200', data-frequency=null) $4200/
+                small ONCE
+                .go: i.fa.fa-angle-right
+          .sizing
+            .size(style='display: inline-block; margin-right: 10px;')
+              label Shirt One
+              select
+                option Small
+                option Medium
+                option Large
+                option Extra Large
+                option XXL
+            .size(style='display: inline-block; margin-right: 10px;')
+              label Shirt Two
+              select
+                option Small
+                option Medium
+                option Large
+                option Extra Large
+                option XXL
+            .size(style='display: inline-block; margin-right: 10px;')
+              label Shirt Three
+              select
+                option Small
+                option Medium
+                option Large
+                option Extra Large
+                option XXL
+            .size(style='display: inline-block;')
+              label Shirt Four
+              select
+                option Small
+                option Medium
+                option Large
+                option Extra Large
+                option XXL
+        span.span-or Or
+        .donation-widget
+          .header Donate Any Amount
+          .body: .row.columns
+            .col.width-40
+              label: small Select an Amount
+              .row.columns.small(style='margin-left: -5px; margin-right: -5px;')
+                .col.width-25(style='padding-left: 5px; padding-right: 5px;'): span.amount(data-amount='50') $50
+                .col.width-25(style='padding-left: 5px; padding-right: 5px;'): span.amount(data-amount='100').active $100
+                .col.width-25(style='padding-left: 5px; padding-right: 5px;'): span.amount(data-amount='250') $250
+                .col.width-25(style='padding-left: 5px; padding-right: 5px;'): span.amount(data-amount='500') $500
+            .col.width-20
+              label: small Or Enter an Amount
+              .don-amount
+                span $
+                input(type='text')
+            .col.width-20
+              label: small Frequency
+              .don-frequency
+                span: i.fa.fa-angle-down
+                select
+                  option(value=null) One-Time
+                  option(value='m') Monthly
+            .col.width-20
+              label: small &nbsp;
+              a(class='btn btn-green custom-amount-handler') Donate
+
+      theme:embed(file="includes/side-nav")

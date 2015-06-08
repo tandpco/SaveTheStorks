@@ -1,0 +1,37 @@
+.sideMenu: .content    
+  span.close &nbsp;
+  a(href='#/my/portal', id='account'): div.myAccount
+    span.icon-account
+    | My Account
+  ul.main-nav
+    li: a(href='/') Home
+    li: a(href='/about-us') About Us
+    //- li: a(href='/our-approach') Our Approach
+    li: a(href='/stork-bus') What is a Stork Bus?
+    li: a(href='/our-projects') Our Projects
+    li: a(href='/affiliate-support') Affiliate Support
+    li: a(href='/join-the-movement') Join The Movement
+    li: a(href='/my-storks') Start a Fundraiser
+    li: a(href='http://www.storkcoffee.com', target="_blank") Stork Coffee
+    li: a(href='/stork-works') StorkWorks Consulting
+    li: a(href='/blog') Blog
+    li: a(href='/gallery') Gallery
+    li: a(href='/stork-paintings') Gift Options
+    li: a(href='http://store.savethestorks.com') Stork Store
+
+  div.buttons
+    a(href='/donate-now', id='donate') Donate Now
+    a(href='/join-the-movement', id='join') Join Now
+  ul.sub-nav
+    li: a(href='/contact') Contact
+    //- li: a(href='#') Jobs
+    li: a(href='#') Privacy Policy
+  div.social
+    a(href='{:settings.facebook-page}'): span.icon.facebook
+      i.icon-facebook
+    a(href='https://twitter.com/{:settings.social-twitter}'): span.icon.twitter
+      i.icon-twitter
+    a(href='http://www.pinterest.com/{:settings.social-pinterest}'): span.icon.pinterest
+      i.icon-pinterest
+    a(href='http://instagram.com/{:settings.social-instagram}'): span.icon.instagram
+      i.icon-instagramm

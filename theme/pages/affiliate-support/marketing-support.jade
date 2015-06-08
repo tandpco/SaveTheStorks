@@ -1,0 +1,33 @@
+include ../../includes/sidebar
+
+theme:template(title="StorkWorks", name="_project")
+  content
+    .consulting(:load=":api(3.0).content(site.affiliate) as marketing")
+      .banner(style="background-image: url('{marketing.relationships(marketingimage,attachments).first.version(,)}')")
+        h1
+          strong Affiliate Support
+          p.small(style="color: #FFF;") Save the Storks works tirelessly to support pregnancy<br>centers so they can go mobile.
+        .tabs
+          a(href='/affiliate-support') Overcoming Roadblocks
+          a(href='/affiliate-support/grant-support') Grant Support
+          a(href='/affiliate-support/mobile-consultation') Mobile Consultation
+          a(href='/affiliate-support/marketing-support', class='active') Marketing Support
+      .container.thin
+        {marketing.content.marketingcontent}
+      //- .consulting-footer: .container
+        h1 Why Choose StorkWorks Consulting?
+        .row.columns
+          .col.width-33
+            .img: img(src='assets://images/works-one.png')
+            h2 A Biblical Base
+            p StorkWorks follows Biblical principles in its consulting and planning. We use scripture as our foundation and we trust in God for guidance. We pray for God’s insight and inspiration before, during, and after the process is over. 
+          .col.width-33.middle
+            .img: img(src='assets://images/works-two.png')
+            h2 A Proven Process
+            p The Organizational GPS System&trade; used by StorkWorks Consulting is a proven process with a legacy of success. It has helped countless organizations increase their organizational effectiveness and amplify their reach and impact. 
+          .col.width-33
+            .img: img(src='assets://images/works-three.png')
+            h2 Exceptional Expertise
+            p StorkWorks’ process is an industrial-strength tool, and it must be operated by a skillful operator. That’s why StorkWorks’ consultants have educational credentials and years of experience in organizational leadership. They know their stuff. 
+      theme:embed(file="includes/side-nav") 
+

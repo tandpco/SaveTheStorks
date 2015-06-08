@@ -15,10 +15,18 @@ html(lang="en")
     
     link(rel="shortcut icon", href="assets://favicon.ico", type="image/x-icon")
     link(rel="icon", href="assets://favicon.ico", type="image/x-icon")
-
     // endbuild
     script(src='assets://js/build.js')
     script(src='assets://js/main.js')
+
+    script(type='text/javascript').
+     document.createElement("header");
+     document.createElement("nav");
+     document.createElement("article");
+     document.createElement("section");
+     document.createElement("footer");
+
+    |<!--[if lt IE 9]><script type='text/javascript' src='//rainmakerapp.s3.amazonaws.com/storks/js/html5.shim.js'></script><![endif]-->
 
     script(:ignore="true").
        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
@@ -26,10 +34,10 @@ html(lang="en")
         ga('create', 'UA-36727207-1', 'auto');
         ga('send', 'pageview');
 
-    link(href='assets://css/sts.css', rel='stylesheet')
     // build:css /styles/main.css
     link(href='assets://css/main.css', rel='stylesheet')
     // endbuild
+    link(href='assets://css/sts.css', rel='stylesheet')
     -var page = 'home'
 
     |<:ssl:on />
@@ -40,6 +48,7 @@ html(lang="en")
     script.
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-52FC6K');
     div#wrapper: div#canvas
+      |<!--[if lt IE 9]><div class="outdated-browser"><div class="pane"><p>Our site experience is not optimized to serve your current internet browser. We recommend you update your browser before continuing.</p><a href="#" class="close" onclick="this.parentNode.parentNode.style.display = 'none';">Continue Anyways</a></div></div><![endif]-->
       header(:load=":api(3.0).groups({:url.2}) as fundraiser", id="home"): .container
         //- @TODO: Save the Storks Logo Here\
         .nav
@@ -52,15 +61,16 @@ html(lang="en")
           h1 The Best Way To<br>Serve Mothers And<br>Save Babies
             small A tangible way to make an eternal difference.
 
-          p.byline Join 
-            strong 63,811
+          p.byline(:load=":api(3.0).content(site/home-numbers) as numbers") Join 
+            strong {numbers.content.supporters}
             |&nbsp;others committed to life!
           form(class='inline-form' action='/api/3.0/contacts/', method='post')
             input(type='hidden', name='type', value='individual')
-            input(type='hidden', name='--success', value='/take-action?thanks=true')
+            input(type='hidden', name='--success', value='/join-the-movement?thanks=true')
             input(type='hidden', name='--failure', value='/my-storks/sign-up?step=1')
             input(type='hidden', name='--namespace', value='signUp')
             input(type='hidden', name='--login', value='true')
+            //- input(type='hidden', name='tags', value='new-signup')
             |<:module slug="messages-display" namespace="signUp" />
             .form-group
               input(type='text', name='firstName', placeholder='First Name')
@@ -68,10 +78,10 @@ html(lang="en")
               input(type='text', name='email', placeholder='Email Address (We promise never to spam you!)', id='email')
             .form-group
               button(type='submit', class='button success') Join Now!
-          .video__floating#video
+          .video__floating#video(:load=":api(3.0).content(site/floating-video) as video")
             span.unique
               .playIcon
-              p Watch a short video about the heart of our ministry
+              p {video.content.text}
             
       //- block content
       | <:jolt placeholder="content" />
@@ -88,13 +98,12 @@ html(lang="en")
         $('a#menuToggle').click(function() {
           $(this).find('i').toggleClass('active');
         });
-      <script type="text/javascript">
-      /* <![CDATA[ */
-      var google_conversion_id = 961069200;
-      var google_custom_params = window.google_tag_params;
-      var google_remarketing_only = true;
-      /* ]]> */
-      </script>
+      script.
+        /* <![CDATA[ */
+        var google_conversion_id = 961069200;
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+        /* ]]> */
       <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
       </script>
       <noscript>

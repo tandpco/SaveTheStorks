@@ -1,0 +1,71 @@
+page:
+  path: /site
+  slug: affiliate
+  name: Affiliate Support
+pattern:
+  -
+    key: roadblocksimage
+    format: image
+    name: Overcoming Roadblocks - Header Image
+  -
+    key: intro
+    format: html
+    name: Overcoming Roadblocks - Intro Content
+  -
+    key: roadblockscontent
+    format: blocks
+    singular: List Item
+    name: Overcoming Roadblocks - Content
+    pattern: roadblock
+  -
+    key: outro
+    format: html
+    name: Overcoming Roadblocks - Content After List
+  -
+    key: grantimage
+    format: image
+    name: Grant Support - Header Image
+  - 
+    key: grantcontent
+    format: html
+    name: Grant Support - Content
+  -
+    key: mobileimage
+    format: image
+    name: Mobile Consultation - Header Image
+  -
+    key: mobilecontent
+    format: html
+    name: Mobile Consultation - Content
+  -
+    key: marketingimage
+    format: image
+    name: Marketing Support - Header Image
+  -
+    key: marketingcontent
+    format: html
+    name: Marketing Support - Content
+  -
+    key: columnoneimg
+    format: image
+    name: Footer Column One Image
+  -
+    key: columnonetext
+    format: html
+    name: Footer Column One Text
+  -
+    key: columntwoimg
+    format: image
+    name: Footer Column Two Image
+  -
+    key: columntwotext
+    format: html
+    name: Footer Column Two Text
+  -
+    key: columnthreeimg
+    format: image
+    name: Footer Column Three Image
+  -
+    key: columnthreetext
+    format: html
+    name: Footer Column Three Text

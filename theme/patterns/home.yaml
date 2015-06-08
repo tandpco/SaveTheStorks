@@ -1,0 +1,10 @@
+page:
+  path: /site
+  slug: home-content
+  name: Home Page Content
+pattern:
+  -
+    key: video
+    format: html
+    name: Why Mobile Medical Units Video
+    description: 'Enter the shareable embed code for the video you want to put in this section.'

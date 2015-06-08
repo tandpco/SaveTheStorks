@@ -1,4 +1,41 @@
-//- This is the footer block
-.footer
-  hr
-  p this is the footer
+div.footer: div.row(:load=":api(3.0).content(site/home-numbers) as numbers")
+  h1 HOW YOU CAN HELP SERVE MOTHERS AND SAVE BABIES
+  div.col.width-33
+    span.rounded 
+      i.icon-pledge
+    h1 Join
+      p Join {numbers.content.supporters} others in your <br> commitment to life.
+    form(class='inline-form col width-90 push-1' action='/api/3.0/contacts/', method='post')
+      input(type='hidden', name='type', value='individual')
+      input(type='hidden', name='--success', value='/join-the-movement?thanks=welcome')
+      input(type='hidden', name='--failure', value='/join-the-movement')
+      input(type='hidden', name='--namespace', value='signUp')
+      input(type='hidden', name='--login', value='true')
+      input(type='hidden', name='tags', value='new-signup')
+      .col.width-100
+        input(type='text', name='email', placeholder='Email Address', style='margin-bottom: 15px;')
+      .col.width-50
+        input(type='text', name='firstName', placeholder='First Name')
+      .col.width-50
+        button(class='success', type='submit') Join
+  div.col.width-33.center
+    span.rounded 
+      i.icon-megaphone
+    h1 Act
+      p Find your unique place <br> in the pro-life movement.
+    a(class='button blue', href='/join-the-movement') Take Action 
+  div.col.width-33
+    span.rounded(style='line-height: 80px;')
+      i.icon-heart
+    h1 Give
+      p Your gift is the only <br> way to grow this movement.
+    .row.columns.inline-form#give
+      .form-group
+        span.cash
+          input(type='text', placeholder='Enter Amount', name='donationAmount')
+          i $
+      .form-group
+        form(action='donate', class='rain')
+          input(type='hidden', name='amount', value='50')
+          input(type='hidden', name='group', value='{fundraiser.id}')
+          button(type='submit', class='wine') Donate

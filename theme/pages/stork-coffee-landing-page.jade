@@ -18,6 +18,7 @@ theme:template(title="Donate", name="_landing", :load=":api(3.0).content(site/co
           | <input type="hidden" name="--form" value="Stork Coffee Landing Page" />
           | <input type="hidden" name="--success" value="/stork-coffee-landing-page?err=none" />
           | <input type="hidden" name="--conversation" value="message" />
+          input(type='hidden', name='contact[tags]', value='new-signup')
           //@IF :get.err == 'none'
           h1 Thanks for getting in touch!
           //@ELSE

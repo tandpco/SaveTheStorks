@@ -1,0 +1,13 @@
+page:
+  path: /site
+  slug: floating-video
+  name: Floating Video Banner
+pattern:
+  -
+    key: text
+    format: text
+    name: Floating Banner Text
+  - 
+    key: video
+    format: html
+    name: Floating Banner Video

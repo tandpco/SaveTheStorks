@@ -1,0 +1,90 @@
+include ../../includes/sidebar
+
+theme:template(title="Home", name="_project", :load=":api(3.0).projects(249) as project")
+  content
+    .bannerOne(:load=":api(3.0).contacts(me).facebook() as user"): .container-fluid: .columns.row
+      .col.width-30
+        .pledgePane
+          h1 Pledge To Save Lives!
+          .link
+            //@IF user.facebook
+            a(class='button facebook-pledge disabled' onclick='return false;') Pledge Via Facebook
+            //@ELSE
+            a(class='button facebook-pledge' href='#' rel="facebook-login") Pledge Via Facebook
+            //ENDIF
+          form#facebook-connect-form
+            input(type='hidden', id='facebook-id')
+            input(type='hidden', id='facebook-access-token')
+          p.lined or
+          form(action='/api/3.0/contacts/', method='post')
+            input(type='hidden', name='type', value='individual')
+            input(type='hidden', name='--success', value='/my-storks/sign-up?step=2')
+            input(type='hidden', name='--failure', value='/my-storks/sign-up?step=1')
+            input(type='hidden', name='--namespace', value='pledge')
+            input(type='hidden', name='--login', value='true')
+            |<:module slug="messages-display" namespace="pledge" />
+            input(type='text', name='firstName', placeholder='First Name')
+            input(type='text', name='lastName', placeholder='Last Name')
+            input(type='text', name='email', placeholder='Email Address')
+            input(type='hidden', name='tags', value='new-signup')
+            button(class='button' type='submit') Pledge Via Email
+            small (We promise never to spam you!)
+      .col.push-2.width-60
+        h1 The Distance Between <br> Dreams and Reality <br> Is Action
+          p.small Take action to save life today! 
+    .bannerTwo: .container-fluid: .columns.row
+      h1(class='lined') How It Works
+      .col.push-2.width-20
+        h1
+          i.icon-pledge
+          br
+          |Make A Pledge
+        p Your personal commitment to the movement is critical.
+      .col.width-20
+        h1
+          i.icon-trophy-home
+          br
+          |Set A Goal
+        p Motivate your friends and supporters with a specific goal.
+      .col.width-20
+        h1
+          i.icon-chat-home
+          br
+          |Start Fundraising
+        p Start promoting your fundraising campaign to friends.
+      .col.width-20
+        h1 
+          i.icon-balloons
+          br
+          |Celebrate Life
+        p You’re making a difference. Don’t forget to celebrate!
+    .sectionThree: .container-fluid
+      h1(class='lined') Why Mobile Medical Units?
+      p A mobile unit gives you the ability to educate, love, and support the women <br> you encounter in your community. Many women in crisis pregnancy situations are often unaware of <br> the services provided by pregnancy resource centers.
+      |<iframe width="500" height="281" src="//www.youtube.com/embed/pPd3MkDxRr4" frameborder="0" allowfullscreen="1"></iframe>
+      .columns.row
+        .col.width-50
+          a(class='button twitter pull-right', rel='twitter-share', data-link='https://www.youtube.com/watch?v=pPd3MkDxRr4', data-message='This is a test.')
+            i.icon-twitter
+            | Tweet
+        .col.width-50
+          a(class='button facebook pull-left', rel='facebook-share', data-link='https://www.youtube.com/watch?v=pPd3MkDxRr4', data-message='This is a test.')
+            i.icon-facebook
+            | Share
+      p.callout(style='background-color: transparent;')
+        strong 372
+        |&nbsp;people have already started fundraisers.
+      .columns.row
+        .col.push-2 &nbsp;
+        .col.width-20(:load=":api(3.0).content(site.featured-fundraisers).relationships(featured_fundraisers,content) as fundraiser", :iterate="self"): .pane
+          //- TODO: Decide on iteration for this, by tag etc
+          div.mainImage(style="background-image: url({fundraiser.relationships(image,attachments).first.version(300,300)})")
+          div.header
+            h4 {fundraiser.content.title}
+              p.small by {fundraiser.content.author}
+          div.body
+            {fundraiser.content.body}
+      p.shoutout Join the movement to bring practical life-saving <br> solutions to mothers and babies in crisis.
+      a(href="/my-storks/sign-up?step=1" class="button success") Start A Fundraiser
+
+    theme:embed(file="includes/side-nav")

@@ -1,0 +1,334 @@
+/*
+ * Font
+ */
+@font-face
+  font-family 'cause'
+  src url('../font/cause.eot?82532248')
+  src url('../font/cause.eot?82532248#iefix') format('embedded-opentype'),
+      url('../font/cause.woff?82532248') format('woff'),
+      url('../font/cause.ttf?82532248') format('truetype'),
+      url('../font/cause.svg?82532248#cause') format('svg')
+  font-weight normal
+  font-style normal
+
+[class^="icon-"]:before, [class*=" icon-"]:before
+  font-family "cause"
+  font-style normal
+  font-weight normal
+  speak none
+  display inline-block
+  text-decoration inherit
+  width 1em
+  margin-right .2em
+  text-align center
+  font-variant normal
+  text-transform none
+  line-height 1em
+  margin-left .2em
+.icon-logo
+  &:before
+    content '\e800'
+.icon-mail
+  &:before
+    content '\e801'
+.icon-phone
+  &:before
+    content '\e802'
+.icon-sms
+  &:before
+    content '\e803'
+/*
+ * Color Assignments
+ */
+$border = #E1E1E1
+$body   = #F9F9FB
+$tabs   = #949A9F
+$gray   = #3F3F3F
+$green  = #59C77F
+$white  = #FFFFFF
+/*
+ * Input Placeholder Mixin
+ */
+placeholder()
+  &::-webkit-input-placeholder
+    {block}
+  &:-moz-placeholder
+    {block}
+  &::-moz-placeholder
+    {block}
+  &:-ms-input-placeholder
+    {block}
+        
+.support-module-preview
+  background-image url('../images/dummy/support-background.png')
+  background-position top center
+  background-size cover
+.support-wrapper
+  bottom 30px
+  position fixed
+  right 30px
+  .posting-overlay
+    background-color $white
+    bottom 0
+    // left 0
+    opacity 0
+    position absolute
+    right -100%
+    top -15px
+    transition opacity 300ms ease, top 300ms ease
+    .content
+      bottom 0
+      color #3B3B3B
+      display table
+      float none
+      left 0
+      margin auto
+      padding 0
+      position absolute
+      right 0
+      text-align center
+      top 0
+      vertical-align middle
+      width 100%
+      // Style Thank You
+      h1
+        font-variant small-caps
+        font-weight 100
+        margin-bottom 5px
+        margin-top 0
+      p
+        font-size 14px
+        font-weight 100
+        letter-spacing 0.05em
+        margin-bottom 0
+        margin-top 0
+  .help
+    background-color $green
+    border-radius 46px
+    border 0
+    color $white
+    cursor: pointer
+    display inline-block
+    font-size 12px
+    font-weight 600
+    height auto
+    letter-spacing 0.1em
+    line-height 46px
+    max-height 46px
+    padding 0 20px
+    position relative
+    transition opacity 300ms ease
+    width auto
+    z-index 2
+    i
+      font-size 26px
+      left -4px
+      line-height 0
+      margin-right -6px
+      position relative
+      top 6px
+  .close
+    background-color $border
+    border 0
+    border-radius 46px
+    color #FFF
+    cursor: pointer
+    height auto
+    line-height 46px
+    position absolute
+    right 0
+    top 0
+    width 46px
+    z-index 1
+    span
+      display inline-block
+      height 15px
+      overflow hidden
+      position relative
+      vertical-align middle
+      width 15px
+      &:before, &:after
+        content: ''
+        position: absolute
+        height: 2px
+        width: 100%
+        top: 50%
+        left: 0
+        margin-top: -3px
+        background: $white
+      &:after
+        transform rotate(-45deg)
+      &:before
+        transform rotate(45deg)
+  .form
+    opacity 0
+    position absolute
+    right -150%
+    top -15px
+    transition opacity 300ms ease, top 300ms ease
+    &.active
+      right 0
+      opacity 1
+      position relative
+      top 0
+  .support-module
+    background-color $white
+    border 1px solid $border
+    border-radius 2px
+    bottom 75px
+    box-shadow 0 0 145px rgba(black, 0.3)
+    opacity 0
+    position absolute
+    right -1000%
+    transition bottom 300ms ease, opacity 300ms ease
+    width 325px
+    &:after, &:before
+      top 100%
+      right 25px
+      border solid transparent
+      content " "
+      height 0
+      width 0
+      position absolute
+      pointer-events none
+    &:after
+      border-color transparent
+      border-top-color $body
+      border-width 13px
+      right 10px
+      // margin-left -16px
+    &:before
+      border-color transparent
+      border-top-color $border
+      border-width 15px
+      right 8px
+    &.posting
+      .posting-overlay
+        left 0
+        right 0
+        opacity 1
+        top 0
+      .form.active
+        opacity 0
+        top 15px
+    .support-module__header
+      border-bottom 1px solid $border
+      padding 20px 40px 0
+      text-align center
+      .title
+        color $gray
+        font-size 18px
+        font-weight 400
+        margin-bottom 15px
+      .navigation
+        color $tabs
+        list-style none
+        margin 0
+        padding 0
+        position relative
+        top 1px
+        clearfix()
+        li
+          display inline-block
+          float left
+          font-size 12px
+          font-weight 100
+          letter-spacing 0.1em
+          width calc(100% / 3)
+          a
+            border-bottom 1px solid $border
+            color inherit
+            display inline-block
+            padding 0 0 10px
+            text-decoration none
+            transition all 300ms ease
+            &.active
+              border-bottom 1px solid $green
+              cursor: initial
+              &:hover
+                border-bottom 1px solid $green
+            &:hover
+              border-bottom 1px solid darken($border, 25%)
+            .icon-email
+              font-size 11px
+              left -4px
+              position relative
+    .support-module__form
+      background-color $body
+      padding 20px
+      .form-group
+        background-color $white
+        border 1px solid $border
+        border-radius 2px
+        margin 0 0 10px
+        padding 10px
+        clearfix()
+        label
+          color $gray
+          font-size 10px
+          font-weight 600
+          letter-spacing 0.1em
+          margin-bottom 10px
+        input, textarea
+          border 0
+          height auto
+          outline 0
+          padding 0
+          resize none
+          vertical-align middle
+          +placeholder()
+            font-size 12px
+            font-weight 100
+        .group-column
+          float left
+          width 50%
+          &.left
+            border-right 1px solid #A6A6A6
+            input
+              padding 0 10px 0 0
+          &.right
+            input
+              padding 0 0 0 10px
+      .support-module__footer
+        line-height 32px
+        clearfix()
+        .column
+          float left
+          width 50%
+        .cause-chat
+          color #D9D9D9
+          cursor: pointer
+          display inline
+          font-size 10px
+          letter-spacing 0.15em
+          transition color 300ms ease
+          &:hover
+            color $green
+          i
+            font-size 16px
+            position relative
+            top 2px
+        button
+          background-color $green
+          border 0
+          border-radius 2px
+          color $white
+          cursor: pointer
+          display inline-block
+          float right
+          font-size 12px
+          height auto
+          letter-spacing 0.175em
+          line-height inherit
+          transition background-color 300ms ease
+          padding 0 15px
+          width auto
+          &:hover
+            background-color darken($green, 15%)
+.support-wrapper.active
+  .support-module
+    bottom 70px
+    opacity 1
+    right 0
+  .help
+    background-color $border

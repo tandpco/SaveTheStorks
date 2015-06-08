@@ -1,0 +1,218 @@
+include ../includes/sidebar
+
+theme:template(title="{fundraiser.name}", name="_default", :load=":api(3.0).groups({:url.2}) as fundraiser")
+  require-init(:eval=":url.2|cleanslug")
+  not-found Oops. The url for this page wasn"t structured properly.
+  require(:eval="fundraiser.id")
+  not-found
+    .container
+      h3
+        | The project you are accessing could not be found. Please verify the url you used is valid.
+      p
+        code {req.link}
+  content
+    .funding-bar: .container: .row.columns
+        .col.width-45
+          .pull-left
+            |{fundraiser.progress.money|money}&nbsp;
+            small Raised Already
+          .pull-right.small
+            |{fundraiser.target|money}
+          div.progress: .progress-bar(style='width:{fundraiser.progress.percent}; min-width: 1%;')
+        .col.push-1.width-20
+          a.button(href='#/my/donate?group={fundraiser.id}') Donate Now
+        .col.push-1.width-25: .pull-right: .counter
+          span.letterBox Ends:
+          span.one
+            span.numberBox {fundraiser.timestamp.until.countdown.week|lpad(2,0)|substr(0,1)}
+            span.numberBox.split {fundraiser.timestamp.until.countdown.week|lpad(2,0)|substr(1,1)}
+            div.weeks Weeks
+          span.two
+            span.numberBox {fundraiser.timestamp.until.countdown.day|lpad(2,0)|substr(0,1)}
+            span.numberBox {fundraiser.timestamp.until.countdown.day|lpad(2,0)|substr(1,1)}
+            div.days Days
+    .jumbotron(style='background-image: url({:e.url.link([fundraiser.photo_url])});')
+    .container(:load="fundraiser.owner as owner", id="fundraiser")
+      .headline(style='position: relative;')
+        //@IF owner.id == :member.id
+        div
+          //@IF owner.photos.count <= 0 && !owner.facebook
+          .portrait.owner.upload: img(src='assets://images/placeholder-upload.png')
+          //@ELSEIF owner.photos.count >= 1 && fundraiser.owner.prop.prefer_facebook != 1
+          .portrait.owner.upload: img(src='{:e.url.link([owner.photo_url])}')
+          //@ELSEIF owner.facebook
+          .portrait.owner.upload: img(src='//graph.facebook.com/{owner.facebook.userID}/picture?type=large&width=300&height=300')
+          //@ENDIF
+        //@ELSEIF owner.id != :member.id
+        div
+          //@IF owner.photos.count <= 0 && !owner.facebook
+          .portrait: img(src='assets://images/public-profile.png')
+          //@ELSEIF owner.photos.count >= 1 && owner.prop.prefer_facebook != 1
+          .portrait: img(src='{:e.url.link([owner.photo_url])}')
+          //@ELSEIF owner.facebook
+          .portrait: img(src='//graph.facebook.com/{owner.facebook.userID}/picture?type=large&width=300&height=300')
+          //@ENDIF
+        //@ENDIF  
+        h1 {fundraiser.name}
+          //@IF owner.id == :member.id
+          a(href='#/my/account/fundraisers/{fundraiser.id}/details', class='manage') Manage Fundraiser
+          //@ENDIF
+          .small {fundraiser.owner.name}
+      .content.row.columns
+        .col.width-35#sidebar
+          .panel
+            //@IF fundraiser.prop.recurring == 'true'
+            form(action='donate', class='custom-rain')
+              h4
+                i.icon-currency
+                |&nbsp;Support This Campaign
+              hr
+              .row.columns
+                .col.width-100
+                  p(style="margin-top: 0;") I pledge...
+                  span.cash
+                    input(type='text', name='amount', value='30.00', disabled='disabled')
+                    i $
+                    p(style="position: absolute; color: #424242; right: 15px; top: 0; margin: 0;") / monthly
+                  input(type='hidden', name='group', value='{fundraiser.id}')
+                  input(type='hidden', name='recurring', value='m')
+                .col.width-50(style="text-align: center;")
+                  small(style="text-transform: uppercase; line-height: 42px; font-size: 12px; cursor: pointer; text-decoration: underline;", id="custom") Custom Amount
+                .col.width-50(style="text-align: center;")
+                  small(style="text-transform: uppercase; line-height: 42px; font-size: 12px; cursor: pointer; text-decoration: underline;", id="once") One Time
+              button(type='submit', class='button') Donate
+            form(action='donate', class='rain hide')
+              h4
+                i.icon-currency
+                |&nbsp;Support This Campaigns
+              hr
+              .row.columns
+                .col.width-25
+                  span.numberBox(data-value='25') $25
+                .col.width-25
+                  span.numberBox(data-value='50', class='active') $50
+                .col.width-25
+                  span.numberBox(data-value='100') $100
+                .col.width-25
+                  span.numberBox(data-value='250') $250
+              .row.columns
+                .col.width-50
+                  span.cash
+                    input(type='text', placeholder='Enter Amount', name='donationAmount')
+                    i $
+                .col.width-50
+                  input(type='hidden', name='amount', value='50')
+                  input(type='hidden', name='group', value='{fundraiser.id}')
+                  button(type='submit', class='button') Donate
+              .row.columns
+                .col.width-100.donation-frequency: small(style='text-transform: uppercase; cursor: pointer;' id="back")
+                  |&#8592; Monthly Donation
+            //@ELSE
+            form(action='donate', class='rain')
+              h4
+                i.icon-currency
+                |&nbsp;Support This Campaign
+              hr
+              .row.columns
+                .col.width-25
+                  span.numberBox(data-value='25') $25
+                .col.width-25
+                  span.numberBox(data-value='50', class='active') $50
+                .col.width-25
+                  span.numberBox(data-value='100') $100
+                .col.width-25
+                  span.numberBox(data-value='250') $250
+              .row.columns
+                .col.width-50
+                  span.cash
+                    input(type='text', placeholder='Enter Amount', name='donationAmount')
+                    i $
+                .col.width-50
+                  input(type='hidden', name='amount', value='50')
+                  input(type='hidden', name='group', value='{fundraiser.id}')
+                  button(type='submit', class='button') Donate
+              .row.columns
+                .col.width-100.donation-frequency: small
+                  input(type='checkbox', value='m', name='recurring', id='monthly')
+                  label(for='monthly') Monthly donation
+            //@ENDIF
+          .didYouKnow(:load=":api(3.0).content(site.did-you-know).relationships(questions).first as question")
+            h4
+              i.icon-magnifying-glass: br 
+              | Did You Know?
+            p.fact {question.content.fact}
+            .row.columns
+              .col.width-50
+                a(class='button twitter', rel='twitter-share', data-message='{question.content.fact|strip_tags|limitstring(110, ...)}')
+                  i.icon-twitter
+                  | Tweet
+              .col.width-50
+                a(class='button facebook', rel='facebook-share', data-message='Did You Know: {question.content.fact|strip_tags}', data-photo='{:e.url.link([fundraiser.project().photo_url])}')
+                  i.icon-facebook
+                  | Share
+          .panel
+            h4
+              i.icon-trophy
+              |&nbsp;Campaign Donors ({fundraiser.members.length})
+            hr
+            ul(class='donors row columns')
+              //- @TODO: Iterate Member in Members
+              li(:load='fundraiser.members.page(1,5) as member', :iterate='self')
+                span.col.width-100 {member.name}
+                //- span {:index}
+          .panel#share
+            h4
+              i.icon-chat-bubble
+              |&nbsp;Share This Campaign
+            hr
+            a(class='button share facebook', rel='facebook-share', data-photo='{:e.url.link([fundraiser.project().photo_url])}', data-message='{fundraiser.description|strip_tags}') 
+              i.icon-facebook
+              |Share On Facebook
+            a(class='button share twitter', rel='twitter-share', data-message='{fundraiser.description|limitstring(90)}')
+              i.icon-twitter
+              |Share On Twitter
+        .col.width-65#main
+          div.tabs
+            .tab(data-target='story').col.width-30.active Campaign Overview
+            .tab(data-target='projectDetails').col.width-30 Project Details
+            .tab(data-target='updates').col.width-30 Updates
+              span.updates {fundraiser.posts.length}
+            .tab.col.width-10
+              &nbsp;
+          div.content
+            div.tab-content#story
+              p.lead {fundraiser.prop.headline}
+              p {fundraiser.description|ormarkdown}
+            div.tab-content#projectDetails
+              {fundraiser.project().description}
+            div.tab-content#updates
+              //@IF fundraiser.posts.length == 0
+              | No project updates yet.
+              //@ELSE
+              ul
+                li(class="update", :load="fundraiser.posts.status(published) as update", :iterate="self")
+                  h6 {update.title}
+                  p {update.content}
+              //@ENDIF
+    .fundraiser-modal
+      .modal: .container
+        .main
+          h1 Add Profile Photo
+          a(href='#', class='button facebook', onclick="fb_login();") Use Facebook Photo
+          a(href='#', class='button upload', id='upload') Upload <span>Your Own Photo</span>
+        .upload-new
+          form(action='/api/3.0/contacts/me/attachments', method='post', enctype='multipart/form-data', name='customPhoto')
+            input(type='hidden', name='--success', value='/fundraiser/{fundraiser.slug}?success=true')
+            input(type='hidden', name='--failure', value='/fundraiser/{fundraiser.slug}?error=true')
+            input(type='hidden', name='--namespace', value='profilePhoto')
+            |<:module slug="messages-display" namespace="profilePhoto" />
+            h1 Upload Your Own
+            span.close.close-upload +
+            .row.columns
+              div.col.width-50
+                //- |Upload Your Own Photo
+                input(type='file', class='fileUpload', name='file')
+              div.col.width-50
+                button(type='submit', id='customPhoto') Upload
+      .overlay
+    theme:embed(file="includes/side-nav")

@@ -1,0 +1,15 @@
+pattern:
+  -
+    key: name
+    format: title
+    name: Project Name   
+    placeholder: 'Winston, Salem'
+  -
+    key: cityimage
+    format: image
+    name: City Image
+  -
+    key: uniqueID
+    format: string
+    name: Unique ID
+    description: This is used for placing the pin on the map. Start at 20.

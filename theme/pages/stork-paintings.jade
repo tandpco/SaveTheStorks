@@ -1,0 +1,180 @@
+include ../includes/sidebar
+
+theme:template(title="Paintings", name="_project")
+  content
+    //@IF :get.painting
+    .media-gallery(:load=":api(3.0).content({:get.painting}) as painting")
+      //- {painting|dump}
+      .featured-media#lightbox(style='padding: 45px 0;'): .container
+        .item-container(style="max-width: 100%;")
+          img(src='{painting.relationships(image,attachments).first.photo-url}', style="max-width: 100%; max-height: 540px;")
+        .meta(style='position: relative;')
+          h2 {painting.content.name}
+            small(style='position: absolute; left: 0; bottom: -15px; font-size: 12px; color: #AEAEAE; line-height: 14px;') {painting.content.description|strip_tags}
+          //- .pull-right: a(href='#', class='btn btn-green', style='line-height: 0;')
+            i.fa.fa-share-square-o
+            |  Share
+      .container.thin
+        .sectionThree: .align-left
+          h4(style='font-size: 20px;') GET YOUR STORK PAINTING TODAY
+          p Stork Paintings are masterful expressions of the movement we’re creating. These original works of art are beautiful collection items as well as fantastic conversation starters.
+          p While Save the Storks has lots of ways to visualize your support for the movement, Stork Paintings are reserved for only the top tier movement partners. Below you can learn how your partnership with the Save the Storks mission can land you once of these exclusive masterpieces.
+          .donation-options
+            form.option.painting
+              .row.columns(style='margin-bottom: 0;')
+                .col.width-75: .info(style='padding: 25px 25px 0;')
+                  h1(style='font-size: 24px;') Limited 4ft Canvas Print
+                  p(style='font-size: 14px; margin-bottom: 10px;') Like each life we work to protect, Stork Paintings come in original, hand painted form. Through your partnership you can access on of these original masterpieces.
+                  p(style='margin-bottom: 25px; font-size: 14px;') By partnering with us, your gift can 
+                    strong SAVE FIVE MOTHERS 
+                    | from the grief and heartache of abortion.
+                  .row.columns: .gifts
+                    label
+                      input(type='radio', name='gift', , value='Declined Gift', checked)
+                      | Decline Gift
+                    label
+                      input(type='radio', name='gift', value='Silver Stork Pendant')
+                      | Silver Stork Pendant
+                    label
+                      input(type='radio', name='gift', value='Four T-Shirts')
+                      | Four T-Shirts
+                .col.width-25(style='margin-bottom: 0;'): .pricing
+                  .monthly.gift-handler(data-amount='$360', data-frequency='m', data-painting='{painting.content.name}', style='line-height: 105px;') $360/
+                    small MO
+                    .go: i.fa.fa-angle-right
+                  .once.gift-handler(data-amount='$1800', data-frequency=null, data-painting='{painting.content.name}', style='line-height: 70px;') $4200/
+                    small ONCE
+                    .go: i.fa.fa-angle-right
+              .sizing
+                .size(style='display: inline-block; margin-right: 10px;')
+                  label Shirt One
+                  select
+                    option Small
+                    option Medium
+                    option Large
+                    option Extra Large
+                    option XXL
+                .size(style='display: inline-block; margin-right: 10px;')
+                  label Shirt Two
+                  select
+                    option Small
+                    option Medium
+                    option Large
+                    option Extra Large
+                    option XXL
+                .size(style='display: inline-block; margin-right: 10px;')
+                  label Shirt Three
+                  select
+                    option Small
+                    option Medium
+                    option Large
+                    option Extra Large
+                    option XXL
+                .size(style='display: inline-block;')
+                  label Shirt Four
+                  select
+                    option Small
+                    option Medium
+                    option Large
+                    option Extra Large
+                    option XXL
+            form.option.painting
+              .row.columns(style='margin-bottom: 0;')
+                .col.width-75: .info(style='padding: 25px 25px 0;')
+                  h1(style='font-size: 24px;') Own A Digital Print
+                  p(style='font-size: 14px; margin-bottom: 10px;') Can’t afford an original? Take heart! Save the Storks makes a limited number of digital prints of each piece available as well.
+                  p(style='margin-bottom: 25px; font-size: 14px;') By partnering with us, your gift can 
+                    strong SAVE TWELVE MOTHERS 
+                    | from the grief and heartache of abortion.
+                  .row.columns: .gifts
+                    label
+                      input(type='radio', name='gift', , value='Declined Gift', checked)
+                      | Decline Gift
+                    label
+                      input(type='radio', name='gift', value='Silver Stork Pendant')
+                      | Silver Stork Pendant
+                    label
+                      input(type='radio', name='gift', value='Four T-Shirts')
+                      | Four T-Shirts
+                .col.width-25(style='margin-bottom: 0;'): .pricing
+                  .monthly.gift-handler(data-amount='$150', data-frequency='m', data-painting='Digital - {painting.content.name}', style='line-height: 105px;') $150/
+                    small MO
+                    .go: i.fa.fa-angle-right
+                  .once.gift-handler(data-amount='$1800', data-frequency=null, data-painting='Digital - {painting.content.name}', style='line-height: 70px;') $1800/
+                    small ONCE
+                    .go: i.fa.fa-angle-right
+              .sizing
+                .size(style='display: inline-block; margin-right: 10px;')
+                  label Shirt One
+                  select
+                    option Small
+                    option Medium
+                    option Large
+                    option Extra Large
+                    option XXL
+                .size(style='display: inline-block; margin-right: 10px;')
+                  label Shirt Two
+                  select
+                    option Small
+                    option Medium
+                    option Large
+                    option Extra Large
+                    option XXL
+                .size(style='display: inline-block; margin-right: 10px;')
+                  label Shirt Three
+                  select
+                    option Small
+                    option Medium
+                    option Large
+                    option Extra Large
+                    option XXL
+                .size(style='display: inline-block;')
+                  label Shirt Four
+                  select
+                    option Small
+                    option Medium
+                    option Large
+                    option Extra Large
+                    option XXL
+      .container: .sectionThree
+        .header
+          h3.align-left.tr-up Other Stork Paintings
+            //- .pull-right: small: a(href='/gallery?view=graphics') View All Graphics
+        .row.columns
+          .col.width-25(:load=":api(3.0).content(site.paintings).relationships(painting) as painting", :iterate="self")
+            a(href="/stork-paintings?painting={painting.id}"): .item
+              .thumbnail: img(src="{painting.relationships(image,attachments).first.photo-url}")
+              .item-footer: p {painting.content.name|limitstring(30,...)}
+    //@ELSE
+    .media-gallery(:load=":api(3.0).content(site.paintings) as paintings")
+      .featured-media#lightbox(:load="paintings.relationships(painting).random() as painting", style='padding: 45px 0;'): .container
+        .item-container(style="max-width: 100%;")
+          img(src='{painting.relationships(image,attachments).first.photo-url}', style="max-width: 100%; max-height: 540px;")
+        .meta(style='position: relative;')
+          h2 {painting.content.name}
+            small(style='position: absolute; left: 0; bottom: -15px; font-size: 12px; color: #AEAEAE; line-height: 14px;') {painting.content.description|strip_tags}
+          //- .pull-right: a(href='#', class='btn btn-green')
+            i.fa.fa-share-square-o
+            |  Share
+      .container
+        .sectionThree
+          .header
+            h3.align-left.tr-up Paintings
+              //- .pull-right: small: a(href='/gallery?view=graphics') View All Graphics
+          .row.columns
+            .col.width-20(:load=":api(3.0).content(site.paintings).relationships(painting) as painting", :iterate="self")
+              a(href="/stork-paintings?painting={painting.id}"): .item
+                .thumbnail: img(src="{painting.relationships(image,attachments).first.photo-url}")
+                .item-footer: p {painting.content.name|limitstring(30,...)}
+    //@ENDIF
+    .container.artist
+      hr
+      h3 ABOUT THE ARTIST
+      .row.columns
+        .col.width-20
+          img(src='assets://images/bruce.JPG')
+        .col.width-80
+          h4 Bruce Speidel
+          p The artwork you see for “Save the Storks” is an answer to prayer. My art has benefited wildlife organizations like the National Turkey Federation and the Rocky Mountain Elk Foundation. While involvement with wildlife conservation is an honor and something that I enjoy, I love people more. God answered my prayers to produce art that would benefit people. These pieces, though they may be a beautiful addition to your home, have meaning. Set them up as monument like in Joshua chapter 4 so that when your children, guests and friends ask you, “what do these stork pictures mean?” You can tell them, this is a monument to remember the many lives who have been rescued by God’s grace and the work of “Save the Storks,” and don’t forget there are many more that need saved. 
+    .overlay
+    theme:embed(file="includes/side-nav")

@@ -1,0 +1,60 @@
+include ../../includes/sidebar
+
+theme:template(title="About", name="_project")
+  content
+    #about(:load=":api(3.0).content(site/about-page-new) as staff").table
+      div.banner(style="background-image: url({staff.relationships(staffimage,attachments).first.version(,)});")
+        h1 About&nbsp;
+          strong Save The Storks
+          p.small A new kind of pro-life organization for a new kind of pro-life movement.
+        .tabs
+          a(href='/about-us') Our Mission
+          a(href='/about-us/strategy') Our Strategy
+          a(href='/about-us/our-uniqueness') Our Uniqueness
+          a(href='/about-us/our-name') Our Name
+          a(href='/about-us/staff', class='active') Our Staff
+          a(href='/about-us/faq') FAQ
+      div.container
+        div.tabs
+          .tab.in#team
+            {staff.content.ourteam}
+            .row.team.columns
+              .col.width-33(:load="staff.relationships(team,contacts) as contact", :iterate="self")
+                .row.team(style="margin: initial;")
+                  .img: img(src="{contact.photo-url}/x:300/y:300")
+                  h1 {contact.name}
+                    p {contact.organizationRole}
+                  p {contact.bio}
+          //- .tab#team
+          //-   {project.content.ourteam}
+          //-   .row.team
+          //-     .col.width-33(:load="project.relationships(team,contacts) as contact", :iterate="self")
+          //-       .img: img(src="{contact.photo-url}/x:300/y:300")
+          //-       h1 {contact.name}
+          //-         p {contact.organizationRole}
+          //-       p {contact.bio}
+          //- .tab#board
+          //-   {project.content.ourboard}
+          //-   .row.team
+          //-     .col.width-33(:load="project.relationships(board,contacts) as contact", :iterate="self")
+          //-       .img: img(src="{contact.photo-url}/x:300/y:300")
+          //-       h1 {contact.name}
+          //-         p {contact.organizationRole}
+          //-       p {contact.bio}
+          //- .tab#story
+          //-   {project.content.ourstory}
+          //- .tab#storks
+          //-   {project.content.whystorks}
+          //- .tab#faq
+          //-   .row
+          //-     .col.width-50.answers
+          //-       ul.faq
+          //-         li(:load="project.relationships(faq) as question", :iterate="self", data-target='\#{question.id}') {question.content.question}
+          //-     .col.width-50.questions
+          //-       div.question(:load="project.relationships(faq) as question", :iterate="self", id='{question.id}')
+          //-         strong {question.content.question}
+          //-         p {question.content.answer}
+      hr
+      theme:embed(file="includes/footer")
+      theme:embed(file="includes/side-nav")
+

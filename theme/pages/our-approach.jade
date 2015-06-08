@@ -134,4 +134,4 @@ theme:template(title="Our Approach", name="_project")
           a(href="{column.content.link}"): .image(style='background-image: url({column.relationships(image,attachments).first.version()})')
             p {column.content.title}
           p {column.content.content}
-    +sidebar
+    theme:embed(file="includes/side-nav")

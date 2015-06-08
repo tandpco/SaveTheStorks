@@ -1,0 +1,12 @@
+page:
+  path: /site
+  slug: in-progress-projects
+  name: Projects In Progress
+pattern:
+  -
+    key: inprogress
+    format: blocks
+    name: Projects
+    singular: Project
+    pattern: in-progress-project
+    preview: name

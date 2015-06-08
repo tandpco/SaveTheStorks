@@ -21,6 +21,10 @@ pattern:
     format: image
     name: Map Image
   -
+    key: cityimage
+    format: image
+    name: City Image
+  -
     key: description
     format: html
     name: Project Description

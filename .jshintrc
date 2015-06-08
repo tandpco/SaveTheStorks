@@ -10,6 +10,7 @@
     "jQuery": true,
     "FB": true,
     "$": true,
-    "$rain": true
+    "$rain": true,
+    "Dragdealer": true
   }
 }

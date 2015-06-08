@@ -1,0 +1,9 @@
+pattern:
+  - 
+    key: image
+    format: upload
+    name: Image
+  -
+    key: title
+    format: title
+    name: Title

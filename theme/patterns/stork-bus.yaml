@@ -1,0 +1,128 @@
+page:
+  path: /site
+  slug: stork-bus
+  name: Stork Bus
+pattern:
+  -
+    key: busvideo
+    format: html
+    name: Stork Bus Video
+    description: 'The embed code for the Stork Bus video'
+  -
+    key: mobileheader
+    format: image
+    name: Mobile Partnership Header
+  - 
+    key: mobileoneimg
+    format: image
+    name: Row One Image - Mobile Partnership
+  -
+    key: mobileonetext
+    format: html
+    name: Row One Text - Mobile Partnership
+  - 
+    key: mobiletwoimg
+    format: image
+    name: Row Two Image - Mobile Partnership
+  -
+    key: mobiletwotext
+    format: html
+    name: Row Two Text - Mobile Partnership
+  - 
+    key: mobilethreeimg
+    format: image
+    name: Row Three Image - Mobile Partnership
+  -
+    key: mobilethreetext
+    format: html
+    name: Row Three Text - Mobile Partnership
+  -
+    key: designheader
+    format: image
+    name: Stork Bus Design
+  -
+    key: designonetext
+    format: html
+    name: Section One - Stork Bus Design
+  -
+    key: designtwotext
+    format: html
+    name: Section Two - Stork Bus Design
+  -
+    key: designthreecontent
+    format: html
+    name: Section Three Intro Paragraph - Stork Bus Design
+  -
+    key: strikeone
+    format: html
+    name: Column One (Strike One) - Stork Bus Design
+  -
+    key: oneicon
+    format: image
+    name: Strike One Icon
+  -
+    key: striketwo
+    format: html
+    name: Column Two (Strike Two) - Stork Bus Design
+  -
+    key: twoicon
+    format: image
+    name: Strike Two Icon
+  -
+    key: strikethree
+    format: html
+    name: Column Three (Strike Three) - Stork Bus Design
+  -
+    key: threeicon
+    format: image
+    name: Strike Three Icon
+  -
+    key: designfourcontent
+    format: html
+    name: Section Three Outro Paragraph - Stork Bus Design
+  -
+    key: designslider
+    format: blocks
+    pattern: busreason
+    name: Why Choose the Mercedes Sprinter - Stork Bus Design
+  -
+    key: specheader
+    format: image
+    name: Stork Bus Specs Header
+  -
+    key: specsslider
+    format: blocks
+    pattern: busspecs
+    name: Specifications Slider - Stork Bus Specs
+  -
+    key: mobileguide
+    format: button
+    name: Guide to Going Mobile - Download Link
+  -
+    key: stratheader
+    format: image
+    name: Stork Bus Strategy Header
+  -
+    key: whygomobilecol1img
+    format: image
+    name: Why Go Mobile - Column One (Icon)
+  -
+    key: whygomobilecol1txt
+    format: html
+    name: Why Go Mobile - Column One (Icon)
+  -
+    key: whygomobilecol2img
+    format: image
+    name: Why Go Mobile - Column Two (Icon)
+  -
+    key: whygomobilecol2txt
+    format: html
+    name: Why Go Mobile - Column Two (Icon)
+  -
+    key: whygomobilecol3img
+    format: image
+    name: Why Go Mobile - Column Three (Icon)
+  -
+    key: whygomobilecol3txt
+    format: html
+    name: Why Go Mobile - Column Three (Icon)

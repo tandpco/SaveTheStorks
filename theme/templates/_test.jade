@@ -1,0 +1,35 @@
+doctype html
+html(lang="en")
+  head
+    title {:options.title} - Save The Storks
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+      
+    //- TYPEKIT
+    script(src="//use.typekit.net/duk0vdw.js")
+    script(:ignore="true").
+      try{Typekit.load();}catch(e){}
+    script(src='assets://bower_components/jquery/dist/jquery.js')
+    script(src="https://assets.donate.io/static/widget/embed.js", :ignore="true")
+    script(:ignore="true") var __rmSettings = { organization:'storks', domain:'www.savethestorks.com' }
+
+    link(rel="shortcut icon", href="assets://favicon.ico", type="image/x-icon")
+    link(rel="icon", href="assets://favicon.ico", type="image/x-icon")
+
+    // endbuild
+    script(src='assets://js/build.js')
+    script(src='assets://js/main.js')
+
+    //- link(href='assets://css/rrssb.css', rel='stylesheet')
+    //- link(href='assets://css/sts.css', rel='stylesheet')
+    // build:css /styles/main.css
+    link(href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css', rel='stylesheet')
+    link(href='assets://css/main.css', rel='stylesheet')
+    // endbuild
+
+    block metaTags
+      
+    |<:ssl:on />
+
+  body(class='support-module-preview')
+    | <:jolt placeholder="content" />

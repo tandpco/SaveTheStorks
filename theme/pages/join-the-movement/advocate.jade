@@ -1,0 +1,62 @@
+include ../../includes/sidebar
+
+theme:template(title="Take Action", name="_project")
+  content
+    #action.consulting.table(:load=":api(3.0).content(site/take-action) as page")
+      div.banner(style='background-image: url({page.relationships(advocateimage,attachments).first.version(,)});')
+        h1 
+          strong Take Action&nbsp;
+          |To Save Lives
+          p.small Together we can build a movement!
+        //@IF !:get.thanks
+        form(class='inline-form' action='/api/3.0/contacts/', method='post')
+          input(type='hidden', name='type', value='individual')
+          input(type='hidden', name='--success', value='/my-storks/sign-up?step=2')
+          input(type='hidden', name='--failure', value='/my-storks/sign-up?step=1')
+          input(type='hidden', name='--namespace', value='signUp')
+          input(type='hidden', name='--login', value='true')
+          input(type='hidden', name='tags', value='new-signup')
+          |<:module slug="messages-display" namespace="signUp" />
+          .form-group
+            input(type='text', name='firstName', placeholder='First Name')
+          .form-group
+            input(type='text', name='email', placeholder='Email Address (We promise never to spam you!)', id='email')
+          .form-group
+            button(type='submit', class='button success') Join Now
+        //@ENDIF
+        .tabs
+          a(href='/join-the-movement') Join The Movement
+          a(href='/join-the-movement/donate') Donate
+          a(href='/join-the-movement/advocate', class='active') Advocate
+          a(href='/join-the-movement/volunteer') Volunteer
+          a(href='/join-the-movement/intern') Intern
+          a(href='/join-the-movement/join') Join Our Team
+      .container
+        div.featured-action(:load=":api(3.0).content(site.take-action).relationships(takeaction).first as action"): .row.columns
+          .col.width-50
+            h2 Featured Action
+            a(href='{action.content.destination}'): h1 {action.content.title}
+            {action.content.content}
+            a(class='button', href='{action.content.destination}') Learn More Now
+          .col.width-50#thumb
+            img(src='{action.relationships(image,attachments).first.version()}')
+        .center
+          h2 More Ways To Help
+        ul.actions
+          li.action(:load=":api(3.0).content(site.take-action).relationships(takeaction) as action", :iterate="self"): .row.columns
+            .col.width-50
+              img(src='{action.relationships(image,attachments).first.version()}')
+            .col.width-50
+              a(href='{action.content.destination}'): h3 {action.content.title}
+              {action.content.content}
+      //@IF :get.thanks
+      .thanks(:load=":api(3.0).contacts(me) as user")
+        .modal(style='display: inline'): .container
+          i.icon-icon_61751
+          small Thank You for your pledge,
+          h1 {user.first_name}
+        .overlay(style='display: inline')
+      //@ENDIF
+              
+      theme:embed(file="includes/side-nav")
+

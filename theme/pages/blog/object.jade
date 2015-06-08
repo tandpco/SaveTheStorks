@@ -13,7 +13,7 @@ theme:template(title="{post.title}", name="_default", :load=":api(3.0).posts({:u
         ul.topic__list: .container-fluid
           li(:load=":api(3.0).taxonomy.cloud(posts) as topic", :iterate="self"): a(href='/blog/topics/{topic.id}')
             {topic.pretty}
-          li.search: a(href='#')
+          li.search(style='background-color: transparent;'): a(href='#')
             i.icon-search
       .container-fluid: .row
         .col.width-75
@@ -176,6 +176,6 @@ theme:template(title="{post.title}", name="_default", :load=":api(3.0).posts({:u
             img(src='{ad.relationships(image,attachments).first.photo-url}', width='100%')
           section.most-read
             ul
-              li(class="post", :load=":api(3.0).posts().sort(views,desc).limit(10) as post", :iterate="self"): a(href='/blog/{post.id}') {post.title}
+              li(class="post", :load=":api(3.0).posts().sort(views,desc).limit(10) as post", :iterate="self"): a(href='/blog/{post.id}/{post.title|replace( ,-)}') {post.title}
 
-    +sidebar
+    theme:embed(file="includes/side-nav")

@@ -1,36 +1,76 @@
 include ../../includes/sidebar
 
-theme:template(title="Home", name="_project", :load=":api(3.0).projects(249) as project")
+theme:template(title="My Storks", name="_project", :load=":api(3.0).projects(249) as project")
   content
-    .bannerOne(:load=":api(3.0).contacts(me).facebook() as user"): .container-fluid: .columns.row
-      .col.width-30
-        .pledgePane
-          h1 Please To Save Life!
-          .link
-            //@IF user.facebook
-            a(class='button facebook-pledge disabled' onclick='return false;') Pledge Via Facebook
-            //@ELSE
-            a(class='button facebook-pledge' href='#' rel="facebook-login") Pledge Via Facebook
-            //ENDIF
-          form#facebook-connect-form
-            input(type='hidden', id='facebook-id')
-            input(type='hidden', id='facebook-access-token')
-          p.lined or
-          form(action='/api/3.0/contacts/', method='post')
-            input(type='hidden', name='type', value='individual')
-            input(type='hidden', name='--success', value='/my-storks/sign-up?step=2')
-            input(type='hidden', name='--failure', value='/my-storks/sign-up?step=1')
-            input(type='hidden', name='--namespace', value='pledge')
-            input(type='hidden', name='--login', value='true')
-            |<:module slug="messages-display" namespace="pledge" />
-            input(type='text', name='firstName', placeholder='First Name')
-            input(type='text', name='lastName', placeholder='Last Name')
-            input(type='text', name='email', placeholder='Email Address')
-            button(class='button' type='submit') Pledge Via Email
-            small (We promise never to spam you!)
-      .col.push-2.width-60
-        h1 The Distance Between <br> Dreams and Reality <br> Is Action
-          p.small Take action to save life today! 
+    div(:load=":api(3.0).content(site.my-storks) as testimonials")
+      .bannerOne(:load=":api(3.0).contacts(me).facebook() as user", style="background-image: url({testimonials.relationships(headerimage,attachments).first.version(,,100)})"): .container-fluid: .columns.row
+        .col.width-30
+          .pledgePane
+            h1 Pledge To Save Lives!
+            .link
+              //@IF user.facebook
+              a(class='button facebook-pledge disabled' onclick='return false;') Pledge Via Facebook
+              //@ELSE
+              a(class='button facebook-pledge' href='#' rel="facebook-login") Pledge Via Facebook
+              //ENDIF
+            form#facebook-connect-form
+              input(type='hidden', id='facebook-id')
+              input(type='hidden', id='facebook-access-token')
+            p.lined or
+            form(action='/api/3.0/contacts/', method='post')
+              input(type='hidden', name='type', value='individual')
+              input(type='hidden', name='--success', value='/my-storks/sign-up?step=2')
+              input(type='hidden', name='--failure', value='/my-storks/sign-up?step=1')
+              input(type='hidden', name='--namespace', value='pledge')
+              input(type='hidden', name='--login', value='true')
+              |<:module slug="messages-display" namespace="pledge" />
+              input(type='text', name='firstName', placeholder='First Name')
+              input(type='text', name='lastName', placeholder='Last Name')
+              input(type='text', name='email', placeholder='Email Address')
+              input(type='hidden', name='tags', value='new-signup')
+              button(class='button' type='submit') Pledge Via Email
+              small (We promise never to spam you!)
+        .col.push-2.width-60
+          h1 The Distance Between <br> Dreams and Reality <br> Is Action
+            p.small Take action to save life today!
+    .sectionThree
+      .container
+        h2 The pro-life community is growing the movement through creative ways of raising awareness and funds. 
+          a(href='/my-storks/sign-up?step=1') Join us today!
+      .container-fluid(style="max-width: 1280px;"): .row
+        .space-down
+        .col.width-25(:load=":api(3.0).groups().tags(group:featured).limit(8) as fundraiser", :iterate="self")
+          .fundraiser-module
+            .thumbnail
+              .name: h2 {fundraiser.name|limitstring(36)}
+              .gradient-overlay
+              img(src='{fundraiser.photos.first.version(,)}')
+            a(href='/fundraiser/{fundraiser.slug}'): .title
+              //@IF fundraiser.owner.photos.count < 1
+              .avatar: img(src='assets://images/dummy/fundraiser-module-avatar-public.png')
+              //@ELSE
+              .avatar: img(src='{fundraiser.owner.photo_url}')
+              //@ENDIF
+              .author: small By: {fundraiser.owner.name|limitstring(20,...)}
+            .content
+              p {fundraiser.description|strip_tags|limitstring(150,...)}
+            .progress
+              .numbers
+                .pull-left {fundraiser.progress.money|money}
+                .pull-right: small {fundraiser.target|money}
+              .progress-bar: span(style='width: {fundraiser.progress.percent}; min-width: 1%;')
+            .footer
+              .share-flyout
+                ul
+                  li: a(href='https://www.facebook.com/sharer/sharer.php?u=www.savethestorks.com/fundraiser/{fundraiser.slug}', class='facebook-share popup'): i.fa.fa-facebook
+                  li: a(href='http://twitter.com/home?status={project.description|strip_tags|limitstring(80,...)} - www.savethestorks.com/fundraiser/{fundraiser.slug}', class='twitter-share popup'): i.fa.fa-twitter
+              a(href='#', class='share')
+                i.fa.fa-share-square-o 
+                |  Share
+              a(href='#/my/donate?group={fundraiser.id}', class='donate') Donate Now
+      .button-row
+        a(href='/my-storks/sign-up?step=1', class='btn btn-green') Start Your Fundraiser!
+        a(href='/my-storks/browse', class='btn btn-outline') Find A Fundraiser
     .bannerTwo: .container-fluid: .columns.row
       h1(class='lined') How It Works
       .col.push-2.width-20
@@ -57,33 +97,109 @@ theme:template(title="Home", name="_project", :load=":api(3.0).projects(249) as 
           br
           |Celebrate Life
         p You’re making a difference. Don’t forget to celebrate!
+    .callout: .container: .row
+      .col.width-65: p WHAT WILL YOU DO TO SAVE LIVES?
+      .col.width-35: a(class='btn btn-green', href='/my-storks/sign-up?step=1') Start a Fundraiser!
+    .sectionFour(style="margin-top: -30px;")
+      .container
+        h1 Starting a fundraiser is easy and fun!
+        .previous: i.slider-nav.prev.fa.fa-angle-left
+        .next: i.slider-nav.next.fa.fa-angle-right
+        .fundraiser-slider
+          ul.slides
+            li.slide
+              table
+                tr
+                  td(style='width: 40%; padding-right: 5%;')
+                    span.label Step 1
+                    h2 Determine what kind of fundraiser you want to create, and set up your page.
+                    p It only takes a few moments to get your fundraiser up and running. All you have to do is pick a name and photo. We’ve pre-written some of the text to make it super easy for you to get started.
+                  td.fill: img(src='assets://images/dummy/fundraiser-slider-slide-one.png')
+            li.slide
+              table
+                tr
+                  td(style='width: 40%; padding-right: 5%;')
+                    span.label Step 2
+                    h2 Share your fundraiser with all your friends and start watching as the money rolls in.
+                    p  Once your fundraiser is setup, all you have to do is share with your friends on social media, text and email. You’ll start to see people donating to the cause through your fundraiser. How cool is that!
+                  td.fill: img(src='assets://images/dummy/fundraiser-slider-slide-two.png')
+            li.slide
+              table
+                tr
+                  td(style='width: 40%; padding-right: 5%;')
+                    span.label Step 3
+                    h2 Easily manage your fundraiser to keep track of how much you’ve raised.
+                    p You can also update your supporters on the progress that is being made and spur them on to share the fundraiser with their friends. We’ve given you the controls to be as successful as you can.
+                  td.fill: img(src='assets://images/dummy/fundraiser-slider-slide-three.png')
+    .sectionFive
+      .container
+        h1 Need Some Fundraising Ideas?
+          small Below are some easy, innovative and awesome ways to raise money to support life.
+          small Use your creativity and maybe your idea will end up in the list.
+        table(cellspacing=15)
+          tr
+            td.margin-right(style='background-image: url(https://rainmakerapp.s3.amazonaws.com/storks/images/dummy/fundraiser-ideas-birthday.png);')
+              a(href='/my-storks/sign-up?step=1', class='text')
+                | Donate Your Birthday 
+                i.fa.fa-long-arrow-right
+            td(rowspan=2,colspan=2, style='background-image: url(https://rainmakerapp.s3.amazonaws.com/storks/images/dummy/fundraiser-ideas-get-sponsors.png);')
+              a(href='/my-storks/sign-up?step=1', class='text')
+                | Get Sponsors For A Run, Walk, or Bike 
+                i.fa.fa-long-arrow-right
+            td.margin-right(style='background-image: url(https://rainmakerapp.s3.amazonaws.com/storks/images/dummy/fundraiser-ideas-auction.png);')
+              a(href='/my-storks/sign-up?step=1', class='text')
+                | Host An Auction 
+                i.fa.fa-long-arrow-right
+          tr
+            td(style='background-image: url(https://rainmakerapp.s3.amazonaws.com/storks/images/dummy/fundraiser-ideas-challenge.png);')
+              a(href='/my-storks/sign-up?step=1', class='text')
+                | Challenge Yourself 
+                i.fa.fa-long-arrow-right
+            td.margin-right(style='background-image: url(https://rainmakerapp.s3.amazonaws.com/storks/images/dummy/fundraiser-ideas-baby-shower.png);')
+              a(href='/my-storks/sign-up?step=1', class='text')
+                | Donate A Baby Shower 
+                i.fa.fa-long-arrow-right
+          tr
+            td(colspan=2, style='background-image: url(https://rainmakerapp.s3.amazonaws.com/storks/images/dummy/fundraiser-ideas-tournament.png);')
+              a(href='/my-storks/sign-up?step=1', class='text')
+                | Host A Tournament 
+                i.fa.fa-long-arrow-right
+            td(colspan=2, style='background-image: url(https://rainmakerapp.s3.amazonaws.com/storks/images/dummy/fundraiser-ideas-car-wash.png);')
+              a(href='/my-storks/sign-up?step=1', class='text')
+                | Hold A Car Wash 
+                i.fa.fa-long-arrow-right
+    .stork-supporters(:load=":api(3.0).content(site.my-storks) as testimonials"): .container
+      table
+        tr
+          td
+            table(cellspacing=15)
+              tr
+                td.avatar: span.fill: img(src="{testimonials.relationships(authoroneimage,attachments).first.version(160,)}")
+                td
+                  blockquote {testimonials.content.quoteone}
+                    cite {testimonials.content.authorone}
+          td
+            table(cellspacing=15)
+              tr
+                td.avatar: span.fill: img(src="{testimonials.relationships(authortwoimage,attachments).first.version(160,)}")
+                td
+                  blockquote {testimonials.content.quotetwo}
+                    cite {testimonials.content.authortwo}
     .sectionThree: .container-fluid
       h1(class='lined') Why Mobile Medical Units?
       p A mobile unit gives you the ability to educate, love, and support the women <br> you encounter in your community. Many women in crisis pregnancy situations are often unaware of <br> the services provided by pregnancy resource centers.
-      |<iframe width="500" height="281" src="//www.youtube.com/embed/pPd3MkDxRr4" frameborder="0" allowfullscreen="1"></iframe>
+      #limit: .video-wrapper.retail
+        |<iframe src="https://player.vimeo.com/video/118267903" width="500" height="333" frameborder="0" webkitallowfullscreen="1" mozallowfullscreen="1" allowfullscreen="1"></iframe>
       .columns.row
         .col.width-50
-          a(class='button twitter pull-right', rel='twitter-share', data-link='https://www.youtube.com/watch?v=pPd3MkDxRr4', data-message='This is a test.')
+          a(class='button twitter pull-right', rel='twitter-share', data-link='https://www.youtube.com/watch?v=pPd3MkDxRr4', data-message='84% of post-abortive women said they felt abortion was their only option...')
             i.icon-twitter
             | Tweet
         .col.width-50
-          a(class='button facebook pull-left', rel='facebook-share', data-link='https://www.youtube.com/watch?v=pPd3MkDxRr4', data-message='This is a test.')
+          a(class='button facebook pull-left', rel='facebook-share', data-link='https://www.youtube.com/watch?v=pPd3MkDxRr4', data-message='84% of post-abortive women said they felt abortion was their only option. We exist to help change that statistic by equipping pregnancy centers to more effectively connect with abortion-vulnerable women in their communities. Our mobile medical unit is state-of-the-art, and intricately designed with the women and their needs in mind. Find out more about our organization and how you can be involved by visiting our website: savethestorks.com')
             i.icon-facebook
             | Share
-      p.callout(style='background-color: transparent;')
-        strong 372
-        |&nbsp;people have already started fundraisers.
-      .columns.row
-        .col.push-2 &nbsp;
-        .col.width-20(:load=":api(3.0).content(site.featured-fundraisers).relationships(featured_fundraisers,content) as fundraiser", :iterate="self"): .pane
-          //- TODO: Decide on iteration for this, by tag etc
-          div.mainImage(style="background-image: url({fundraiser.relationships(image,attachments).first.version(300,300)})")
-          div.header
-            h4 {fundraiser.content.title}
-              p.small by {fundraiser.content.author}
-          div.body
-            {fundraiser.content.body}
       p.shoutout Join the movement to bring practical life-saving <br> solutions to mothers and babies in crisis.
       a(href="/my-storks/sign-up?step=1" class="button success") Start A Fundraiser
 
-    +sidebar
+    theme:embed(file="includes/side-nav")

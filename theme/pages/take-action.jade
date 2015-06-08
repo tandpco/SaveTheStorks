@@ -16,6 +16,7 @@ theme:template(title="Take Action", name="_project")
           input(type='hidden', name='--namespace', value='signUp')
           input(type='hidden', name='--login', value='true')
           |<:module slug="messages-display" namespace="signUp" />
+          input(type='hidden', name='tags', value='new-signup')
           .form-group
             input(type='text', name='firstName', placeholder='First Name')
           .form-group
@@ -51,5 +52,5 @@ theme:template(title="Take Action", name="_project")
         .overlay(style='display: inline')
       //@ENDIF
               
-      +sidebar
+      theme:embed(file="includes/side-nav")
 

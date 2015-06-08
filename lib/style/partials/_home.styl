@@ -1,6 +1,7 @@
 body.signUp header
 	background #FFF
 .video__floating
+	background rgb(230, 130, 110)
 	background rgba(230, 130, 110, 0.9)
 	bottom 0
 	color #FFF
@@ -58,6 +59,9 @@ body.signUp header
 	padding-top: 25px
 	height: 0
 	z-index 1
+	&.nullify
+		&:after, &:before
+			display none
 	&:after, &:before
 		content ""
 		position absolute

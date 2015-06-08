@@ -1,0 +1,13 @@
+pattern:
+  - 
+    key: thumbnail
+    format: upload
+    name: Video Thumbnail
+  -
+    key: title
+    format: title
+    name: Title
+  -
+    key: source
+    format: text
+    name: Video Embed Code

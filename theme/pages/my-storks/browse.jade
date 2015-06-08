@@ -22,13 +22,9 @@ theme:template(title="Browse Fundraisers", name="_project", :load=":api(3.0).pro
         .col.width-25(:load=":api(3.0).groups() as fundraiser", :iterate="self")
           .fundraiser-module
             .thumbnail
-              .name: h2: a(href='/fundraiser/{fundraiser.slug}') {fundraiser.name|limitstring(36)}
+              .name: h2 {fundraiser.name|limitstring(36)}
               .gradient-overlay
-              //@IF fundraiser.photos.count < 1
-              img(src='assets://images/default-module-image.png')
-              //@ELSE
               img(src='{fundraiser.photos.first.version(,)}')
-              //@ENDIF
             a(href='/fundraiser/{fundraiser.slug}'): .title
               //@IF fundraiser.owner.photos.count < 1
               .avatar: img(src='assets://images/dummy/fundraiser-module-avatar-public.png')
@@ -44,13 +40,17 @@ theme:template(title="Browse Fundraisers", name="_project", :load=":api(3.0).pro
                 .pull-right: small {fundraiser.target|money}
               .progress-bar: span(style='width: {fundraiser.progress.percent}; min-width: 1%;')
             .footer
+              .share-flyout
+                ul
+                  li: a(href='https://www.facebook.com/sharer/sharer.php?u=www.savethestorks.com/fundraiser/{fundraiser.slug}', class='facebook-share popup'): i.fa.fa-facebook
+                  li: a(href='http://twitter.com/home?status={project.description|strip_tags|limitstring(80,...)} - www.savethestorks.com/fundraiser/{fundraiser.slug}', class='twitter-share popup'): i.fa.fa-twitter
               a(href='#', class='share')
                 i.fa.fa-share-square-o 
                 |  Share
               a(href='#/my/donate?group={fundraiser.id}', class='donate') Donate Now
     .callout(style='margin-bottom: 0;'): .container: .row
       .col.width-65: p WHAT WILL YOU DO TO SAVE LIVES?
-      .col.width-35: a(class='btn btn-green', href='#') Start a Fundraiser!
+      .col.width-35: a(class='btn btn-green', href='') Start a Fundraiser!
     //@ELSEIF :get.q
     .sectionThree: .container#browse
       .header
@@ -59,76 +59,6 @@ theme:template(title="Browse Fundraisers", name="_project", :load=":api(3.0).pro
       .space-down
       .row.columns
         .col.width-25(:load=":api(3.0).groups().search({:get.q}) as fundraiser", :iterate="self")
-          .fundraiser-module
-            .thumbnail
-              .name: h2: a(href='/fundraiser/{fundraiser.slug}') {fundraiser.name|limitstring(36)}
-              .gradient-overlay
-              //@IF fundraiser.owner.photos.count < 1
-              .avatar: img(src='assets://images/dummy/fundraiser-module-avatar-public.png')
-              //@ELSE
-              .avatar: img(src='{fundraiser.owner.photo_url}')
-              //@ENDIF
-            a(href='/fundraiser/{fundraiser.slug}'): .title
-              //@IF fundraiser.owner.photos.count < 1
-              .avatar: img(src='assets://images/dummy/fundraiser-module-avatar-public.png')
-              //@ELSE
-              .avatar: img(src='{fundraiser.owner.photo_url}')
-              //@ENDIF
-              .author: small By: {fundraiser.owner.name|limitstring(20,...)}
-            .content
-              p {fundraiser.description|strip_tags|limitstring(150,...)}
-            .progress
-              .numbers
-                .pull-left {fundraiser.progress.money|money}
-                .pull-right: small {fundraiser.target|money}
-              .progress-bar: span(style='width: {fundraiser.progress.percent}; min-width: 1%;')
-            .footer
-              a(href='#', class='share')
-                i.fa.fa-share-square-o 
-                |  Share
-              a(href='#/my/donate?group={fundraiser.id}', class='donate') Donate Now
-      p.shoutout Join the movement to bring practical life-saving <br> solutions to mothers and babies in crisis.
-      a(href="/my-storks/sign-up?step=1" class="button success") Start A Fundraiser
-    //@ELSE
-    .sectionThree: .container
-      .header
-        h3.align-left.tr-up Popular Fundraisers
-          .pull-right: small: a(href='/my-storks/browse?view=all#browse') View All Fundraisers
-      .space-down
-      .row.columns
-        .col.width-25(:load=":api(3.0).groups().tags(group:popular) as fundraiser", :iterate="self")
-          .fundraiser-module
-            .thumbnail
-              .name: h2: a(href='/fundraiser/{fundraiser.slug}') {fundraiser.name|limitstring(36)}
-              .gradient-overlay
-              img(src='{fundraiser.photos.first.version(,)}')
-            .title
-              //@IF fundraiser.owner.photos.count < 1
-              .avatar: img(src='assets://images/dummy/fundraiser-module-avatar-public.png')
-              //@ELSE
-              .avatar: img(src='{fundraiser.owner.photo_url}')
-              //@ENDIF
-              .author: small By: {fundraiser.owner.name|limitstring(20,...)}
-            .content
-              p {fundraiser.description|strip_tags|limitstring(150,...)}
-            .progress
-              .numbers
-                .pull-left {fundraiser.progress.money|money}
-                .pull-right: small {fundraiser.target|money}
-              .progress-bar: span(style='width: {fundraiser.progress.percent}; min-width: 1%;')
-            .footer
-              a(href='#', class='share')
-                i.fa.fa-share-square-o 
-                |  Share
-              a(href='#/my/donate?group={fundraiser.id}', class='donate') Donate Now
-    .callout: .container: .row
-      .col.width-65: p WHAT WILL YOU DO TO SAVE LIVES?
-      .col.width-35: a(class='btn btn-green', href='#') Start a Fundraiser!
-    .sectionThree: .container
-      .header
-        h3.align-left.tr-up Recent Fundraisers
-      .row.columns
-        .col.width-25(:load=":api(3.0).groups().limit(8) as fundraiser", :iterate="self")
           .fundraiser-module
             .thumbnail
               .name: h2 {fundraiser.name|limitstring(36)}
@@ -149,6 +79,88 @@ theme:template(title="Browse Fundraisers", name="_project", :load=":api(3.0).pro
                 .pull-right: small {fundraiser.target|money}
               .progress-bar: span(style='width: {fundraiser.progress.percent}; min-width: 1%;')
             .footer
+              .share-flyout
+                ul
+                  li: a(href='https://www.facebook.com/sharer/sharer.php?u=www.savethestorks.com/fundraiser/{fundraiser.slug}', class='facebook-share popup'): i.fa.fa-facebook
+                  li: a(href='http://twitter.com/home?status={project.description|strip_tags|limitstring(80,...)} - www.savethestorks.com/fundraiser/{fundraiser.slug}', class='twitter-share popup'): i.fa.fa-twitter
+              a(href='#', class='share')
+                i.fa.fa-share-square-o 
+                |  Share
+              a(href='#/my/donate?group={fundraiser.id}', class='donate') Donate Now
+      p.shoutout Join the movement to bring practical life-saving <br> solutions to mothers and babies in crisis.
+      a(href="/my-storks/sign-up?step=1" class="button success") Start A Fundraiser
+    //@ELSE
+    .sectionThree: .container
+      .header
+        h3.align-left.tr-up Popular Fundraisers
+          .pull-right: small: a(href='/my-storks/browse?view=all#browse') View All Fundraisers
+      .space-down
+      .row.columns
+        .col.width-25(:load=":api(3.0).groups().tags(group:popular) as fundraiser", :iterate="self")
+          .fundraiser-module
+            .thumbnail
+              .name: h2 {fundraiser.name|limitstring(36)}
+              .gradient-overlay
+              img(src='{fundraiser.photos.first.version(,)}')
+            a(href='/fundraiser/{fundraiser.slug}'): .title
+              //@IF fundraiser.owner.photos.count < 1
+              .avatar: img(src='assets://images/dummy/fundraiser-module-avatar-public.png')
+              //@ELSE
+              .avatar: img(src='{fundraiser.owner.photo_url}')
+              //@ENDIF
+              .author: small By: {fundraiser.owner.name|limitstring(20,...)}
+            .content
+              p {fundraiser.description|strip_tags|limitstring(150,...)}
+            .progress
+              .numbers
+                .pull-left {fundraiser.progress.money|money}
+                .pull-right: small {fundraiser.target|money}
+              .progress-bar: span(style='width: {fundraiser.progress.percent}; min-width: 1%;')
+            .footer
+              .share-flyout
+                ul
+                  li: a(href='https://www.facebook.com/sharer/sharer.php?u=www.savethestorks.com/fundraiser/{fundraiser.slug}', class='facebook-share popup'): i.fa.fa-facebook
+                  li: a(href='http://twitter.com/home?status={project.description|strip_tags|limitstring(80,...)} - www.savethestorks.com/fundraiser/{fundraiser.slug}', class='twitter-share popup'): i.fa.fa-twitter
+              a(href='#', class='share')
+                i.fa.fa-share-square-o 
+                |  Share
+              a(href='#/my/donate?group={fundraiser.id}', class='donate') Donate Now
+    .callout: .container: .row
+      .col.width-65: p WHAT WILL YOU DO TO SAVE LIVES?
+      .col.width-35: a(class='btn btn-green', href='/my-storks/sign-up?step=1') Start a Fundraiser!
+    .sectionThree: .container
+      .header
+        h3.align-left.tr-up Recent Fundraisers
+      .row.columns
+        .col.width-25(:load=":api(3.0).groups().limit(8) as fundraiser", :iterate="self")
+          .fundraiser-module
+            .thumbnail
+              .name: h2 {fundraiser.name|limitstring(36)}
+              .gradient-overlay
+              //@IF fundraiser.photos.length >= 1
+              img(src='{fundraiser.photos.first.version(,)}')
+              //@ELSE
+              img(src='assets://images/dummy/fundraiser')
+              //@ENDIF
+            a(href='/fundraiser/{fundraiser.slug}'): .title
+              //@IF fundraiser.owner.photos.count < 1
+              .avatar: img(src='assets://images/dummy/placeholder-avatar.png')
+              //@ELSE
+              .avatar: img(src='{fundraiser.owner.photo_url}')
+              //@ENDIF
+              .author: small By: {fundraiser.owner.name|limitstring(20,...)}
+            .content
+              p {fundraiser.description|strip_tags|limitstring(150,...)}
+            .progress
+              .numbers
+                .pull-left {fundraiser.progress.money|money}
+                .pull-right: small {fundraiser.target|money}
+              .progress-bar: span(style='width: {fundraiser.progress.percent}; min-width: 1%;')
+            .footer
+              .share-flyout
+                ul
+                  li: a(href='https://www.facebook.com/sharer/sharer.php?u=www.savethestorks.com/fundraiser/{fundraiser.slug}', class='facebook-share popup'): i.fa.fa-facebook
+                  li: a(href='http://twitter.com/home?status={project.description|strip_tags|limitstring(80,...)} - www.savethestorks.com/fundraiser/{fundraiser.slug}', class='twitter-share popup'): i.fa.fa-twitter
               a(href='#', class='share')
                 i.fa.fa-share-square-o 
                 |  Share
@@ -157,4 +169,4 @@ theme:template(title="Browse Fundraisers", name="_project", :load=":api(3.0).pro
       a(href="/my-storks/sign-up?step=1" class="button success") Start A Fundraiser
     //@ENDIF
 
-    +sidebar
+    theme:embed(file="includes/side-nav")

@@ -9,13 +9,14 @@ mixin sidebar
       li: a(href='/about') About Us
       li: a(href='/our-approach') Our Approach
       li: a(href='/our-projects') Our Projects
-      li: a(href='/take-action') Take Action
+      li: a(href='/join-the-movement') Take Action
       li: a(href='/my-storks') My Storks
       li: a(href='/store') Store
+      li: a(href='/gallery') Gallery
       //- li: a(href='#') Blog
     div.buttons
       a(href='/donate-now', id='donate') Donate Now
-      a(href='/take-action', id='join') Join Now
+      a(href='/join-the-movement', id='join') Join Now
     ul.sub-nav
       li: a(href='/contact') Contact
       //- li: a(href='#') Jobs
@@ -44,10 +45,11 @@ mixin footer
         p Join 63,811 others in your <br> commitment to life.
       form(class='inline-form col width-90 push-1' action='/api/3.0/contacts/', method='post')
         input(type='hidden', name='type', value='individual')
-        input(type='hidden', name='--success', value='/take-action?thanks=welcome')
-        input(type='hidden', name='--failure', value='/take-action')
+        input(type='hidden', name='--success', value='/join-the-movement?thanks=welcome')
+        input(type='hidden', name='--failure', value='/join-the-movement')
         input(type='hidden', name='--namespace', value='signUp')
         input(type='hidden', name='--login', value='true')
+        input(type='hidden', name='tags', value='new-signup')
         .col.width-100
           input(type='text', name='email', placeholder='Email Address', style='margin-bottom: 15px;')
         .col.width-50
@@ -59,9 +61,9 @@ mixin footer
         i.icon-megaphone
       h1 Act
         p Find your unique place <br> in the pro-life movement.
-      a(class='button blue', href='/take-action') Take Action 
+      a(class='button blue', href='/join-the-movement') Take Action 
     div.col.width-33
-      span.rounded 
+      span.rounded(style='line-height: 80px;')
         i.icon-heart
       h1 Give
         p Your gift is the only <br> way to grow this movement.
@@ -75,3 +77,101 @@ mixin footer
             input(type='hidden', name='amount', value='50')
             input(type='hidden', name='group', value='{fundraiser.id}')
             button(type='submit', class='wine') Donate
+
+mixin help
+  .support-wrapper
+    .support-module
+      .support-module__header(style='padding: 20px 20px 0;')
+        .title: .align-left How Can We Help?
+        //- ul.navigation
+          li: a(href='#email', class='tab-toggle active')
+            i.icon-mail
+            |  EMAIL
+          li: a(href='#sms', class='tab-toggle')
+            i.icon-sms
+            |  SMS
+          li: a(href='#phone', class='tab-toggle')
+            i.icon-phone
+            |  PHONE
+      .support-module__form
+        .posting-overlay: .content
+          i.fa.fa-spin.fa-spinner
+        .form.form-email.active
+          form(class='email', method='POST')
+            input(type='hidden', name='--namespace', value='help-form')
+            input(type='hidden', name='--conversation', value='message')
+            .form-group
+              label YOUR NAME
+              .group-column.left
+                input(type='text', placeholder='First Name', name='contact[firstName]')
+              .group-column.right
+                input(type='text', placeholder='Last Name', name='contact[lastName]')
+            .form-group
+              label EMAIL ADDRESS
+              input(type='text', placeholder='Email Address...', name='contact[email]')
+            .form-group
+              label MESSAGE
+              textarea(rows='3', placeholder='Enter your message here...', name='message')
+            .support-module__footer
+              .column: .cause-chat
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="12px" height="12px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve" style="position: relative; top: -2px; vertical-align: middle;" fill="currentColor">
+                <path d="M470.732,148.25h-84.838v18.545h84.833c12.969,0,23.511,10.547,23.511,23.516v152.049c0,12.969-10.542,23.511-23.511,23.511h-46.438v54.374l-48.941-48.941l-5.433-5.438H190.408c-12.964,0-23.511-10.543-23.511-23.512V306.57l-18.54,18.55v17.239c0,23.132,18.929,42.055,42.056,42.055h171.833l80.599,80.61v-80.61h27.884c23.132,0,42.056-18.923,42.056-42.055V190.311 c0-23.132-18.924-42.061-42.056-42.061 M158.858,283.137h162.724c23.132,0,42.051-18.93,42.051-42.066V89.037 c0-23.142-18.919-42.061-42.051-42.061H41.267c-23.137,0-42.061,18.918-42.061,42.061V241.07c0,23.137,18.923,42.066,42.061,42.066 H78.27v80.604L158.858,283.137"/>
+                </svg>
+                | CAUSECHAT
+              .column: button(type='submit') SEND
+        .form.form-sms
+          form(class='phone', method='POST')
+            input(type='hidden', name='--namespace', value='help-form')
+            input(type='hidden', name='--conversation', value='message')
+            .form-group
+              label YOUR NAME
+              .group-column.left
+                input(type='text', placeholder='First Name', name='contact[firstName]')
+              .group-column.right
+                input(type='text', placeholder='Last Name', name='contact[lastName]')
+            .form-group
+              label EMAIL CONTACT
+              input(type='text', placeholder='Email address...', name='contact[email]')
+            .form-group
+              label PHONE NUMBER
+              input(type='text', placeholder='(555) 123 - 4567', name='contact[number]')
+            .form-group
+              label MESSAGE
+              textarea(rows='3', placeholder='Enter your message here...', name='message')
+            .support-module__footer
+              .column: .cause-chat
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="12px" height="12px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve" style="position: relative; top: -2px; vertical-align: middle;" fill="currentColor">
+                <path d="M470.732,148.25h-84.838v18.545h84.833c12.969,0,23.511,10.547,23.511,23.516v152.049c0,12.969-10.542,23.511-23.511,23.511h-46.438v54.374l-48.941-48.941l-5.433-5.438H190.408c-12.964,0-23.511-10.543-23.511-23.512V306.57l-18.54,18.55v17.239c0,23.132,18.929,42.055,42.056,42.055h171.833l80.599,80.61v-80.61h27.884c23.132,0,42.056-18.923,42.056-42.055V190.311 c0-23.132-18.924-42.061-42.056-42.061 M158.858,283.137h162.724c23.132,0,42.051-18.93,42.051-42.066V89.037 c0-23.142-18.919-42.061-42.051-42.061H41.267c-23.137,0-42.061,18.918-42.061,42.061V241.07c0,23.137,18.923,42.066,42.061,42.066 H78.27v80.604L158.858,283.137"/>
+                </svg>
+                | CAUSECHAT
+              .column: button(type='submit') SEND
+        .form.form-phone
+          form(class='phone', method='POST')
+            input(type='hidden', name='--namespace', value='help-form')
+            input(type='hidden', name='--conversation', value='message')
+            .form-group
+              label YOUR NAME
+              .group-column.left
+                input(type='text', placeholder='First Name', name='contact[firstName]')
+              .group-column.right
+                input(type='text', placeholder='Last Name', name='contact[lastName]')
+            .form-group
+              label EMAIL CONTACT
+              input(type='text', placeholder='Email address...', name='contact[email]')
+            .form-group
+              label PHONE NUMBER
+              input(type='text', placeholder='(555) 123 - 4567', name='contact[number]')
+            .form-group
+              label MESSAGE
+              textarea(rows='3', placeholder='Enter your message here...', name='message')
+            .support-module__footer
+              .column: .cause-chat
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="12px" height="12px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve" style="position: relative; top: -2px; vertical-align: middle;" fill="currentColor">
+                <path d="M470.732,148.25h-84.838v18.545h84.833c12.969,0,23.511,10.547,23.511,23.516v152.049c0,12.969-10.542,23.511-23.511,23.511h-46.438v54.374l-48.941-48.941l-5.433-5.438H190.408c-12.964,0-23.511-10.543-23.511-23.512V306.57l-18.54,18.55v17.239c0,23.132,18.929,42.055,42.056,42.055h171.833l80.599,80.61v-80.61h27.884c23.132,0,42.056-18.923,42.056-42.055V190.311 c0-23.132-18.924-42.061-42.056-42.061 M158.858,283.137h162.724c23.132,0,42.051-18.93,42.051-42.066V89.037 c0-23.142-18.919-42.061-42.051-42.061H41.267c-23.137,0-42.061,18.918-42.061,42.061V241.07c0,23.137,18.923,42.066,42.061,42.066 H78.27v80.604L158.858,283.137"/>
+                </svg>
+                | CAUSECHAT
+              .column: button(type='submit') SEND
+    button(type='button', class='help')
+      i.icon-logo
+      span  NEED HELP?
+    button(type='button', class='close'): span

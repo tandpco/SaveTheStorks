@@ -1,0 +1,351 @@
+.align-left
+  text-align left
+.align-center
+  text-align center
+.tr-up
+  text-transform uppercase  
+
+// Button Class
+a.btn
+  border-radius 2px
+  display inline-block
+  font-size 18px
+  font-weight 600
+  letter-spacing 0.05em
+  line-height 60px
+  padding 0 25px
+  text-decoration none
+  text-transform uppercase
+  @media (max-width: 480px)
+    font-size 16px
+    width 100%
+  &:first-of-type
+    margin-right 30px
+  @media (max-width: 768px)
+    &:first-of-type
+      margin-bottom 15px
+      margin-right 0
+  &.btn-green
+    background-color $green
+    border 1px solid $green
+    color #FFF
+    &:hover
+      background-color darken($green, 10%)
+  &.btn-outline
+    background-color transparent
+    border 1px solid $dark-gray
+    color $dark-gray
+    &:hover
+      background-color rgba($dark-gray, 0.15)
+
+#donate-new
+  div.banner
+    background-image url('../images/about-us_banner.png')
+    background-size cover
+    background-position center
+    color #FFF
+    text-align center
+    height auto
+    overflow visible
+    @media (min-width: 769px)
+      padding 80px 15px
+    @media (max-width: 768px)
+      padding 50px 15px
+    position relative
+    h1
+      font-size 50px
+      font-weight 100
+      letter-spacing 0.075em
+      padding 0 15px
+      text-transform uppercase
+      p.small
+        font-weight 100
+        letter-spacing 0.05em
+        font-size 24px
+        margin 0
+        text-transform initial
+    .form-row
+      input, a
+        display inline-block
+        height auto
+        width auto
+      a.btn.btn-green
+        border 0
+        font-size 14px
+        letter-spacing 0.125em
+        line-height 44px
+      input
+        border-radius 2px
+        margin-right 5px
+        line-height 22px
+        padding-bottom 10px
+        padding-top 10px
+  .banner-callout
+    background-color #46C1DD
+    color #FFF
+    display block
+    font-size 14px
+    line-height 42px
+    text-align center
+    text-decoration none
+    text-transform uppercase
+    transition all 300ms ease
+    &:hover
+      background-color darken(#46C1DD, 15%)
+    i
+      font-size 18px
+      margin-right 10px
+  .donation-amount
+    clearfix()
+  .campaign-level
+    border-bottom 1px solid #DDD
+    border-top 1px solid #DDD
+    margin 30px 0 40px
+    padding 40px 0
+    clearfix()
+    h1
+      font-weight 100
+      margin-bottom 10px
+      margin-top 0
+      margin-bottom 0
+    p
+      color #A6A6A6
+      font-size 16px
+      line-height 24px
+      margin-top 0
+    p:last-of-type
+      margin-bottom 0
+    img
+      width 100
+    .gifts
+      margin 20px -10px
+      label, input
+        display inline
+      label
+        margin-right 5px
+    .sizes
+      display none
+      margin 0 -10px
+      select
+        width 100%
+      .clearfix
+        clearfix()
+  .summary
+    margin 60px 0 120px
+    text-align center
+    clearfix()
+    a.button
+      background-color #59C77F
+      border 1px solid #59C77F
+      display inline-block
+      padding 5px 60px
+      font-size 14px
+      height auto
+      letter-spacing 0.075em
+      text-transform uppercase
+      width auto
+      &:hover
+        background darken(#59C77F, 15%)
+  .span-or
+    border-bottom 1px solid #BAC5C8
+    display block
+    height 0
+    margin 15px 0 30px
+    position relative
+    text-align center
+    text-indent -9999px
+    &:before
+      background-color #FFF
+      color #BAC5C8
+      content 'OR'
+      display inline-block
+      font-weight 600
+      font-style italic
+      position absolute
+      left 0
+      line-height 20px
+      right 0
+      margin 0 auto
+      text-indent 0
+      top -10px
+      width 60px
+  .donation-widget
+    margin-bottom 60px
+    .header
+      background-color #2B2E30
+      color #FFF
+      font-size 26px
+      font-weight 300
+      line-height 60px
+      padding 0 30px
+    .body
+      background-color #313436
+      padding 30px
+      label
+        margin-bottom 10px
+        small
+          color #B6B6B6
+          font-size 10px
+          text-transform uppercase
+      span.amount
+        background-color #FFF
+        border 1px solid $border
+        border-radius 2px
+        color #C8C8C8
+        display inline-block
+        font-size 20px
+        font-weight 100
+        line-height 42px
+        text-align center
+        width 100%
+        &.active
+          background-color #46C1DD
+          border 1px solid #46C1DD
+          color #FFF
+          font-weight 500
+      .don-amount
+        position relative
+        input
+          border 1px solid $border
+          border-radius 2px
+          font-size 16px
+          height auto
+          line-height 22px
+          margin 0
+          padding 10px 15px 10px 30px
+        span
+          left 15px
+          position absolute
+          top 14px
+      .don-frequency
+        position relative
+        select
+          appearance none
+          background #FFF
+          border 1px solid $border
+          border-radius 2px
+          display block
+          font-size 16px
+          line-height 42px
+          padding 0 15px
+          outline none
+          width 100%
+        span
+          position absolute
+          right 15px
+          top 14px
+      a.btn
+        line-height 42px
+        text-align center
+        width 100%
+.donation-options
+  margin-top 60px
+  clearfix()
+  .option
+    background-color #F1F5F6
+    color $dark-gray
+    letter-spacing 0.075em
+    margin-bottom 30px
+    position relative
+    h1
+      font-size 30px
+      font-weight 100
+      margin 0
+      padding 0
+    p
+      font-weight 100
+      margin 0
+      padding 0
+    .info
+      padding 15px
+      h1
+        margin-bottom 10px
+      p
+        margin-bottom 25px
+        letter-spacing 0.025em
+      strong
+        font-weight 600
+        text-transform uppercase
+    .gifts
+      bottom 15px
+      left 15px
+      position absolute
+      right 15px
+      @media (max-width: 768px)
+        margin-bottom -15px
+        margin-top 15px
+        position initial
+      label
+        display inline-block
+        margin-right 10px
+        @media (max-width: 768px)
+          display block
+          margin-bottom 10px
+          margin-right 0
+        input
+          margin 0 5px 2px 0
+    .pricing
+      cursor: pointer
+      font-weight 600
+      text-align center
+      @media (max-width: 768px)
+        margin-bottom -20px
+      .monthly, .once
+        padding-top 4px
+        position relative
+        .go
+          background-color rgba(black, 0.1)
+          bottom 0
+          color #FFF
+          font-size 18px
+          position absolute
+          right 0
+          top 0
+          padding 4px 10px 0
+      .monthly
+        background-color #A7B2B5
+        color #FFF
+        font-size 34px
+        line-height 80px
+        transition all 300ms ease
+        &:hover
+          background-color darken(#A7B2B5, 10%)
+        small
+          font-size 80%
+      .once
+        background-color #C8D1D4
+        color #FFF
+        font-size 15px
+        line-height 45px
+        transition all 300ms ease
+        &:hover
+          background-color darken(#C8D1D4, 10%)
+    .sizing
+      background-color #313436
+      height 0
+      overflow hidden
+      padding 0
+      transition height 300ms ease
+      .size
+        select
+          font-size 16px
+          line-height 18px
+          margin 0
+        @media (max-width: 768px)
+          display block !important
+          margin-bottom 10px
+          margin-right 0 !important
+          select
+            width 100%
+      label
+        color #B6B6B6
+        font-size 10px
+        margin-bottom 5px
+        text-transform uppercase
+    &.show-sizing
+      .gifts
+        bottom 75px
+      .sizing
+        height auto
+        overflow visible
+        padding 15px

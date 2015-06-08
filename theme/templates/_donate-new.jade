@@ -1,0 +1,152 @@
+doctype html
+html(lang="en")
+  head
+    title {:options.title} - Save The Storks
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+
+    //- TYPEKIT
+    script(src="//use.typekit.net/duk0vdw.js")
+    script(:ignore="true").
+      try{Typekit.load();}catch(e){}
+    script(src='assets://bower_components/jquery/dist/jquery.js')
+    script(src="https://assets.donate.io/static/widget/embed.js", :ignore="true")
+    script(:ignore="true") var __rmSettings = { organization:'storks', domain:'www.savethestorks.com' }
+
+    link(rel="shortcut icon", href="assets://favicon.ico", type="image/x-icon")
+    link(rel="icon", href="assets://favicon.ico", type="image/x-icon")
+
+    // endbuild
+    script(src='assets://js/build.js')
+    script(src='assets://js/main.js')
+
+    script(:ignore="true").
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-36727207-1', 'auto');
+        ga('send', 'pageview');
+        
+    link(href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css', rel='stylesheet')
+    // build:css /styles/main.css
+    link(href='assets://css/main.css', rel='stylesheet')
+    link(href='assets://css/sts.css', rel='stylesheet')
+    // endbuild
+
+    |<:ssl:on />
+
+  body(class=page)
+    noscript
+      iframe(src="//www.googletagmanager.com/ns.html?id=GTM-52FC6K", height="0", width="0", style="display:none;visibility:hidden")
+    script.
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-52FC6K');
+    div#wrapper: div#canvas
+      header(style="background-color: white;")
+        //- @TODO: Save the Storks Logo Here
+        h1(class='pull-left'): a(alt='Save The Storks', href='/'): img(src='assets://images/saveTheStorks.png' alt='Save The Storks')
+        span(class='pull-right')
+          a(id='menuToggle', href='#menuToggle')
+            |Menu
+            i.nav-toggle: span
+          a(id='donate', href='/donate-now')
+            |Donate
+            i.icon-credit-card
+            
+      //- block content
+      | <:jolt placeholder="content" />
+
+      // Footer
+      footer
+      script(type='text/javascript', src='assets://js/rrssb.min.js')
+      script(type='text/javascript', src='assets://js/unslider.js')
+      script(type='text/javascript', src='assets://js/imagesLoaded.js')
+      script(type='text/javascript', src='assets://js/imagefill.js')
+      // build:js /scripts/main.js
+      script(type="text/javascript").
+        var facebookAppId = '{:settings.facebook-app-id}'; 
+        var $memberId = {:member.id ? :member.id : 'null'};
+        var facebookChannelFile = '//{:e.url.domain()}/act/session/facebook_channel_file';
+      script.
+        $('a#menuToggle').click(function() {
+          $(this).find('i').toggleClass('active');
+        });
+        $('.thumbnail, .avatar').each(function() {
+          $(this).imagefill();
+        });
+
+        if ($('.bus-slider').length) {
+
+          $('.bus-slider').imagesLoaded(function() {
+
+            var slider = $('.bus-slider').unslider({
+              speed: 300,
+              delay: 100000,
+              dots: true,
+              fluid: false
+            });
+
+            $('.slider-nav').on('click', function() {
+              var dir = this.className.split(' ')[1];
+              slider.data('unslider')[dir]();
+            });
+
+          });
+
+        }
+
+        if ($('.reasons-slider').length) {
+
+          $('.reasons-slider').imagesLoaded(function() {
+
+            var slider = $('.reasons-slider').unslider({
+              speed: 300,
+              delay: 100000,
+              dots: true,
+              fluid: false
+            });
+
+            $('.slider-nav').on('click', function() {
+              var dir = this.className.split(' ')[1];
+              slider.data('unslider')[dir]();
+            });
+
+          });
+
+        }
+
+        if ($('.fundraiser-slider').length) {
+
+          $('.fundraiser-slider').imagesLoaded(function() {
+
+            var slider = $('.fundraiser-slider').unslider({
+              speed: 300,
+              delay: 100000,
+              dots: true,
+              fluid: false
+            });
+
+            var data = slider.data('unslider');
+
+            $('.prev').on('click', function() {
+              slider.data('unslider').prev();
+            });
+
+            $('.next').on('click', function() {
+              data.next();
+            });
+
+          });
+
+        }
+      script(type='text/javascript').
+        /* <![CDATA[ */
+        var google_conversion_id = 961069200;
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+        /* ]]> */
+      <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+      </script>
+      <noscript>
+      <div style="display:inline;">
+      <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/961069200/?value=0&amp;guid=ON&amp;script=0"/>
+      </div>
+      </noscript>

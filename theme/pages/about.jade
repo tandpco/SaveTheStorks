@@ -6,7 +6,7 @@ theme:template(title="About", name="_project")
       div.banner
         h1 About&nbsp;
           strong Save The Storks
-          p.small Building the next wave of the pro-life movement.
+          p.small A new kind of pro-life organization for a new kind of pro-life movement.
         ul.tabs
           li(class='active', data-target='#mission') Our Mission
           li(data-target='#team') Our Team
@@ -54,6 +54,6 @@ theme:template(title="About", name="_project")
                   strong {question.content.question}
                   p {question.content.answer}
       hr
-      +footer
-      +sidebar
+      theme:embed(file="includes/footer")
+      theme:embed(file="includes/side-nav")
 

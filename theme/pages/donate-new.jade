@@ -1,0 +1,40 @@
+include ../includes/sidebar
+
+theme:template(title="Donate", name="_donate-new")
+  content
+    #donate-newer
+      video(autoplay=1, loop=1)
+        source(src="https://s3-us-west-2.amazonaws.com/theorypractice/storks.mp4", type="video/mp4")
+      .container: .row.columns
+        .col.width-65 &nbsp;
+        .col.width-35
+          .donation-module: form.rain(data-action='donate', action='donate')
+            .module-header
+              h4 HELP US FUEL THE MOVEMENT
+                small A tangible way to make an external difference.
+            .module-body
+              .row.columns(style="margin-bottom: 15px;")
+                .col.width-100: label SELECT AN AMOUNT
+                .col.width-25: span(data-amount='50') $50
+                .col.width-25: span(data-amount='100').active $100
+                .col.width-25: span(data-amount='250') $250
+                .col.width-25: span(data-amount='500') $500
+              .row.columns
+                .col.width-55
+                  label OR ENTER AN AMOUNT
+                  .cash
+                    input(type='text', name='amount', placeholder='100')
+                    i $
+                .col.width-10 &nbsp;
+                .col.width-35
+                  label FREQUENCY
+                  .select
+                    i
+                    select(name='recurring')
+                      option(value='') One-Time
+                      option(value='m') Monthly
+              .row.columns
+                .col.width-100: button(type='submit', class='success') Donate Now
+          .donation-info(style="margin: 30px -20px 0;")
+            img(src='assets://images/movement.png')
+            a(class='btn btn-success', href='/learn-more') LEARN MORE

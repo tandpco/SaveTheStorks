@@ -1,0 +1,77 @@
+page:
+  path: /site
+  slug: about-page-new
+  name: About Page (New)
+pattern:
+  -
+    key: headerone
+    format: image
+    name: Our Mission - Header Image
+  - 
+    key: intro
+    format: html
+    name: Our Mission - Intro
+  -
+    key: leftimage
+    format: image
+    name: Our Mission - Left Image
+  -
+    key: rightimage
+    format: image
+    name: Our Mission - Right Image
+  -
+    key: blockquote
+    format: text
+    name: Our Mission - Quote
+  -
+    key: maincontent
+    format: html
+    name: Our Mission - Content
+  -
+    key: strategyimage
+    format: image
+    name: Our Strategy - Header Image
+  -
+    key: strategy
+    format: html
+    name: Our Strategy - Content
+  -
+    key: uniquenessimage
+    format: image
+    name: Our Uniqueness - Header Image
+  -
+    key: uniqueness
+    format: html
+    name: Our Uniqueness - Content
+  -
+    key: nameimage
+    format: image
+    name: Our Name - Image
+  -
+    key: name
+    format: html
+    name: Our Name - Content
+  -
+    key: staffimage
+    format: image
+    name: Our Team - Header Image
+  -
+    key: ourteam
+    format: html
+    name: Our Team Intro
+  -
+    key: team
+    format: relationship
+    collections: ['contacts']
+    name: Team Members
+  -
+    key: faqimage
+    format: image
+    name: FAQ - Header Image
+  -
+    key: faq
+    format: blocks
+    name: FAQ
+    singular: Question
+    pattern: faq-question
+    preview: question

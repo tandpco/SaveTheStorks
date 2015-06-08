@@ -7,7 +7,7 @@ theme:template(title="Blog", name="_default", :load=":api(3.0).projects(249) as 
         ul.topic__list: .container-fluid
           li(:load=":api(3.0).taxonomy.cloud(posts) as topic", :iterate="self"): a(href='/blog/topics/{topic.tag}')
             {topic.pretty|replace(-, )}
-          li.search
+          li.search(style='background-color: transparent;')
             a(href='#', id='search')
               i.icon-search
             form
@@ -25,29 +25,29 @@ theme:template(title="Blog", name="_default", :load=":api(3.0).projects(249) as 
               .col.width-70
                 h1 {result.title}
                 {result.excerpt}
-                a(href='/blog/{result.id}' class='btn') Read More
+                a(href='/blog/{result.id}/{result.title|replace( ,-)}' class='btn') Read More
             //- {results|dump}
           //@ELSE
           .main-posts
-            div.featured-post(:load=":api(3.0).posts().first as post" style='background-image: url({post.attachments().first.version(,)})'): .content
-              h1: a(href='/blog/{post.id}') {post.title}
+            div.featured-post(:load=":api(3.0).posts().status(published).first as post" style='background-image: url({post.attachments().first.version(,)})'): .content
+              h1: a(href='/blog/{post.id}/{post.title|replace( ,-)}') {post.title}
               p.meta
                 span.by By
                 span.author {post.author.name}
               p.biline {post.excerpt|strip_tags|limitstring(96,...)}
             .sub-posts
-              .col.width-33.post(:load=":api(3.0).posts().limit(4) as post", :iterate="self", style='background-image: url({post.attachments().first.version(,)})')
-                h2: a(href='/blog/{post.id}') {post.title}
-          .by-topic
+              .col.width-33.post(:load=":api(3.0).posts().status(published).limit(4) as post", :iterate="self", style='background-image: url({post.attachments().first.version(,)})')
+                h2: a(href='/blog/{post.id}/{post.title|replace( ,-)}') {post.title}
+          .by-topic: .wrapper
             .div
             div.outer(:load=":api(3.0).taxonomy.cloud(posts).limit(6) as topic", :iterate="self")
               div.posts.topic.col.width-33
-                h4 {topic.pretty}
+                h4 {topic.pretty|replace(-, )}
                 ul.posts
-                  li(:load=":api(3.0).posts().tags({topic.string}).limit(3) as post", :iterate="self")
+                  li(:load=":api(3.0).posts().status(published).tags({topic.string}).limit(3) as post", :iterate="self")
                     //- {post|dump}
-                    img(src='{post.attachments().first.version(,)}')
-                    h5: a(href='/blog/{post.id}') {post.title}
+                    .thumbnail(style="max-height: 120px; overflow: hidden; margin-bottom: 15px;"): img(src='{post.attachments().first.version(,)}')
+                    h5: a(href='/blog/{post.id}/{post.title|replace( ,-)}') {post.title}
                     p.meta
                       span.by by
                       span.author {post.author.name}
@@ -57,6 +57,6 @@ theme:template(title="Blog", name="_default", :load=":api(3.0).projects(249) as 
             img(src='{ad.relationships(image,attachments).first.photo-url}', width='100%')
           section.most-read
             ul
-              li(class="post", :load=":api(3.0).posts().sort(views,desc).limit(10) as post", :iterate="self"): a(href='/blog/{post.id}') {post.title}
+              li(class="post", :load=":api(3.0).posts().status(published).sort(views,desc).limit(10) as post", :iterate="self"): a(href='/blog/{post.id}/{post.title|replace( ,-)}') {post.title}
 
-    +sidebar
+    theme:embed(file="includes/side-nav")

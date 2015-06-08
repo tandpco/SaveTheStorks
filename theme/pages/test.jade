@@ -1,8 +1,5 @@
-theme:template(title="Home", name="default")
-  head
-    meta(name="description", content="custom page page meta")
+include ../includes/sidebar
+
+theme:template(title='Support Module', name='_test')
   content
-    div this is the body
-  scripts
-    script(type="text/javascript").
-      alert('test')
+    +help    

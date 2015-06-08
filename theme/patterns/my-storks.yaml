@@ -1,8 +1,12 @@
 page:
   path: /site
   slug: my-storks
-  name: My Storks - Testimonials
+  name: My Storks
 pattern:
+  -
+    key: headerimage
+    format: image
+    name: Header Image
   -
     key: authorone
     format: title

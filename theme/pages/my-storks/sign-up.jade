@@ -1,245 +1,244 @@
 include ../../includes/sidebar
 
 theme:template(title="Home", name="_signUp")
-	//-
-		* name
-		* slug
-		* description
-		* location
-		* status
-		* type
-		* target
-	content
-		//- .test
-		//- 	//@IF !:member 
-		//- 	p None
-		//- 	//@ELSEIF :member
-		//- 	p {:member}
-		//@IF !:member && :get.step == 1
-		section.one
-			h1.intro Let's get started
-				p.small
-					strong(:load=":api(3.0).groups().status(active) as group") {group.length}
-					|&nbsp;people have already started fundraisers.
-			div.panel
-				a(class='button facebook' href='#' rel="facebook-login") Sign In With Facebook
-				form#facebook-connect-form
-					input(type='hidden', id='facebook-id')
-					input(type='hidden', id='facebook-access-token')
-				p.lined or
-				form(action='/api/3.0/contacts/', method='post', id='test')
-					input(type='hidden', name='type', value='individual')
-					input(type='hidden', name='--success', value='/my-storks/sign-up?step=2')
-					input(type='hidden', name='--failure', value='/my-storks/sign-up?step=1')
-					input(type='hidden', name='--namespace', value='signUp')
-					input(type='hidden', name='--login', value='true')
-					|<:module slug="messages-display" namespace="signUp" />
-					div.input-group#individual
-						label Your Name
-						.row
-							input(type='text', name='firstName', placeholder='First Name', class='col width-50')
-							input(type='text', name='lastName', placeholder='Last Name', class='col width-50', id='singlePerson')
-					div.input-group#group
-						label Group Name
-						.row
-							//- input(type='text', name='firstName', placeholder='First Name', class='col width-50')
-							input(type='text', placeholder='The Baby Foundation', class='col width-100', id='groupName')
-					div.input-group
-						label Your Email
-						.row
-							input(type='text', name='email', placeholder='janedoe@gmail.com', class='col width-100')
-					div.input-group
-						label Your Phone Number
-						.row
-							input(type='text', name='phone', placeholder='(719) 431 - 3714', class='col width-100')
-					button(class='button success' type='submit') Continue
-					.pull-left
-						a(href='#', id='toggle') Sign up as a group
-					.pull-right
-						//- a(href='#signIn') Already have an account?
-		//@ELSEIF (:member && :get.step == 1) || :get.step == 2
-		section.two
-			h1.intro Let's get started
-				p.small
-					strong(:load=":api(3.0).groups().status(active) as group") {group.length}
-					|&nbsp;people have already started fundraisers.
-			div.list
-				ol.pull-left
-					li 
-						span 1
-						| Details
-				ol.pull-right
-					li: span 2
-					li: span 3
-					li: span 4
-			div.panel
-				h2 Create Your Fundraiser
-				form(action='/api/3.0/groups', method='post', id='create')
-					input(type='hidden', name='type', value='individual')
-					input(type='hidden', name='--success', value='/my-storks/sign-up?step=3')
-					input(type='hidden', name='--failure', value='/my-storks/sign-up?step=2')
-					input(type='hidden', name='--namespace', value='my-storks/sign-up')
-					input(type='hidden', name='project', value='249')
-					input(type='hidden', name='description', value='Placeholder description')
-					input(type='hidden', name='status', value='active')
-					|<:module slug="messages-display" namespace="my-storks/sign-up" />
-					div.input-group
-						label Name Your Fundraiser
-						.row
-							input(type='text', name='name', placeholder='Rachel\'s Baby Shower Fundraiser', class='col width-100')
-					div.input-group
-						label Fundraising Goal
-						.row
-							input(type='text', name='target', placeholder='7,000', class='col width-100')
-					div.input-group
-						label Fundraiser Type
-						.row
-							select(name='type', class='col width-100 pt-select-lite', value='fundraiser')
-								option Birthday
-								option Baby Shower
-								option Car Wash
-								option Run/Bike/Walk
-								option Raffle
-								option Other
-					div.input-group
-						label End Date
-						.row
-							input(type='text', placeholder='MM', class='col width-15', id="m", maxlength="2")
-							input(type='text', placeholder='DD', class='col width-15', id="d", maxlength="2")
-							input(type='text', placeholder='YYYY', class='col width-15', id="y", maxlength="4")
-						input(type='hidden', id="date_until", name="date_until")
+  //-
+    * name
+    * slug
+    * description
+    * location
+    * status
+    * type
+    * target
+  content
+    //- .test
+    //-   //@IF !:member 
+    //-   p None
+    //-   //@ELSEIF :member
+    //-   p {:member}
+    //@IF !:member && :get.step == 1
+    section.one
+      h1.intro Let's get started
+        p.small
+          strong(:load=":api(3.0).groups().status(active) as group") {group.length}
+          |&nbsp;people have already started fundraisers.
+      div.panel
+        a(class='button facebook' href='#' rel="facebook-login") Sign In With Facebook
+        form#facebook-connect-form
+          input(type='hidden', id='facebook-id')
+          input(type='hidden', id='facebook-access-token')
+        p.lined or
+        form(action='/api/3.0/contacts/', method='post', id='test')
+          input(type='hidden', name='type', value='individual')
+          input(type='hidden', name='--success', value='/my-storks/sign-up?step=2')
+          input(type='hidden', name='--failure', value='/my-storks/sign-up?step=1')
+          input(type='hidden', name='--namespace', value='signUp')
+          input(type='hidden', name='--login', value='true')
+          input(type='hidden', name='tags', value='new-signup')
+          |<:module slug="messages-display" namespace="signUp" />
+          div.input-group#individual
+            label Your Name
+            .row
+              input(type='text', name='firstName', placeholder='First Name', class='col width-50')
+              input(type='text', name='lastName', placeholder='Last Name', class='col width-50', id='singlePerson')
+          div.input-group#group
+            label Group Name
+            .row
+              //- input(type='text', name='firstName', placeholder='First Name', class='col width-50')
+              input(type='text', placeholder='The Baby Foundation', class='col width-100', id='groupName')
+          div.input-group
+            label Your Email
+            .row
+              input(type='text', name='email', placeholder='janedoe@gmail.com', class='col width-100')
+          div.input-group
+            label Your Phone Number
+            .row
+              input(type='text', name='phone', placeholder='(719) 431 - 3714', class='col width-100')
+          button(class='button success' type='submit') Continue
+          .pull-left
+            a(href='#', id='toggle') Sign up as a group
+          .pull-right
+            //- a(href='#signIn') Already have an account?
+    //@ELSEIF (:member && :get.step == 1) || :get.step == 2
+    section.two
+      h1.intro Let's get started
+        p.small
+          strong(:load=":api(3.0).groups().status(active) as group") {group.length}
+          |&nbsp;people have already started fundraisers.
+      div.list
+        ol.pull-left
+          li 
+            span 1
+            | Details
+        ol.pull-right
+          li: span 2
+          li: span 3
+          li: span 4
+      div.panel
+        h2 Create Your Fundraiser
+        form(action='/api/3.0/groups', method='post', id='create')
+          input(type='hidden', name='type', value='individual')
+          input(type='hidden', name='--success', value='/my-storks/sign-up?step=3')
+          input(type='hidden', name='--failure', value='/my-storks/sign-up?step=2')
+          input(type='hidden', name='--namespace', value='my-storks/sign-up')
+          input(type='hidden', name='project', value='249')
+          input(type='hidden', name='description', value='Placeholder description')
+          input(type='hidden', name='status', value='active')
+          |<:module slug="messages-display" namespace="my-storks/sign-up" />
+          div.input-group
+            label Name Your Fundraiser
+            .row
+              input(type='text', name='name', placeholder='Rachel\'s Baby Shower Fundraiser', class='col width-100')
+          div.input-group
+            label Fundraising Goal
+            .row
+              input(type='text', name='target', placeholder='7,000', class='col width-100')
+          div.input-group
+            label Fundraiser Type
+            .row
+              select(name='type', class='col width-100 pt-select-lite', value='fundraiser')
+                option Birthday
+                option Baby Shower
+                option Car Wash
+                option Run/Bike/Walk
+                option Raffle
+                option Other
+          div.input-group
+            label End Date
+            .row
+              input(type='text', placeholder='MM', class='col width-15', id="m", maxlength="2")
+              input(type='text', placeholder='DD', class='col width-15', id="d", maxlength="2")
+              input(type='text', placeholder='YYYY', class='col width-15', id="y", maxlength="4")
+            input(type='hidden', id="date_until", name="date_until")
 
-					button(class='button success' type='submit') Continue
-		//@ELSEIF :get.step == '3'
-		section.three(style='display: ')
-			h1.intro Let's get started
-				p.small
-					strong(:load=":api(3.0).groups().status(active) as group") {group.length}
-					|&nbsp;people have already started fundraisers
-			div.list
-				ol.pull-left
-					li: span.complete: i.icon-ok
-					li
-						span 2
-						| Get your fundraiser started.
-				ol.pull-right
-					li: span 3
-					li: span 4
-			div.panel(:load=":api(3.0).contacts(me).groups_owned().first() as group")
-				h2 Choose A Cover Photo
-				//- -var images = [ {'url':'https://static.pexels.com/wp-content/uploads/2014/10/headphone-mp3-music-3088-525x350.jpg'},{'url':'https://static.pexels.com/wp-content/uploads/2014/10/compose-hand-music-3090-525x350.jpg'},{'url':'https://static.pexels.com/wp-content/uploads/2014/10/audio-england-great-britain-3084-525x350.jpg'} ]
-				div.browse
-					h2 Choose A Cover Photo
-					div.images: .row.columns
-						.col.width-50(:load=":api(3.0).content(site.default-images).relationships(default_images) as image", :iterate="self")
-							span.image: img(src="{image.relationships(image,attachments).first.version()}")
-							//- span.image: img(src=image.url)
-							//- {image|dump}
-					.row.columns
-						.col.width-50: a.button.outline#goBack Go Back 
-						.col.width-50
-							form(action='/api/3.0/groups/{group.id}/attachments', method='post', enctype='multipart/form-data')
-								input(type='hidden', name='--success', value='/my-storks/sign-up?step=4')
-								input(type='hidden', name='--failure', value='/my-storks/sign-up?step=3')
-								input(type='hidden', name='--namespace', value='coverPhoto')
-								|<:module slug="messages-display" namespace="coverPhoto" />
-								input(type='hidden', class='fileUrl', name='fileUrl')
-								button(type='submit', class='button success href') Continue
-				//@IF :get.success
-				div.coverPhoto#preview(style='background-image: url({group.photo_url})')
-				a(class='button success' href='/my-storks/sign-up?step=4' id='rareButton') Continue
-				//@ELSE
-				div.coverPhoto
-				form(action='/api/3.0/groups/{group.id}/attachments', method='post', enctype='multipart/form-data', name='customPhoto')
-					input(type='hidden', name='--success', value='/my-storks/sign-up?step=3&success=true')
-					input(type='hidden', name='--failure', value='/my-storks/sign-up?step=3')
-					input(type='hidden', name='--namespace', value='coverPhoto')
-					|<:module slug="messages-display" namespace="coverPhoto" />
-					.row.columns
-						div.col.width-50
-							//- |Upload Your Own Photo
-							input(type='file', class='fileUpload', name='file')
-						div.col.width-50
-							div.box#browse
-								h5 Use
-								p one of ours
-					button(class='button success' type='submit') Upload
-				//@ENDIF
-		//@ELSEIF :get.step == '4'
-		section.four(:load=":api(3.0).contacts(me).groups_owned().first() as group")
-			h1.intro Let's get started
-				p.small
-					strong(:load=":api(3.0).groups().status(active) as group") {group.length}
-					|&nbsp;people have already started fundraisers.
-			div.list
-				ol.pull-left
-					li: span.complete: i.icon-ok
-					li: span.complete: i.icon-ok
-					li 
-						span 3
-						| Write A Headline
-				ol.pull-right
-					li
-						span 4
-			div.panel(:load=":api(3.0).content(site.example-headlines) as page")
-				h2 Write A Headline <br> For Your Fundraiser
-				input(type='hidden', name='one', value='{page.content.example_one|strip_tags}')
-				input(type='hidden', name='two', value='{page.content.example_two|strip_tags}')
-				input(type='hidden', name='three', value='{page.content.example_three|strip_tags}')
-				form(action='/api/3.0/groups/{group.id}', method='post')
-					input(type='hidden', name='type', value='individual')
-					input(type='hidden', name='--success', value='/my-storks/sign-up?step=5')
-					input(type='hidden', name='--failure', value='/my-storks/sign-up?step=4')
-					input(type='hidden', name='--namespace', value='headline')
-					input(type='hidden', name='project', value='249')
-					|<:module slug="messages-display" namespace="headline" />
-					div.textarea
-						textarea(rows='8', name="prop[headline]") {page.content.example_one|strip_tags}
-					.row.columns
-						.col.width-33: div.box.swap.active(data-target='one')
-							|Sample 1
-						.col.width-33: div.box.swap(data-target='two')
-							|Sample 2
-						.col.width-33: div.box.swap(data-target='three')
-							|Sample 3
-					button(class='button success' type='submit') Continue
-		//@ELSEIF :get.step == '5'
-		section.five(:load=":api(3.0).contacts(me).groups_owned().first() as group")
-			h1.intro Let's get started
-				p.small
-					strong(:load=":api(3.0).groups().status(active) as group") {group.length}
-					|&nbsp;people have already started fundraisers.
-			div.list
-				ol.pull-left
-					li: span.complete: i.icon-ok
-					li: span.complete: i.icon-ok
-					li: span.complete: i.icon-ok
-					li
-						span 4
-						| Write A Message
-				ol.pull-right
-					//- li 4
-			div.panel(:load=":api(3.0).content(site.exampleContent) as page")
-				h2 Write A Message <br> For Your Fundraiser
-
-				input(type='hidden', name='four', value='{page.content.example_one|strip_tags|unsafe}')
-				input(type='hidden', name='five', value='{page.content.example_two|strip_tags|unsafe}')
-				input(type='hidden', name='six', value='{page.content.example_three|strip_tags|unsafe}')
-				form(action='/api/3.0/groups/{group.id}/', method='post')
-					input(type='hidden', name='--success', value='/fundraiser/{group.slug}')
-					input(type='hidden', name='--failure', value='/my-storks/sign-up?step=5')
-					input(type='hidden', name='--namespace', value='description')
-					|<:module slug="messages-display" namespace="description" />
-					div.textarea
-						textarea(rows='8', name='description') {page.content.example_one|strip_tags}
-					.row.columns
-						.col.width-33: div.box.swap.active(data-target='four')
-							|Sample 1
-						.col.width-33: div.box.swap(data-target='five')
-							|Sample 2
-						.col.width-33: div.box.swap(data-target='six')
-							|Sample 3
-					button(class='button success' type='submit') Continue
-		//@ENDIF
-		div.spacer
-		+sidebar
+          button(class='button success' type='submit') Continue
+    //@ELSEIF :get.step == '3'
+    section.three(style='display: ')
+      h1.intro Let's get started
+        p.small
+          strong(:load=":api(3.0).groups().status(active) as group") {group.length}
+          |&nbsp;people have already started fundraisers
+      div.list
+        ol.pull-left
+          li: span.complete: i.icon-ok
+          li
+            span 2
+            | Get your fundraiser started.
+        ol.pull-right
+          li: span 3
+          li: span 4
+      div.panel(:load=":api(3.0).contacts(me).groups_owned().first() as group")
+        h2 Choose A Cover Photo
+        //- -var images = [ {'url':'https://static.pexels.com/wp-content/uploads/2014/10/headphone-mp3-music-3088-525x360.jpg'},{'url':'https://static.pexels.com/wp-content/uploads/2014/10/compose-hand-music-3090-525x360.jpg'},{'url':'https://static.pexels.com/wp-content/uploads/2014/10/audio-england-great-britain-3084-525x360.jpg'} ]
+        div.browse
+          h2 Choose A Cover Photo
+          div.images: .row.columns
+            .col.width-50(:load=":api(3.0).content(site.default-images).relationships(default_images) as image", :iterate="self")
+              span.image: img(src="{image.relationships(image,attachments).first.version()}")
+              //- span.image: img(src=image.url)
+              //- {image|dump}
+          .row.columns
+            .col.width-50: a.button.outline#goBack Go Back 
+            .col.width-50
+              form(action='/api/3.0/groups/{group.id}/attachments', method='post', enctype='multipart/form-data')
+                input(type='hidden', name='--success', value='/my-storks/sign-up?step=4')
+                input(type='hidden', name='--failure', value='/my-storks/sign-up?step=3')
+                input(type='hidden', name='--namespace', value='coverPhoto')
+                |<:module slug="messages-display" namespace="coverPhoto" />
+                input(type='hidden', class='fileUrl', name='fileUrl')
+                button(type='submit', class='button success href') Continue
+        //@IF :get.success
+        div.coverPhoto#preview(style='background-image: url({group.photo_url})')
+        a(class='button success' href='/my-storks/sign-up?step=4' id='rareButton') Continue
+        //@ELSE
+        div.coverPhoto
+        form(action='/api/3.0/groups/{group.id}/attachments', method='post', enctype='multipart/form-data', name='customPhoto')
+          input(type='hidden', name='--success', value='/my-storks/sign-up?step=3&success=true')
+          input(type='hidden', name='--failure', value='/my-storks/sign-up?step=3')
+          input(type='hidden', name='--namespace', value='coverPhoto')
+          |<:module slug="messages-display" namespace="coverPhoto" />
+          .row.columns
+            div.col.width-50
+              //- |Upload Your Own Photo
+              input(type='file', class='fileUpload', name='file')
+            div.col.width-50
+              div.box#browse
+                h5 Use
+                p one of ours
+          button(class='button success' type='submit') Upload
+        //@ENDIF
+    //@ELSEIF :get.step == '4'
+    section.four(:load=":api(3.0).contacts(me).groups_owned().first() as group")
+      h1.intro Let's get started
+        p.small
+          strong(:load=":api(3.0).groups().status(active) as group") {group.length}
+          |&nbsp;people have already started fundraisers.
+      div.list
+        ol.pull-left
+          li: span.complete: i.icon-ok
+          li: span.complete: i.icon-ok
+          li 
+            span 3
+            | Write A Headline
+        ol.pull-right
+          li
+            span 4
+      div.panel(:load=":api(3.0).content(site.example-headlines) as page")
+        h2 Write A Headline <br> For Your Fundraiser
+        input(type='hidden', name='one', value='{page.content.example_one|strip_tags}')
+        input(type='hidden', name='two', value='{page.content.example_two|strip_tags}')
+        input(type='hidden', name='three', value='{page.content.example_three|strip_tags}')
+        form(action='/api/3.0/groups/{group.id}', method='post')
+          input(type='hidden', name='type', value='individual')
+          input(type='hidden', name='--success', value='/my-storks/sign-up?step=5')
+          input(type='hidden', name='--failure', value='/my-storks/sign-up?step=4')
+          input(type='hidden', name='--namespace', value='headline')
+          |<:module slug="messages-display" namespace="headline" />
+          div.textarea
+            textarea(rows='8', name="prop[headline]") {page.content.example_one|strip_tags}
+          .row.columns
+            .col.width-33: div.box.swap.active(data-target='one')
+              |Sample 1
+            .col.width-33: div.box.swap(data-target='two')
+              |Sample 2
+            .col.width-33: div.box.swap(data-target='three')
+              |Sample 3
+          button(class='button success' type='submit') Continue
+    //@ELSEIF :get.step == '5'
+    section.five(:load=":api(3.0).contacts(me).groups_owned().first() as group")
+      h1.intro Let's get started
+        p.small
+          strong(:load=":api(3.0).groups().status(active) as group") {group.length}
+          |&nbsp;people have already started fundraisers.
+      div.list
+        ol.pull-left
+          li: span.complete: i.icon-ok
+          li: span.complete: i.icon-ok
+          li: span.complete: i.icon-ok
+          li
+            span 4
+            | Write A Message
+        ol.pull-right
+          //- li 4
+      div.panel(:load=":api(3.0).content(site.exampleContent) as page")
+        h2 Write A Message <br> For Your Fundraiser
+        input(type='hidden', name='four', value='{page.content.example_one|strip_tags|unsafe}')
+        input(type='hidden', name='five', value='{page.content.example_two|strip_tags|unsafe}')
+        input(type='hidden', name='six', value='{page.content.example_three|strip_tags|unsafe}')
+        form(action='/api/3.0/groups/{group.id}', method='post')
+          input(type='hidden', name='--success', value='/fundraiser/{group.slug}')
+          input(type='hidden', name='--failure', value='/my-storks/sign-up?step=5')
+          input(type='hidden', name='--namespace', value='description')
+          |<:module slug="messages-display" namespace="description" />
+          div.textarea
+            textarea(rows='8', name='description') {page.content.example_one|strip_tags}
+          .row.columns
+            .col.width-33: div.box.swap.active(data-target='four')
+              |Sample 1
+            .col.width-33: div.box.swap(data-target='five')
+              |Sample 2
+            .col.width-33: div.box.swap(data-target='six')
+              |Sample 3
+          button(class='button success' type='submit') Continue
+    //@ENDIF
+    div.spacer
+    theme:embed(file="includes/side-nav")

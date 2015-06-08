@@ -1,0 +1,14 @@
+pattern:
+  -
+    key: image
+    format: image
+    name: Image
+  -
+    key: content
+    format: html
+    name: Content
+  -
+    key: graphic
+    format: image
+    name: Graphic
+    description: Graphic should be 500px tall by 1064px wide

@@ -2,105 +2,349 @@ include ../includes/sidebar
 
 theme:template(title="Donate", name="_project")
   content
-    #donate
-      div.banner
-        h1 Grow The <strong>Movement</strong>
-          p.small Your contribution is vital to impacting the future.
-      .container: .row.donation-options
-        .donation-amount
-          .col.width-20.toggle: div.amount-toggle.active(data-monthly="30.00", data-yearly="350.00")
-            .head.clearfix
-              h1 1
-              img(src='assets://images/stork-alone.png', width="60")
-            small $30/mo. or $350 once
-          .col.width-20.toggle: div.amount-toggle(data-monthly="60.00", data-yearly="750.00")
-            .head.clearfix
-              h1 2
-              img(src='assets://images/stork-alone.png', width="60")
-            small $60/mo. or $750 once
-          .col.width-20.toggle: div.amount-toggle(data-monthly="150.00", data-yearly="1800.00")
-            .head.clearfix
-              h1 5
-              img(src='assets://images/stork-alone.png', width="60")
-            small $150/mo. or $1800 once
-          .col.width-20.toggle: div.amount-toggle(data-monthly="350.00", data-yearly="4200.00")
-            .head.clearfix
-              h1 12
-              img(src='assets://images/stork-alone.png', width="60")
-            small $350/mo. or $4200 once
-          .col.width-20.toggle: div.amount-toggle(data-monthly="", data-yearly="")
-            .head.any: h1 Any Amount
-            small Saves Storks
-          .col.width-60
-            .amount
-              .prepend Your Donation:
-              input(type='text', value='30.00', placeholder='Enter custom amount...')
-              .cash $
-              .usd USD
-          .col.width-20: a(href='#', class='button active frequency', data-frequency="month") Monthly
-          .col.width-20: a(href='#', class='button frequency', data-frequency="year") One Time
-        .campaign-level
-          .col.width-75
-            h1 Campaign Level: <span class="level"> Save A Stork</span>
-            p.description We divided the cost of a Bus by the number of moms and children who could be saved in one year. It costs about $30/month to Save a Stork. By partnering with us at $30/month, you can save a mother from the grief and heartache of abortion.
-            h1 Choose Your Advocacy Gift
-            p As a our way to say "Thank You!", please select a free gift that will give you the opportunity to tell people about Save The Storks.
-            div.gifts
-              .col.width-33
-                label(for="declineGift") Decline Gift
-                input#declineGift.gift(type="radio", name="gift", value="declineGift" checked)
-              .col.width-33
-                label Silver Stork Pendant
-                input.gift(type="radio", name="gift", value="Silver-Stork-Pendant")
-              .col.width-33
-                label Two T-Shirts
-                input.gift(type="radio", name="gift", value="Two-Shirts")
-            .sizes.two
-              .col.width-100: small Select Sizes
-              br
-              .clearfix
-                .col.width-25: select(name="shirtOne", data-shirt="One")
+    #learn-more
+      //- .jumbotron.align-center: .container
+        h1 YOUR GIFT GIVES THIS MOVEMENT WINGS!<br>BE A SUPERHERO!
+        p We’re putting our love into action and taking life-saving solutions directly to abortion-vulnerable women with our state-of-the-art mobile medical units and unprecident partnership with local pregnancy recource centers across the country.
+        a(class='btn success donate-now', href='#') Become a Superhero Today
+      .video-header: .row
+        .col.width-70.video
+          .content
+            h1 
+              span#cash $
+              span#amount(contentEditable='true') 50
+                //- span.blinking |
+            a(href='#/my/donate', data-amount='50', data-recurring='m', class='btn') DONATE VIA 
+              img(src='assets://images/card.png', style='vertical-align: middle; margin-left: 5px;')
+          video(autoplay=1, loop=1)
+            source(src="https://s3-us-west-2.amazonaws.com/theorypractice/storks.mp4", type="video/mp4")
+            
+        .col.width-30.donate
+          h1 Become a Monthly Supporter
+          p Learn more about our monthly giving program that keeps the storks busy delivering bundles of joy around the world.
+          a(href='#/my/donate', data-amount='50', data-recurring='m', class='btn') Donate Monthly
+          img(src='assets://images/cloud-1.png' class='cloud one')
+          img(src='assets://images/cloud-2.png' class='cloud two')
+          img(src='assets://images/cloud-3.png' class='cloud three')
+          img(src='assets://images/cloud-4.png' class='cloud four')
+          img(src='assets://images/cloud-5.png' class='cloud five')
+      //- .funding-section: .container
+        h1.align-center Your monthly contribution will help fund:
+        .row.columns
+          .funding-option.life-saving
+            .col.width-20
+              img(src="assets://images/life-saving.png")
+            .col.width-80
+              h4 LIFE-SAVING INTERVENTIONS
+              p At the end of the day, your monthly contribution will be used to fund programs that save babies and serve abortion-minded mothers in need.
+          .funding-option.mobile-revolution
+            .col.width-20
+              img(src="assets://images/mobile-revolution.png")
+            .col.width-80
+              h4 MOBILE REVOLUTION
+              p Your support helps fund a fleet of the most innovative and impactful mobile medical units on the road.
+          .funding-option.tools
+            .col.width-20
+              img(src="assets://images/tools.png")
+            .col.width-80
+              h4 TOOLS, TRAINING &amp; ON-GOING SUPPORT
+              p With your help we’re equipping are partner pregnancy resource centers with the resources they need to be most effective in their outreach.
+      //- .map-section: .container
+        .row.columns: .col.width-45
+          h1 At-Risk Babies Across The Country Need a Champion
+          p 84% of post-abortive women say they felt that abortion was their only option.
+          p 2 out of 3 women that board a stork bus choose to keep their baby!
+          a(class='btn success donate-now', href='#') Pledge Your Support
+      //- .watch-bar.align-center
+        p Watch a quick video that demonstrates the heart of this movement.
+        i.fa.fa-angle-down
+      //- .video-section
+        |<div id="fb-root"></div><script>(function(d, s, id) {  var js, fjs = d.getElementsByTagName(s)[0];  if (d.getElementById(id)) return;  js = d.createElement(s); js.id = id;  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.3";  fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script><div class="fb-video" data-allowfullscreen="true" data-href="/SaveTheStorks/videos/vb.158505287559920/821493754594400/?type=1"><div class="fb-xfbml-parse-ignore"><blockquote cite="/SaveTheStorks/videos/821493754594400/"><a href="/SaveTheStorks/videos/821493754594400/">Hey Mom and Dad</a><p>Check out this new awesome video that was just made for us! Go ahead and click &#039;Share&#039; to spread this pro-life message with your friends!</p>Posted by <a href="https://www.facebook.com/SaveTheStorks">Save The Storks</a> on Tuesday, 14 April 2015</blockquote></div></div>
+      .donation-section.align-center: .container
+        h1(style='margin-bottom: 60px;') Become a superhero with a monthly donation and make sure more storks take flight each month
+        .row.columns
+          .col.width-25
+            form.donation-module.align-center.rain(action='donate')
+              .module-header(style="background-image: url(https://rainmakerapp.s3.amazonaws.com/storks/images/1.png)") SAVE A STORK
+              .module-amount 
+                .amount 
+                  span $
+                  |30
+                  small /mo
+              .module-message 
+                p Your gift can <strong>save <span>ONE</span> mother AND BABY</strong> from abortion every year.
+                .images-row
+                  .img_: img(src='assets://images/P1.png')
+                  .img_: img(src='assets://images/P2.png')
+                  .img_: img(src='assets://images/P2.png')
+                  .img_: img(src='assets://images/P2.png')
+              .module-action: button(type='submit', class='btn') DONATE $30/<small>MO</small>
+              .module-gift
+                h5 GIFT OPTIONS
+                label
+                  input(type='radio', name='gift', value='Declined Gift', checked)
+                  | Decline Gift
+                label
+                  input(type='radio', name='gift', value='Silver Stork Pendant')
+                  | Silver Stork Pendant
+                label
+                  input(type='radio', name='gift', value='Four T-Shirts')
+                  | Two T-Shirts
+              .module-sizes
+                label SHIRT ONE
+                select
                   option Small
                   option Medium
                   option Large
                   option Extra Large
                   option XXL
-                .col.width-25: select(name="shirtTwo", data-shirt="Two")
+                label SHIRT TWO
+                select
                   option Small
                   option Medium
                   option Large
                   option Extra Large
                   option XXL
-            .sizes.four
-              .col.width-100: small Select Sizes
-              br
-              .clearfix
-                .col.width-25: select(name="shirtOne", data-shirt="One")
+              input(type='hidden', name='memo', value='')
+              input(type='hidden', name='amount', value='30')
+              input(type='hidden', name='recurring', value='m')
+          .col.width-25
+            form.donation-module.align-center.rain(action='donate')
+              .module-header(style="background-image: url(https://rainmakerapp.s3.amazonaws.com/storks/images/2.png)") SAVE A BUNDLE
+              .module-amount 
+                .amount 
+                  span $
+                  |60
+                  small /mo
+              .module-message 
+                p Your gift can <strong>save <span>TWO</span> motherS AND BABIES</strong> from abortion every year.
+                .images-row
+                  .img_: img(src='assets://images/P1.png')
+                  .img_: img(src='assets://images/P1.png')
+                  .img_: img(src='assets://images/P2.png')
+                  .img_: img(src='assets://images/P2.png')
+              .module-action: button(type='submit', class='btn') DONATE $60/<small>MO</small>
+              .module-gift
+                h5 GIFT OPTIONS
+                label
+                  input(type='radio', name='gift', value='Declined Gift', checked)
+                  | Decline Gift
+                label
+                  input(type='radio', name='gift', value='Silver Stork Pendant')
+                  | Silver Stork Pendant
+                label
+                  input(type='radio', name='gift', value='Four T-Shirts')
+                  | Four T-Shirts
+              .module-sizes
+                label SHIRT ONE
+                select
                   option Small
                   option Medium
                   option Large
                   option Extra Large
                   option XXL
-                .col.width-25: select(name="shirtTwo", data-shirt="Two")
+                label SHIRT TWO
+                select
                   option Small
                   option Medium
                   option Large
                   option Extra Large
                   option XXL
-                .col.width-25: select(name="shirtThree", data-shirt="Three")
+                label SHIRT THREE
+                select
                   option Small
                   option Medium
                   option Large
                   option Extra Large
                   option XXL
-                .col.width-25: select(name="shirtFour", data-shirt="Four")
+                label SHIRT FOUR
+                select
                   option Small
                   option Medium
                   option Large
                   option Extra Large
                   option XXL
-          .col.width-25.img
-            img(src='assets://images/tier-2.png', width='100%')
-        .summary: .col.width-100
-          a(href='#', class='button', id='donateModal') Continue Donation
-      +sidebar
+              input(type='hidden', name='memo', value='')
+              input(type='hidden', name='amount', value='60')
+              input(type='hidden', name='recurring', value='m')
+          .col.width-25
+            form.donation-module.align-center.rain(action='donate')
+              .module-header(style="background-image: url(https://rainmakerapp.s3.amazonaws.com/storks/images/3.png)") BE A SUPERHERO
+              .module-amount 
+                .amount 
+                  span $
+                  |150
+                  small /mo
+              .module-message 
+                p Your gift can <strong>save <span>FIVE</span> motherS AND BABIES</strong> from abortion every year.
+                .images-row
+                  .img_: img(src='assets://images/P1.png')
+                  .img_: img(src='assets://images/P1.png')
+                  .img_: img(src='assets://images/P1.png')
+                  .img_: img(src='assets://images/P1.png')
+                .images-row
+                  .img_: img(src='assets://images/P1.png')
+                  .img_: img(src='assets://images/P2.png')
+                  .img_: img(src='assets://images/P2.png')
+                  .img_: img(src='assets://images/P2.png')
+              .module-action: button(type='submit', class='btn') DONATE $150/<small>MO</small>
+              .module-gift
+                h5 GIFT OPTIONS
+                label
+                  input(type='radio', name='gift', value='Declined Gift', checked)
+                  | Decline Gift
+                label
+                  input(type='radio', name='gift', value='Silver Stork Pendant')
+                  | Silver Stork Pendant
+                label
+                  input(type='radio', name='gift', value='Four T-Shirts')
+                  | Four T-Shirts
+              .module-sizes
+                label SHIRT ONE
+                select
+                  option Small
+                  option Medium
+                  option Large
+                  option Extra Large
+                  option XXL
+                label SHIRT TWO
+                select
+                  option Small
+                  option Medium
+                  option Large
+                  option Extra Large
+                  option XXL
+                label SHIRT THREE
+                select
+                  option Small
+                  option Medium
+                  option Large
+                  option Extra Large
+                  option XXL
+                label SHIRT FOUR
+                select
+                  option Small
+                  option Medium
+                  option Large
+                  option Extra Large
+                  option XXL
+              input(type='hidden', name='memo', value='')
+              input(type='hidden', name='amount', value='150')
+              input(type='hidden', name='recurring', value='m')
+          .col.width-25
+            form.donation-module.align-center.rain(action='donate')
+              .module-header(style="background-image: url(https://rainmakerapp.s3.amazonaws.com/storks/images/4.png)") SAVE A FLOCK
+              .module-amount 
+                .amount 
+                  span $
+                  |360
+                  small /mo
+              .module-message 
+                p Your gift can <strong>save <span>TWELVE</span> motherS AND BABIES</strong> from abortion every year.
+                .images-row
+                  .img_: img(src='assets://images/P1.png')
+                  .img_: img(src='assets://images/P1.png')
+                  .img_: img(src='assets://images/P1.png')
+                  .img_: img(src='assets://images/P1.png')
+                .images-row
+                  .img_: img(src='assets://images/P1.png')
+                  .img_: img(src='assets://images/P1.png')
+                  .img_: img(src='assets://images/P1.png')
+                  .img_: img(src='assets://images/P1.png')
+                .images-row
+                  .img_: img(src='assets://images/P1.png')
+                  .img_: img(src='assets://images/P1.png')
+                  .img_: img(src='assets://images/P1.png')
+                  .img_: img(src='assets://images/P1.png')
+              .module-action: button(type='submit', class='btn') DONATE $360/<small>MO</small>
+              .module-gift
+                h5 GIFT OPTIONS
+                label
+                  input(type='radio', name='gift', value='Declined Gift', checked)
+                  | Decline Gift
+                label
+                  input(type='radio', name='gift', value='Silver Stork Pendant')
+                  | Silver Stork Pendant
+                label
+                  input(type='radio', name='gift', value='Four T-Shirts')
+                  | Four T-Shirts
+              .module-sizes
+                label SHIRT ONE
+                select
+                  option Small
+                  option Medium
+                  option Large
+                  option Extra Large
+                  option XXL
+                label SHIRT TWO
+                select
+                  option Small
+                  option Medium
+                  option Large
+                  option Extra Large
+                  option XXL
+                label SHIRT THREE
+                select
+                  option Small
+                  option Medium
+                  option Large
+                  option Extra Large
+                  option XXL
+                label SHIRT FOUR
+                select
+                  option Small
+                  option Medium
+                  option Large
+                  option Extra Large
+                  option XXL
+              input(type='hidden', name='memo', value='')
+              input(type='hidden', name='amount', value='360')
+              input(type='hidden', name='recurring', value='m')
+          #sizing-anchor
+      //- a(href='/stork-paintings', style="margin: 0;").banner-callout
+        i.fa.fa-gift
+        | Check Out Our Special Gifts
+      .slider-section.align-center: .container
+        h1 How many lives do you want to impact by 2025?
+          p Use the slider below to see how many lives you could impact in the next ten years.
+        .table
+          #slider.dragdealer
+            .handle.red-bar
+              i
+              .lives 20
+            .progress Lives Impacted By Your Gift
+          .amount = $
+            span 30
+            | /mo.
+      .flow-chart: .container-fluid
+        h1.align-center For $30/mo you can save 1 Mother and Baby each year!
+        .row.columns.pseudo-table
+          .col.width-25.table-cell
+            .align-center
+              p A Stork Bus costs $125,000 to purchase and launch.
+              img(src='assets://images/bus-icon.png' height='90')
+              strong $125,000
+              span.next: i
+              span.div &divide;
+          .col.width-25.table-cell
+            .align-center
+              p Each bus saves 360 moms and babies every 2 years.
+              img(src='assets://images/woman-icon.png' height='90')
+              strong 360 LIVES
+              span.next: i
+              span.div &divide;
+          .col.width-25.table-cell
+            .align-center
+              p We created a plan that allows you to give monthly.
+              img(src='assets://images/cal-icon.png' height='90')
+              strong 12 MONTHS
+              span.next: i
+              span.div =
+          .col.width-25.table-cell
+            .align-center
+              p So you can save at least 1 mother and baby each year!
+              img(src='assets://images/baby-icon.png' height='90')
+              strong.box $28.93/MO
+          .col.width-100
+            .align-center: small *360 lives saved per two years per bus is an average. Most of our units impact a lot more lives.
+    theme:embed(file="includes/side-nav")

@@ -1,0 +1,9 @@
+pattern:
+  -
+    key: image
+    format: image
+    name: Image
+  -
+    key: content
+    format: html
+    name: Content

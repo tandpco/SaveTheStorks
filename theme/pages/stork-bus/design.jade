@@ -1,0 +1,88 @@
+include ../../includes/sidebar
+
+theme:template(title="Stork Bus", name="_project")
+  content
+    div(:load=":api(3.0).content(site.stork-bus) as bus")
+      .modal.video: .container: .video-wrapper.nullify
+        {bus.content.busvideo}
+      .overlay
+      .design.table(:load=":api(3.0).content(site.stork-bus) as bus")
+        .banner(style="background-image:url({bus.relationships(designheader,attachments).first.version(,)}); margin-bottom: 15px;")
+          h1 About Our 
+            strong Stork Bus
+            p.small(style="color: #FFF;") More than 3 in 5 women who board a Stork Bus choose life.
+            a(href='#', class='btn btn-green', style='line-height: 42px; font-size: 14px; letter-spacing: 0.15px; padding: 0 30px;', id='video') Watch A Quick Video
+          .tabs
+            a(href='/stork-bus') Mobile Partnership
+            a(href='/stork-bus/design', class='active') Stork Bus Design
+            a(href='/stork-bus/specs') Stork Bus Specs
+            a(href='/stork-bus/strategies') Stork Bus Strategies
+        .section: .container.thin
+          {bus.content.designonetext}
+          .pseudo-table
+            .row.columns(style="margin-left: -5px; margin-right: -5px;")
+              .col.width-33.cell: .img(style="background-image: url(http://rainmakerapp.s3.amazonaws.com/storks/images/bus/interior-one.jpg);")
+              .col.width-33.cell: .img(style="background-image: url(http://rainmakerapp.s3.amazonaws.com/storks/images/bus/interior-two.jpg);")
+              .col.width-33.cell: .img(style="background-image: url(http://rainmakerapp.s3.amazonaws.com/storks/images/bus/interior-three.jpg);")
+            .row.columns(style="margin-left: -5px; margin-right: -5px;")
+              .col.width-50.cell: .img(style="background-image: url(http://rainmakerapp.s3.amazonaws.com/storks/images/bus/interior-four.jpg);")
+              .col.width-50.cell: .img(style="background-image: url(http://rainmakerapp.s3.amazonaws.com/storks/images/bus/interior-five.jpg);")
+        .section.blackout: .container.thin
+          {bus.content.designtwotext}
+          .pseudo-table
+            .row.columns(style="margin-left: -5px; margin-right: -5px;")
+              .col.width-33.cell: .img(style="background-image: url(http://rainmakerapp.s3.amazonaws.com/storks/images/bus/exterior-one.jpg);")
+              .col.width-33.cell: .img(style="background-image: url(http://rainmakerapp.s3.amazonaws.com/storks/images/bus/exterior-two.jpg);")
+              .col.width-33.cell: .img(style="background-image: url(http://rainmakerapp.s3.amazonaws.com/storks/images/bus/exterior-three.jpg); background-position: right;")
+            .row.columns(style="margin-left: -5px; margin-right: -5px;")
+              .col.width-50.cell: .img(style="background-image: url(http://rainmakerapp.s3.amazonaws.com/storks/images/bus/exterior-four.jpg);")
+              .col.width-50.cell: .img(style="background-image: url(http://rainmakerapp.s3.amazonaws.com/storks/images/bus/exterior-fives.jpg);")
+          .row.columns.btn-row
+            .col.width-33: a(class='btn btn-green', href='#why') Why Mercedes Benz?
+            .col.width-33: a(class='btn btn-green', href='{bus.content.mobileguide.href}') Guide to Going Mobile
+            .col.width-33: a(class='btn btn-green', href='/stork-bus-application', style='font-size: 12px;') Stork Bus Grant Application
+        .section
+          .container.thin
+            {bus.content.designthreecontent}
+          .container: .row.columns
+            .col.width-33.strike: .info
+              //- span(style="border: 2px solid; -webkit-border-radius: 50%; border-radius: 50%; color: #4f4f4f; display: inline-block; padding: 15px 0; text-align: center; height: 100px; width: 100px;")
+              img(style="max-height: 100%;" src="{bus.relationships(oneicon,attachments).first.version(,)}")
+              {bus.content.strikeone}
+            .col.width-33.strike: .info
+              //- span(style="border: 2px solid; -webkit-border-radius: 50%; border-radius: 50%; color: #4f4f4f; display: inline-block; padding: 15px 0; text-align: center; height: 100px; width: 100px;")
+              img(style="max-height: 100%;" src="{bus.relationships(twoicon,attachments).first.version(,)}")
+              {bus.content.striketwo}
+            .col.width-33.strike: .info
+              //- span(style="border: 2px solid; -webkit-border-radius: 50%; border-radius: 50%; color: #4f4f4f; display: inline-block; padding: 15px 0; text-align: center; height: 100px; width: 100px;")
+              img(style="max-height: 100%;" src="{bus.relationships(threeicon,attachments).first.version(,)}")
+              {bus.content.strikethree}
+        .section.grayout(style='margin-bottom: 0; padding-top: 0;', id="why")
+          .container.thin
+            {bus.content.designfourcontent}
+          .space(style="height: 30px;")
+          .section.blackout: .container.thin: .reasons-slider
+            .nav
+              .previous: i.slider-nav.prev.fa.fa-angle-left
+              .next: i.slider-nav.next.fa.fa-angle-right
+            ul.slides
+              li(:load=":api(3.0).content(site.stork-bus).relationships(designslider) as slide", :iterate="self")
+                .row.columns.align-left
+                  .col.width-25
+                    img(src='{slide.relationships(image,attachments).first.version(,)}')
+                  .col.width-75
+                    {slide.content.content}
+        .bus-footer.align-center: .container-fluid
+          h1 Why Go Mobile With Save The Storks?
+          .row.columns
+            .col.width-33
+              .img: img(src='{bus.relationships(whygomobilecol1img,attachments).first.version(,)}')
+              {bus.content.whygomobilecol1txt}
+            .col.width-33.middle
+              .img: img(src='{bus.relationships(whygomobilecol2img,attachments).first.version(,)}')
+              {bus.content.whygomobilecol2txt}
+            .col.width-33
+              .img: img(src='{bus.relationships(whygomobilecol3img,attachments).first.version(,)}')
+              {bus.content.whygomobilecol3txt}
+        theme:embed(file="includes/side-nav")
+

@@ -1,0 +1,13 @@
+pattern:
+  -
+    key: image
+    format: image
+    name: Painting Image
+  -
+    key: name
+    format: title
+    name: Painting Name
+  -
+    key: description
+    format: html
+    name: Painting Description

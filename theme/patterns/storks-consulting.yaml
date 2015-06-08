@@ -1,0 +1,41 @@
+page:
+  path: /site
+  slug: consulting
+  name: Stork Works Consulting
+pattern:
+  -
+    key: purposeimage
+    format: image
+    name: The Purpose - Header Image
+  -
+    key: purposecontent
+    format: html
+    name: The Purpose - Content
+  -
+    key: partnershipimage
+    format: image
+    name: The Partnership - Header Image
+  - 
+    key: partnershipcontent
+    format: html
+    name: The Partnership - Content
+  -
+    key: processimage
+    format: image
+    name: The Process - Header Image
+  -
+    key: processcontent
+    format: blocks
+    singular: List Item
+    name: The Process - Content
+    pattern: processcontentitem
+  -
+    key: productimage
+    format: image
+    name: The Product - Header Image
+  -
+    key: productcontent
+    format: blocks
+    singular: List Item
+    name: The Product - Content
+    pattern: productcontentitem

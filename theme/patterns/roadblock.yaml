@@ -1,0 +1,9 @@
+pattern:
+  -
+    key: image
+    format: image
+    name: List Item Icon
+  -
+    key: body
+    format: html
+    name: List Item Content

@@ -1,0 +1,69 @@
+include ../../includes/sidebar
+
+theme:template(title="StorkWorks", name="_project")
+  content
+    div(:load=":api(3.0).content(site.stork-bus) as bus")
+      .modal.video: .container: .video-wrapper.nullify
+        {bus.content.busvideo}
+      .overlay
+      .consulting.design.table
+        .banner(style="background-image:url({bus.relationships(stratheader,attachments).first.version(,)});")
+          h1 About Our 
+            strong Stork Bus
+            p.small(style="color: #FFF;") More than 3 in 5 women who board a Stork Bus choose life.
+            a(href='#', class='btn btn-green', style='line-height: 42px; font-size: 14px; letter-spacing: 0.15px; padding: 0 30px;', id='video') Watch A Quick Video
+          .tabs
+            a(href='/stork-bus') Mobile Partnership
+            a(href='/stork-bus/design') Stork Bus Design
+            a(href='/stork-bus/specs') Stork Bus Specs
+            a(href='/stork-bus/strategies', class='active') Stork Bus Strategies
+        .container.thin
+          p Here are five strategies you can use to maximize the effectiveness of your mobile unit. Use one or combine several. 
+          ul.strategies
+            li
+              .row.columns
+                .col.width-20: img(src='assets://images/strat-one.png')
+                .col.width-80
+                  h3 SIDEWALK COUNSELING
+                  p This strategy takes the mobile unit directly to women who are actively seeking abortion services. By parking the unit right outside of an abortion clinic, you can reach abortion-minded women where they are, offering free services and the opportunity for women to receive counseling on the spot.
+            li
+              .row.columns
+                .col.width-20: img(src='assets://images/strat-two.png')
+                .col.width-80
+                  h3 SONOGRAM DELIVERY
+                  p A Stork Bus will allow you to “deliver” a sonogram to where the neediest women live. The benefit of this model is that you can reach women who have limited transportation. And by partnering with multiple pregnancy centers in your area, you could get the word out to more women seeking ultrasound services.
+            li
+              .row.columns
+                .col.width-20: img(src='assets://images/strat-three.png')
+                .col.width-80
+                  h3 FAIRS AND EVENTS
+                  p Attending fairs and other events with your mobile unit is a great way to connect with pregnant women in your community, whether they’re abortion-minded or not. It’s a loving and caring way to offer free sonograms and pregnancy tests to women and to start conversations about life. This strategy also allows you to get the name of your center out in your community and let people know what services you offer. And it may be a chance to meet people who can partner with your mission and support you financially.
+            li
+              .row.columns
+                .col.width-20: img(src='assets://images/strat-four.png')
+                .col.width-80
+                  h3 SCHEDULED BUS STOPS
+                  p This strategy allows you to be in multiple places on a set circuit schedule. So, if you know you want to use the unit at several locations, you could set up a calendar that’s consistent on a weekly or monthly basis. You would need to advertise and post times in each area. This strategy works especially well for reaching women in high-traffic areas or targeted neighborhoods where unwanted pregnancies are common.
+            li
+              .row.columns
+                .col.width-20: img(src='assets://images/strat-five.png')
+                .col.width-80
+                  h3 UNIVERSITY CAMPUS OUTREACH
+                  p Taking your mobile pregnancy center on a regular circuit of college campuses is a highly-specialized strategy that should affect the way you design the interior and exterior of your Stork Bus. But it can be one of the most rewarding strategies you can undertake for reaching women in unwanted pregnancies. One effective use of a mobile unit on college campuses is to do free STI testing. This will allow you to build a relationship with sexually-active women before they’re pregnant.
+          .row.columns
+            a(class='btn btn-green', style='font-size: 14px; line-height: 42px; margin-right: 15px;', href='{bus.content.mobileguide.href}') Guide to Going Mobile
+            a(class='btn btn-green', style='font-size: 14px; line-height: 42px;', href='/stork-bus-application', style='font-size: 12px;') Stork Bus Grant Application
+        .bus-footer.align-center: .container
+          h1 Why Go Mobile With Save The Storks?
+          .row.columns
+            .col.width-33
+              .img: img(src='{bus.relationships(whygomobilecol1img,attachments).first.version(,)}')
+              {bus.content.whygomobilecol1txt}
+            .col.width-33.middle
+              .img: img(src='{bus.relationships(whygomobilecol2img,attachments).first.version(,)}')
+              {bus.content.whygomobilecol2txt}
+            .col.width-33
+              .img: img(src='{bus.relationships(whygomobilecol3img,attachments).first.version(,)}')
+              {bus.content.whygomobilecol3txt}
+        theme:embed(file="includes/side-nav")
+
