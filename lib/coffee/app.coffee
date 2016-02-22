@@ -1,9 +1,33 @@
 $ ->
-
+  if typeof Handlebars != 'undefined'
+    # Contact Server for Fundraisers
+    Handlebars.registerHelper 'if', (conditional, options) ->
+      if conditional
+        return options.fn(this)
+      return
+    if window.location.pathname.indexOf('my-storks') > -1
+      $.getJSON 'https://classy.org/api1/fundraisers?cid=20338&token=zayh1tViJegPhULThoB2&limit=0', (response) ->
+        fundraisers = response.fundraisers
+        i = 0
+        template = Handlebars.compile $("#fundraiserTemplate").html()
+        # $('.container').empty()
+        while i < 4
+          ext = if fundraisers[i].page_title.length > 16 then '...' else null
+          fundraisers[i].progress = fundraisers[i].total_raised / fundraisers[i].goal * 100
+          fundraisers[i].page_title = fundraisers[i].page_title.substr(0,24) + ext
+          fundraisers[i].member_image_medium = if fundraisers[i].member_image_medium then fundraisers[i].member_image_medium else 'https://rainmakerapp.s3.amazonaws.com/storks/images/dummy/fundraiser-module-avatar-public.png'
+          ctemplate = template fundraisers[i]
+          $('.fundraisers-here').append ctemplate
+          i++
+      # for fundraiser in fundraisers
+        # console.log fundraiser
   # $('span#amount').on 'focus click', ->
     # $(this).parents('h1').find('.blinking').remove()
-  # $('span#amount').on 'blur', ->
+  $('span#amount').on 'blur', ->
     # $(this).parents('h1').append('<span class="blinking">|</span>');
+    text = $(this).text()
+    if text.length <= 0
+      $(this).text '50'
 
   $('.video a').on 'click', ->
     $rain
@@ -731,6 +755,9 @@ $ ->
           .text(name)
         $('a.facebook-share').attr('href', 'https://www.facebook.com/dialog/feed?app_id=347159378788273&display=popup&href=http://www.savethestorks.com/gallery&redirect_uri=http://www.savethestorks.com/gallery&caption='+name+'&picture=https://7b7157f59fb5914df25d-83ec9bcc8970758aaa4b1923747e8d1b.ssl.cf1.rackcdn.com/' + src)
         $('a.twitter-share').attr('href', "http://twitter.com/home?status="+name+" - www.savethestorks.com/gallery?id=" + id)
+        $('a.pinterest-share').attr('href', "http://pinterest.com/pin/create/button/?url=http://www.savethestorks.com/gallery?id="+id+"&amp;media=https://www.savethestorks.com/"+src+"&amp;description="+name)
+
+
     else if item.data 'video'
       name = item.data 'name'
       id   = item.data 'id'
@@ -844,6 +871,20 @@ $ ->
           lockamount: true
           message: 'Thank you for your donation!'
         false
+  $('.donation-handler-no-gift').each ->
+    $(this).on 'click', ->
+      amnt  = $(this).data 'amount'
+      freq  = $(this).data 'frequency'
+      # gift  = $(this).parents('.option').find('input[name="gift"]:checked').val()
+      # sizes = $(this).parents('.option').find('.size')
+      # memo  = '\n'  
+      $rain
+        action: 'donate'
+        amount: amnt
+        recurring: freq
+        lockamount: true
+        message: 'Thank you for your donation!'
+      false
 
   $('input[name="gift"]').on 'change', ->
     if $(this).val().indexOf('T-Shirts') > -1

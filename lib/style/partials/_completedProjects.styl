@@ -373,28 +373,30 @@ section.section
       p
         font-size 16px
         line-height 26px
-  &:nth-of-type(odd)
-    .content
-      float left
-    .image
-      float right
-      margin-left 30%
-  &:nth-of-type(even)
-    .content
-      float right
-      margin-left 70%
-    .image
-      float left
   .content
     padding 45px
-    width 30%
-  .image
-    position absolute
-    left 0
-    right 0
-    top 0
-    bottom 0
-    width 70%
+  @media (min-width: 1000px)
+    &:nth-of-type(odd)
+      .content
+        float left
+      .image
+        float right
+        margin-left 30%
+    &:nth-of-type(even)
+      .content
+        float right
+        margin-left 70%
+      .image
+        float left
+    .content
+      width 30%
+    .image
+      position absolute
+      left 0
+      right 0
+      top 0
+      bottom 0
+      width 70%
 div.footer
   margin-bottom 60px
   padding 45px 15px

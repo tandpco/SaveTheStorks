@@ -18,8 +18,8 @@ theme:template(title="About", name="_project")
         div.tabs
           .tab.in#team
             {staff.content.ourteam}
-            .row.team.columns
-              .col.width-33(:load="staff.relationships(team,contacts) as contact", :iterate="self")
+            .row.team.columns(:load="staff.relationships(team,contacts).sets(3) as set", :iterate="self")
+              .col.width-33(:load="set.items as contact", :iterate="self")
                 .row.team(style="margin: initial;")
                   .img: img(src="{contact.photo-url}/x:300/y:300")
                   h1 {contact.name}

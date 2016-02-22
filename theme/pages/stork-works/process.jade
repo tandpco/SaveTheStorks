@@ -6,32 +6,35 @@ theme:template(title="StorkWorks", name="_project")
       .banner(style="background-image: url('{process.relationships(processimage,attachments).first.version(,)}')")
         h1
           strong StorkWorks Consulting
-          p.small(style="color: #FFF;") High-impact consultation that’s helping pregnancy centers<br>all over the nation increase their resources, reach, and impact.
+          p.small(style="color: #FFF;") Strengthening Pregnancy Centers nationwide through high-impact consultation. 
         .tabs
           a(href='/stork-works') The Purpose
           a(href='/stork-works/partnership') The Partnership
           a(href='/stork-works/process', class='active') The Process
           a(href='/stork-works/product') The Product
       .container.thin
-        p StorkWorks uses Amplify Consulting’s proprietary organizational GPS systemTM that works much like the GPS system in your car or on your smartphone. 
+        p StorkWorks utilizes a proprietary organizational GPS system&trade; that works much like a GPS system in your car or on your smartphone.
         table(cellspacing=15)
           tr(:load=":api(3.0).content(site.consulting).relationships(processcontent) as item", :iterate="self")
             td(style="width: 20%;"): img(src='{item.relationships(image,attachments).first.version(,)}')
             td: {item.content.body}
+        p Finally, your organization is ready for Acceleration. With the completion of all three of these StorkWorks consulting phases, your Pregnancy Center is prepared to step on the gas and navigate your future with confidence. For more information about StorkWorks, email DiAnna, at dianna@savethestorks.com or call 970-387-8675 to request a telephone appointment.
+        strong(style='font-size: 22px; display: block; text-align: center; margin-top: 15px;') Finally, your organization is ready for 
+          i acceleration.
       .consulting-footer: .container
         h1 Why Choose StorkWorks Consulting?
         .row.columns
           .col.width-33
             .img: img(src='assets://images/works-one.png')
             h2 A Biblical Base
-            p StorkWorks follows Biblical principles in its consulting and planning. We use scripture as our foundation and we trust in God for guidance. We pray for God’s insight and inspiration before, during, and after the process is over. 
+            p StorkWorks follows Biblical principles in its consulting and planning. We use Scripture as our foundation and we trust in God for guidance. We pray for God’s insight and inspiration before, during, and after the completed process.
           .col.width-33.middle
             .img: img(src='assets://images/works-two.png')
             h2 A Proven Process
-            p The Organizational GPS System&trade; used by StorkWorks Consulting is a proven process with a legacy of success. It has helped countless organizations increase their organizational effectiveness and amplify their reach and impact. 
+            p The Organizational GPS System™ utilized by StorkWorks Consulting is a proven process with a legacy of success. This system led countless organizations to increase their organizational effectiveness and amplify their reach and impact. 
           .col.width-33
             .img: img(src='assets://images/works-three.png')
             h2 Exceptional Expertise
-            p StorkWorks’ process is an industrial-strength tool, and it must be operated by a skillful operator. That’s why StorkWorks’ consultants have educational credentials and years of experience in organizational leadership. They know their stuff. 
+            p StorkWorks’ process is an industrial-strength tool. We employ skillful operators with vast  educational credentials and a depth of experience in organizational leadership.
       theme:embed(file="includes/side-nav")
 

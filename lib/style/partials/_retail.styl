@@ -85,19 +85,22 @@ $light-gray = #F1F5F6
       margin 0
       padding 0
     .thumbnail
+      border-bottom 1px solid #E7E7E7
       height 175px
       margin-bottom 30px
       overflow hidden
       position relative
       z-index 0
       img
-        min-height 100%
-        max-width none
-        min-width 100%
-        position absolute
+        // width 100px
+        left 0
+        right 0
         top 0
+        bottom 0
+        margin auto
+        position absolute
       .gradient-overlay
-        background-color #000
+        background #000
         background linear-gradient(rgba(black, 0), black)
         bottom 0
         left 0
@@ -114,7 +117,7 @@ $light-gray = #F1F5F6
         z-index 3
         h2
           color #FFF
-          font-size 16px
+          font-size 14px
           font-weight 600
           line-height 18px
           a
@@ -154,11 +157,11 @@ $light-gray = #F1F5F6
         line-height 16px
     .progress
       border-top 1px solid $border
-      bottom 40px
-      left 0
+      // bottom 40px
+      // left 0
       padding 15px 10px
-      position absolute
-      right 0
+      // position absolute
+      // right 0
       .numbers
         color #929292
         font-weight 400
@@ -603,6 +606,9 @@ $light-gray = #F1F5F6
           &.facebook-share
             background-color #3B5998
             color #FFF
+          &.pinterest-share
+            background-color #BD081C
+            color #FFF
         a.btn-green
           margin 0 auto
   .item
@@ -619,8 +625,14 @@ $light-gray = #F1F5F6
       height 200px
       width 100%
       img
-        min-width 100%
-        max-width none
+        // min-width 100%
+        // max-width none
+        // width 100px
+        left 0
+        right 0
+        top 0
+        bottom 0
+        margin auto
         transition all 300ms ease
         // transform scale(1)
         transform translate3d(0,0,0)
@@ -1257,7 +1269,7 @@ header.completed-projects
   border-radius 2px
   bottom 80px
   display none
-  height 64px
+  height 90px
   left 10%
   padding 5px
   position absolute
@@ -1285,6 +1297,9 @@ header.completed-projects
     bottom -16px
     left 12px
   ul
+    list-style none
+    margin 0
+    padding 0
     li
       a
         clear both
@@ -1296,6 +1311,9 @@ header.completed-projects
           color #FFF
         &.facebook-share
           background-color #3B5998
+          color #FFF
+        &.pinterest-share
+          background-color #BD081C
           color #FFF
     // #mybox:after{ // Our small triangle to fill the space
     // content:"";

@@ -20,7 +20,7 @@ theme:template(title="My Storks", name="_project", :load=":api(3.0).projects(249
             form(action='/api/3.0/contacts/', method='post')
               input(type='hidden', name='type', value='individual')
               input(type='hidden', name='--success', value='/my-storks/sign-up?step=2')
-              input(type='hidden', name='--failure', value='https://impact.savethestorks.com/fundraise/get-involved?cid=20338')
+              input(type='hidden', name='--failure', value='/my-storks/sign-up?step=1')
               input(type='hidden', name='--namespace', value='pledge')
               input(type='hidden', name='--login', value='true')
               |<:module slug="messages-display" namespace="pledge" />
@@ -36,38 +36,41 @@ theme:template(title="My Storks", name="_project", :load=":api(3.0).projects(249
     .sectionThree
       .container
         h2 The pro-life community is growing the movement through creative ways of raising awareness and funds. 
-          a(href='https://impact.savethestorks.com/fundraise/get-involved?cid=20338') Join us today!
+          a(href='/my-storks/sign-up?step=1') Join us today!
       .container-fluid(style="max-width: 1280px;"): .row
         .space-down
-        .fundraisers-here
-        script#fundraiserTemplate(type="text/x-handlebars-template", :ignore="true").
-          <div class="col width-25">
-            <div class="fundraiser-module" style="height: auto;">
-              <div class="thumbnail">
-                <div class="name">
-                  <h2>{{page_title}}</h2>
-                </div>
-                <div class="gradient-overlay" style=""></div><img src="https://c394391.ssl.cf2.rackcdn.com/1439844357.jpg"/>
-              </div><a href="{{fundraiser_url}}" target="_blank">
-                <div class="title">
-                  <div class="avatar" style="background-color: #E9E9E9;"><img src="{{member_image_medium}}"/></div>
-                  <div class="author"><small>By: {{first_name}}</small></div>
-                </div></a>
-              <div class="progress">
-                <div class="numbers">
-                  <div class="pull-left">${{total_raised}}</div>
-                  <div class="pull-right"><small>${{goal}}</small></div>
-                </div>
-                <div class="progress-bar"><span style="width: {{progress}}%; min-width: 1%;"></span></div>
-              </div>
-              <div class="footer" style="position: initial;">
-                <a href="{{donation_url}}" class="donate" target="_blank" style="width: 100%;">Donate Now</a>
-              </div>
-            </div>
-          </div>
+        .col.width-25(:load=":api(3.0).groups().tags(group:featured).limit(8) as fundraiser", :iterate="self")
+          .fundraiser-module
+            .thumbnail
+              .name: h2(style='color: #FFF;') {fundraiser.name|limitstring(36)}
+              .gradient-overlay
+              img(src='{fundraiser.photos.first.version(,)}', style='max-width: none;')
+            a(href='/fundraiser/{fundraiser.slug}'): .title
+              //@IF fundraiser.owner.photos.count < 1
+              .avatar: img(src='assets://images/dummy/fundraiser-module-avatar-public.png')
+              //@ELSE
+              .avatar: img(src='{fundraiser.owner.photo_url}')
+              //@ENDIF
+              .author: small By: {fundraiser.owner.name|limitstring(20,...)}
+            .content
+              p {fundraiser.description|strip_tags|limitstring(150,...)}
+            .progress
+              .numbers
+                .pull-left {fundraiser.progress.money|money}
+                .pull-right: small {fundraiser.target|money}
+              .progress-bar: span(style='width: {fundraiser.progress.percent}; min-width: 1%;')
+            .footer
+              .share-flyout
+                ul
+                  li: a(href='https://www.facebook.com/sharer/sharer.php?u=www.savethestorks.com/fundraiser/{fundraiser.slug}', class='facebook-share popup'): i.fa.fa-facebook
+                  li: a(href='http://twitter.com/home?status={project.description|strip_tags|limitstring(80,...)} - www.savethestorks.com/fundraiser/{fundraiser.slug}', class='twitter-share popup'): i.fa.fa-twitter
+              a(href='#', class='share')
+                i.fa.fa-share-square-o 
+                |  Share
+              a(href='#/my/donate?group={fundraiser.id}', class='donate') Donate Now
       .button-row
-        a(href='https://impact.savethestorks.com/fundraise/get-involved?cid=20338', class='btn btn-green') Start Your Fundraiser!
-        //- a(href='/my-storks/browse', class='btn btn-outline') Find A Fundraiser
+        a(href='/my-storks/sign-up?step=1', class='btn btn-green') Start Your Fundraiser!
+        a(href='/my-storks/browse', class='btn btn-outline') Find A Fundraiser
     .bannerTwo: .container-fluid: .columns.row
       h1(class='lined') How It Works
       .col.push-2.width-20
@@ -96,7 +99,7 @@ theme:template(title="My Storks", name="_project", :load=":api(3.0).projects(249
         p You’re making a difference. Don’t forget to celebrate!
     .callout: .container: .row
       .col.width-65: p WHAT WILL YOU DO TO SAVE LIVES?
-      .col.width-35: a(class='btn btn-green', href='https://impact.savethestorks.com/fundraise/get-involved?cid=20338') Start a Fundraiser!
+      .col.width-35: a(class='btn btn-green', href='/my-storks/sign-up?step=1') Start a Fundraiser!
     .sectionFour(style="margin-top: -30px;")
       .container
         h1 Starting a fundraiser is easy and fun!
@@ -136,33 +139,33 @@ theme:template(title="My Storks", name="_project", :load=":api(3.0).projects(249
         table(cellspacing=15)
           tr
             td.margin-right(style='background-image: url(https://rainmakerapp.s3.amazonaws.com/storks/images/dummy/fundraiser-ideas-birthday.png);')
-              a(href='https://impact.savethestorks.com/fundraise/get-involved?cid=20338', class='text')
+              a(href='/my-storks/sign-up?step=1', class='text')
                 | Donate Your Birthday 
                 i.fa.fa-long-arrow-right
             td(rowspan=2,colspan=2, style='background-image: url(https://rainmakerapp.s3.amazonaws.com/storks/images/dummy/fundraiser-ideas-get-sponsors.png);')
-              a(href='https://impact.savethestorks.com/fundraise/get-involved?cid=20338', class='text')
+              a(href='/my-storks/sign-up?step=1', class='text')
                 | Get Sponsors For A Run, Walk, or Bike 
                 i.fa.fa-long-arrow-right
             td.margin-right(style='background-image: url(https://rainmakerapp.s3.amazonaws.com/storks/images/dummy/fundraiser-ideas-auction.png);')
-              a(href='https://impact.savethestorks.com/fundraise/get-involved?cid=20338', class='text')
+              a(href='/my-storks/sign-up?step=1', class='text')
                 | Host An Auction 
                 i.fa.fa-long-arrow-right
           tr
             td(style='background-image: url(https://rainmakerapp.s3.amazonaws.com/storks/images/dummy/fundraiser-ideas-challenge.png);')
-              a(href='https://impact.savethestorks.com/fundraise/get-involved?cid=20338', class='text')
+              a(href='/my-storks/sign-up?step=1', class='text')
                 | Challenge Yourself 
                 i.fa.fa-long-arrow-right
             td.margin-right(style='background-image: url(https://rainmakerapp.s3.amazonaws.com/storks/images/dummy/fundraiser-ideas-baby-shower.png);')
-              a(href='https://impact.savethestorks.com/fundraise/get-involved?cid=20338', class='text')
+              a(href='/my-storks/sign-up?step=1', class='text')
                 | Donate A Baby Shower 
                 i.fa.fa-long-arrow-right
           tr
             td(colspan=2, style='background-image: url(https://rainmakerapp.s3.amazonaws.com/storks/images/dummy/fundraiser-ideas-tournament.png);')
-              a(href='https://impact.savethestorks.com/fundraise/get-involved?cid=20338', class='text')
+              a(href='/my-storks/sign-up?step=1', class='text')
                 | Host A Tournament 
                 i.fa.fa-long-arrow-right
             td(colspan=2, style='background-image: url(https://rainmakerapp.s3.amazonaws.com/storks/images/dummy/fundraiser-ideas-car-wash.png);')
-              a(href='https://impact.savethestorks.com/fundraise/get-involved?cid=20338', class='text')
+              a(href='/my-storks/sign-up?step=1', class='text')
                 | Hold A Car Wash 
                 i.fa.fa-long-arrow-right
     .stork-supporters(:load=":api(3.0).content(site.my-storks) as testimonials"): .container
@@ -197,6 +200,6 @@ theme:template(title="My Storks", name="_project", :load=":api(3.0).projects(249
             i.icon-facebook
             | Share
       p.shoutout Join the movement to bring practical life-saving <br> solutions to mothers and babies in crisis.
-      a(href="https://impact.savethestorks.com/fundraise/get-involved?cid=20338" class="button success") Start A Fundraiser
+      a(href="/my-storks/sign-up?step=1" class="button success") Start A Fundraiser
 
-    theme:embed(file="includes/side-nav")
+    theme:embed(file="includes/side-nav"))

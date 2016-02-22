@@ -1,0 +1,49 @@
+include ../includes/sidebar
+
+theme:template(title="Friends of Townhall Media", name="_project")
+  //- redirect(:eval="true") http://www.savethestorks.com/friends-of-townhall-media-
+  head
+    link(href="//cdn-images.mailchimp.com/embedcode/classic-081711.css", rel="stylesheet", type="text/css")
+    style(type="text/css").
+      #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+  content
+    #connect
+      div.banner
+        h1 Subscribe To Our Mailing List
+      // Begin MailChimp Signup Form
+      .container#mc_embed_signup
+        p Welcome to Save the Storks! We're excited to meet you and to tell you more stories about how pro-life advocates with vans are saving families all over America by providing sonograms to abortion-vulnerable women.
+        form#mc-embedded-subscribe-form.validate(action="//savethestorks.us9.list-manage.com/subscribe/post?u=2029b818415f5fdb46edcd92a&id=13813eb233", method="post", name="mc-embedded-subscribe-form", target="_blank", novalidate="")
+          .mc-field-group
+            label(for="mce-EMAIL")
+              | Email Address 
+              small (Required)
+            input#mce-EMAIL.required.email(type="email", value="", name="EMAIL")
+          .mc-field-group
+            label(for="mce-FNAME") First Name 
+            input#mce-FNAME(type="text", value="", name="FNAME")
+          .mc-field-group
+            label(for="mce-LNAME") Last Name 
+            input#mce-LNAME(type="text", value="", name="LNAME")
+          .mc-field-group.input-group
+            label Email Format 
+            ul
+              li
+                input#mce-EMAILTYPE-0(type="radio", value="html", name="EMAILTYPE")
+                label(for="mce-EMAILTYPE-0") HTML
+              li
+                input#mce-EMAILTYPE-1(type="radio", value="text", name="EMAILTYPE")
+                label(for="mce-EMAILTYPE-1") Text
+          #mce-responses.clear
+            #mce-error-response.response(style="display:none")
+            #mce-success-response.response(style="display:none")
+          // real people should not fill this in and expect good things - do not remove this or risk form bot signups
+          div(style="position: absolute; left: -5000px;")
+            input(type="text", name="b_2029b818415f5fdb46edcd92a_13813eb233", tabindex="-1", value="")
+          .clear
+            input#mc-embedded-subscribe.button(type="submit", value="Subscribe", name="subscribe")
+      script(type="text/javascript", src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js")
+      script(type="text/javascript")
+        (function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);
+      // End mc_embed_signup
+      theme:embed(file="includes/side-nav")

@@ -1261,7 +1261,7 @@ a.manage
     right 0
     top 0
     z-index -1
-  .donation-module
+  .donation-module, .donation-module-no-gift
     background-color #313436
     color #FFF
     padding 30px
@@ -1464,7 +1464,7 @@ a.manage
       font-size 36px
       font-weight 100
       margin-top 0
-    .donation-module
+    .donation-module, .donation-module-no-gift
       .module-header
         background-color #A7B2B5
         color #F8FAFA
@@ -1518,8 +1518,11 @@ a.manage
           border 0
           border-radius 2px
           color white
+          cursor pointer
           letter-spacing 0.075em
           margin 0
+          &:hover
+            background-color darken($green, 10%)
       .module-gift
         background-color #F1F5F6
         margin-top 10px
@@ -1989,3 +1992,72 @@ a.manage
     color: white;
   }
 }
+
+#connect
+  background-color #F9F9F9
+  margin-bottom -20px
+  padding-bottom 100px
+  @media (min-width: 768px)
+    min-height 100vh
+  .banner
+    background-color #666
+    background-size cover
+    background-position center
+    background-image url('https://7b7157f59fb5914df25d-83ec9bcc8970758aaa4b1923747e8d1b.ssl.cf1.rackcdn.com/fa944af5dbdc31cf0793422c89ac2009.jpg')
+    color #FFF
+    font-family $font_primary
+    font-weight 300
+    height 360px
+    letter-spacing 0.05em
+    text-align center
+    text-transform uppercase
+    padding 160px 0 0
+    h1
+      font-weight 600
+      letter-spacing 0.05em
+      text-align center
+      text-shadow 0 1px 1px rgba(black, 0.25)
+  #mc_embed_signup
+    background-color #FFFFFF
+    border-radius 2px
+    box-shadow 0 0 3px rgba(black, 0.75)
+    margin -100px auto 0
+    max-width 600px
+    padding 30px
+    width 100%
+    p
+      border-bottom 1px solid rgba(#000,0.5)
+      color $color_text
+      font-size 16px
+      font-weight 300
+      line-height 20px
+      margin-top 0
+      margin-bottom 20px !important
+      padding-bottom 15px
+    .mc-field-group
+      margin-bottom 15px
+      label
+        font-size 12px
+        font-weight 600
+        color rgba(black, 0.85)
+        letter-spacing 0.075em
+        margin-bottom 3px
+        text-transform uppercase
+      ul
+        list-style none
+        margin 0
+        padding 0
+        label
+          display inline-block
+          letter-spacing initial
+          text-transform initial
+          font-weight 400
+    input
+      border-radius 2px
+      &[type="submit"]
+        background-color $green
+        font-size 16px
+        font-weight 600
+        height 50px
+        letter-spacing 0.075em
+        text-transform uppercase

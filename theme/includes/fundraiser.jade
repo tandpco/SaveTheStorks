@@ -1,0 +1,29 @@
+.col.width-25
+  .fundraiser-module
+    .thumbnail
+      .name: h2 {fundraiser.name|limitstring(36)}
+      .gradient-overlay
+      img(src='{fundraiser.photos.first.version(,)}')
+    a(href='/fundraiser/{fundraiser.slug}'): .title
+      //@IF fundraiser.owner.photos.count < 1
+      .avatar: img(src='assets://images/dummy/fundraiser-module-avatar-public.png')
+      //@ELSE
+      .avatar: img(src='{fundraiser.owner.photo_url}')
+      //@ENDIF
+      .author: small By: {fundraiser.owner.name|limitstring(20,...)}
+    .content
+      p {fundraiser.description|strip_tags|limitstring(150,...)}
+    .progress
+      .numbers
+        .pull-left {fundraiser.progress.money|money}
+        .pull-right: small {fundraiser.target|money}
+      .progress-bar: span(style='width: {fundraiser.progress.percent}; min-width: 1%;')
+    .footer
+      .share-flyout
+        ul
+          li: a(href='https://www.facebook.com/sharer/sharer.php?u=www.savethestorks.com/fundraiser/{fundraiser.slug}', class='facebook-share popup'): i.fa.fa-facebook
+          li: a(href='http://twitter.com/home?status={project.description|strip_tags|limitstring(80,...)} - www.savethestorks.com/fundraiser/{fundraiser.slug}', class='twitter-share popup'): i.fa.fa-twitter
+      a(href='#', class='share')
+        i.fa.fa-share-square-o 
+        |  Share
+      a(href='#/my/donate?group={fundraiser.id}', class='donate') Donate Now

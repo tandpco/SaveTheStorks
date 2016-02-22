@@ -9,7 +9,7 @@ theme:template(title="Media Gallery", name="_project")
         .gallery-nav.next: i.fa.fa-angle-right
         .item-container
           img(src='{graphic.relationships(image,attachments).first.photo-url}')
-        .item-container
+        //- .item-container
           img(src='{graphic.relationships(image,attachments).first.photo-url}')
         .meta
           h2 {graphic.content.title}
@@ -18,6 +18,7 @@ theme:template(title="Media Gallery", name="_project")
               ul
                 li: a(href='https://www.facebook.com/dialog/feed?app_id=347159378788273&display=popup&href=http://www.savethestorks.com/gallery?id={graphic.id}&redirect_uri=http://www.savethestorks.com/gallery?id={graphic.id}&caption={graphic.content.title}&picture={:e.url.link([graphic.relationships(image,attachments).first.photo-url])}', class='facebook-share popup'): i.fa.fa-facebook
                 li: a(href='http://twitter.com/home?status={graphic.content.title} - www.savethestorks.com?gallery={graphic.id}', class='twitter-share popup'): i.fa.fa-twitter
+                li: a(href="http://pinterest.com/pin/create/button/?url=http://www.savethestorks.com/gallery?id={graphic.id}&amp;media={:e.url.link([graphic.relationships(image,attachments).first.photo-url])}&amp;description={graphic.content.title}", class='pinterest-share popup'): i.fa.fa-pinterest
             a(href='#', class='btn btn-green', style='line-height: 0;')
               i.fa.fa-share-square-o
               |  Share
@@ -35,6 +36,7 @@ theme:template(title="Media Gallery", name="_project")
               ul
                 li: a(href='https://www.facebook.com/dialog/feed?app_id=347159378788273&display=popup&href=http://www.savethestorks.com/gallery?id={graphic.id}&redirect_uri=http://www.savethestorks.com/gallery?id={graphic.id}&caption={graphic.content.title}&picture={:e.url.link([graphic.relationships(image,attachments).first.photo-url])}', class='facebook-share popup'): i.fa.fa-facebook
                 li: a(href='http://twitter.com/home?status={graphic.content.title} - www.savethestorks.com?gallery={graphic.id}', class='twitter-share popup'): i.fa.fa-twitter
+                li: a(href="http://pinterest.com/pin/create/button/?url=http://www.savethestorks.com/gallery?id={graphic.id}&amp;media={:e.url.link([graphic.relationships(image,attachments).first.photo-url])}&amp;description={graphic.content.title}", class='pinterest-share popup'): i.fa.fa-pinterest
             a(href='#', class='btn btn-green', style='line-height: 0;')
               i.fa.fa-share-square-o
               |  Share
@@ -52,6 +54,7 @@ theme:template(title="Media Gallery", name="_project")
               ul
                 li: a(href='https://www.facebook.com/dialog/feed?app_id=347159378788273&display=popup&href=http://www.savethestorks.com/gallery?id={graphic.id}&redirect_uri=http://www.savethestorks.com/gallery?id={graphic.id}&caption={graphic.content.title}&picture={:e.url.link([graphic.relationships(image,attachments).first.photo-url])}', class='facebook-share popup'): i.fa.fa-facebook
                 li: a(href='http://twitter.com/home?status={graphic.content.title} - www.savethestorks.com?gallery={graphic.id}', class='twitter-share popup'): i.fa.fa-twitter
+                li: a(href="http://pinterest.com/pin/create/button/?url=http://www.savethestorks.com/gallery?id={graphic.id}&amp;media={:e.url.link([graphic.relationships(image,attachments).first.photo-url])}&amp;description={graphic.content.title}", class='pinterest-share popup'): i.fa.fa-pinterest
             a(href='#', class='btn btn-green', style='line-height: 0;')
               i.fa.fa-share-square-o
               |  Share
@@ -69,6 +72,7 @@ theme:template(title="Media Gallery", name="_project")
               ul
                 li: a(href='https://www.facebook.com/dialog/feed?app_id=347159378788273&display=popup&href=http://www.savethestorks.com/gallery?id={graphic.id}&redirect_uri=http://www.savethestorks.com/gallery?id={graphic.id}&caption={graphic.content.title}&picture={:e.url.link([graphic.relationships(image,attachments).first.photo-url])}', class='facebook-share popup'): i.fa.fa-facebook
                 li: a(href='http://twitter.com/home?status={graphic.content.title} - www.savethestorks.com?gallery={graphic.id}', class='twitter-share popup'): i.fa.fa-twitter
+                li: a(href="http://pinterest.com/pin/create/button/?url=http://www.savethestorks.com/gallery?id={graphic.id}&amp;media={:e.url.link([graphic.relationships(image,attachments).first.photo-url])}&amp;description={graphic.content.title}", class='pinterest-share popup'): i.fa.fa-pinterest
             a(href='#', class='btn btn-green', style='line-height: 0;')
               i.fa.fa-share-square-o
               |  Share
@@ -100,7 +104,7 @@ theme:template(title="Media Gallery", name="_project")
           h3.align-left.tr-up All Videos
             .pull-right: small: a(href='/gallery') Go Back
         .row.columns
-          .col.width-20(:load=":api(3.0).content(site.media-gallery).relationships(videos) as video", :iterate="self").limit
+          .col.width-20(:load=":api(3.0).content(site.media-gallery).relationships(videos) as video", :iterate="self")
             .item(data-name="{video.content.title}", data-video=true)
               .thumbnail: img(src="{video.relationships(thumbnail,attachments).first.photo-url}", data-id="{video.id}")
               .item-footer: p {video.content.title|limitstring(15,...)}

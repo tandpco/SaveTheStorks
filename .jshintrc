@@ -11,6 +11,7 @@
     "FB": true,
     "$": true,
     "$rain": true,
-    "Dragdealer": true
+    "Dragdealer": true,
+    "Handlebars": true
   }
 }
